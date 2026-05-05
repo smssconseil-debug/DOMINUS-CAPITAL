@@ -71,7 +71,7 @@ export default function Dashboard() {
              DOMINUS CAPITAL
           </h1>
           <p className="text-[#d4af37] tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-xs font-bold mt-0.5 uppercase">
-            Performance Institucional Gênesis
+            RESULTADOS REAIS, DISCIPLINA, TECNOLOGIA , PERFORMANCE
           </p>
         </div>
         
