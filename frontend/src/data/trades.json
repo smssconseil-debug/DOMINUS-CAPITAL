@@ -1,0 +1,7031 @@
+[
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T09:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T09:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T09:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T09:59:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T10:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T10:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T11:33:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T12:36:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T13:51:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T14:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T15:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-02T16:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T09:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T09:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T10:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T11:17:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T11:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T12:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-05T14:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T09:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T09:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T09:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T09:39:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T11:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T11:54:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-06T14:51:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T09:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T09:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T11:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T11:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T11:26:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T11:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T12:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-07T14:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T09:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T09:27:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T10:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T11:29:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T12:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-08T13:29:00.000Z",
+    "res_operacao": -35,
+    "custo": 1,
+    "liquido": -36,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T09:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T09:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T10:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T10:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T10:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T12:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-09T14:26:00.000Z",
+    "res_operacao": -10,
+    "custo": 1,
+    "liquido": -11,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T09:24:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T09:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T09:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T09:58:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T10:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T11:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-12T12:13:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T09:17:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T10:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T10:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T10:59:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T12:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T13:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-13T15:41:00.000Z",
+    "res_operacao": -35,
+    "custo": 1,
+    "liquido": -36,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T09:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T09:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T10:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T10:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:09:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:11:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:18:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T11:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T12:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T13:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T15:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-14T16:30:00.000Z",
+    "res_operacao": 40,
+    "custo": 1,
+    "liquido": 39,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-15T10:25:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-15T11:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-15T12:43:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-15T13:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-15T16:33:00.000Z",
+    "res_operacao": -50,
+    "custo": 1,
+    "liquido": -51,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-16T09:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-16T11:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-16T11:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-16T12:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-16T12:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-19T09:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-19T09:24:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-19T13:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-19T14:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-19T15:30:00.000Z",
+    "res_operacao": -45,
+    "custo": 1,
+    "liquido": -46,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T09:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T10:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T10:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T10:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T10:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T12:16:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T14:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-20T15:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T09:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T10:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T11:17:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T11:36:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T11:55:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-21T14:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-22T09:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-22T09:52:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-22T11:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-22T12:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T09:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T12:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T13:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T14:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T14:33:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-23T15:07:00.000Z",
+    "res_operacao": -80,
+    "custo": 1,
+    "liquido": -81,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T09:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T11:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T11:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T11:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T12:25:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T14:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-26T16:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T09:26:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T09:47:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T12:18:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T13:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T14:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-27T15:59:00.000Z",
+    "res_operacao": -15,
+    "custo": 1,
+    "liquido": -16,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T09:34:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T10:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T11:35:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T12:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T12:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T12:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T12:28:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T12:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T15:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-28T16:11:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T09:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T09:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T10:28:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T10:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T11:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T11:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:17:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T12:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T13:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T13:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T14:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T14:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T15:17:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T15:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-29T16:17:00.000Z",
+    "res_operacao": 10,
+    "custo": 1,
+    "liquido": 9,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T09:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T09:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T09:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T11:06:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T12:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T13:47:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T14:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T15:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T15:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T15:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T15:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-01-30T16:24:00.000Z",
+    "res_operacao": -55,
+    "custo": 1,
+    "liquido": -56,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T09:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T09:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T09:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T10:06:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T11:34:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T11:55:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T12:28:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-02T14:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T09:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T10:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T11:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T12:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T12:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T13:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T14:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T15:25:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T16:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T16:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-03T16:59:00.000Z",
+    "res_operacao": 55,
+    "custo": 1,
+    "liquido": 54,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T09:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T11:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T11:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T12:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T13:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-04T16:46:00.000Z",
+    "res_operacao": -5,
+    "custo": 1,
+    "liquido": -6,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T09:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T09:44:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T10:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T11:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T11:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T11:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T12:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T12:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T12:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T13:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T13:21:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T14:26:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-05T14:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T09:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T09:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T09:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T10:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T11:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T11:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T11:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T11:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T12:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T13:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T13:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-06T15:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T09:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T09:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T10:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T10:24:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T11:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T11:05:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T11:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T12:58:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T13:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T14:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T15:21:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-09T15:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T09:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T09:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T11:42:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T11:56:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T12:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-10T12:35:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T09:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T10:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T10:45:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T11:23:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-11T14:31:00.000Z",
+    "res_operacao": -25,
+    "custo": 1,
+    "liquido": -26,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T09:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T10:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T10:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T12:16:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T13:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T13:32:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T14:35:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-12T15:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T09:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T09:15:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T09:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T09:55:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T10:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T10:54:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T11:37:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T11:40:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T11:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T12:05:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T12:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T13:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T13:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-13T14:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-18T13:09:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-18T13:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-18T13:51:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-18T14:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-18T15:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-19T09:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-19T10:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-19T12:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-19T16:40:00.000Z",
+    "res_operacao": -40,
+    "custo": 1,
+    "liquido": -41,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T10:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T12:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T12:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T12:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T12:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T12:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T14:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-20T15:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T11:07:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T11:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T12:34:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T13:58:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-23T14:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T09:17:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T09:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T09:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T10:41:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T10:55:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T12:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-24T12:56:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T09:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T09:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T09:32:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T11:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T11:55:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T12:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T12:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T12:54:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T13:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-25T14:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T09:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T10:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T11:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T12:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T12:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T12:59:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T13:45:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-26T15:39:00.000Z",
+    "res_operacao": -30,
+    "custo": 1,
+    "liquido": -31,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T09:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T09:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T10:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T10:14:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T11:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T12:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T12:54:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T13:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-02-27T13:33:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:27:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T09:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T10:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T10:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T10:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T10:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T10:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T11:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T11:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T12:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T12:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T13:40:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T14:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-02T16:09:00.000Z",
+    "res_operacao": 35,
+    "custo": 1,
+    "liquido": 34,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T09:28:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T10:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T11:09:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T11:24:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T11:35:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T11:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T11:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T12:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T12:15:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T12:23:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T12:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T12:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:29:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T13:54:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T14:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T14:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T14:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T15:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T16:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-03T16:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T09:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T09:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T09:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T10:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T10:54:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T11:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T11:42:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T11:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T11:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T12:06:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T12:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T13:08:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T13:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T13:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T14:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T15:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-04T16:41:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T09:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T10:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T10:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T11:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T11:24:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T11:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T12:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T12:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T12:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T12:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T13:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T13:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T13:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T13:36:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:29:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:41:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:51:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T14:54:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T15:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T15:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-05T16:32:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T09:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T09:07:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T09:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T09:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:35:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T10:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T11:11:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T11:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T11:35:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T11:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T12:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T12:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T12:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T13:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T13:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T13:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T13:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T14:26:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T14:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T15:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-06T16:23:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T09:07:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T09:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T09:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T09:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T09:59:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T10:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T10:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T11:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T11:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T12:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T12:51:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T15:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:20:00.000Z",
+    "res_operacao": -100,
+    "custo": 1,
+    "liquido": -101,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-09T16:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T09:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T09:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T09:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T09:58:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T10:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T11:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T12:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T13:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T14:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T14:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T15:06:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T15:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T15:29:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-10T16:40:00.000Z",
+    "res_operacao": -15,
+    "custo": 1,
+    "liquido": -16,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T09:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T09:34:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T10:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T10:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T10:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T10:59:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T11:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T11:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T11:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T13:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T14:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T14:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-11T15:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T09:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T09:29:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T09:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:19:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:52:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T10:56:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T11:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T11:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T11:46:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T11:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:07:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:42:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T12:59:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T13:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T13:14:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T14:05:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T14:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-12T15:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T09:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T09:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T10:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T10:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T10:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T11:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T11:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T11:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T12:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T12:24:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T12:47:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T12:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T13:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T13:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T13:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T14:15:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T14:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T14:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T15:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T15:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-13T16:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T09:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T09:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T09:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T09:55:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T10:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T11:32:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T11:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T12:51:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T13:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-16T15:05:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T09:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T09:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T09:51:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T10:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T11:13:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T12:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T12:44:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T13:14:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T13:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T14:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T15:33:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-17T15:48:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:36:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:42:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T09:54:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T10:00:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T11:20:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T11:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T12:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T12:24:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T14:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T15:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T15:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T15:38:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T16:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-18T16:54:00.000Z",
+    "res_operacao": -40,
+    "custo": 1,
+    "liquido": -41,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:22:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:24:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:26:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:35:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T09:59:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:14:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:35:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T10:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T11:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T11:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T11:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T11:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T11:50:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T12:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T12:18:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T12:53:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T12:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T13:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T13:51:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T14:12:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T14:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T14:57:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T15:52:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:34:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-19T16:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T09:10:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T09:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T09:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T10:15:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T10:23:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T10:37:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T11:06:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T11:21:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T11:32:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T12:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T12:23:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T12:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T12:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T12:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T13:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T13:31:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T13:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T13:59:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T14:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T14:11:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T14:50:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T15:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-20T16:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:05:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:19:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:30:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:33:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:35:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:41:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T09:46:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T10:36:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T11:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T11:27:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T11:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T12:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T12:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T12:27:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T12:52:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T12:58:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T13:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T13:45:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T14:44:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T15:04:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T15:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-23T16:03:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T09:08:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T09:12:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T09:33:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T10:02:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T10:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T10:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:49:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T11:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T12:13:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T13:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T13:18:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T13:45:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T14:04:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T14:57:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T15:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T15:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-24T16:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T09:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T09:16:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T09:52:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T10:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T10:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T11:02:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T11:26:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T11:47:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T12:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T12:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T13:10:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T13:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T14:23:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-25T15:56:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T09:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T09:03:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T09:07:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T09:42:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T09:52:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T10:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T10:40:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T10:59:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T11:41:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T11:53:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T12:15:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T12:42:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T13:16:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T15:01:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-26T16:28:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T09:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T09:24:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T09:48:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T10:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T10:46:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T11:00:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T11:49:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T12:13:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T12:40:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T13:38:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T14:06:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T15:37:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T16:17:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-27T16:55:00.000Z",
+    "res_operacao": 15,
+    "custo": 1,
+    "liquido": 14,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T09:05:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T09:13:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T09:39:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T10:29:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T11:30:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T12:15:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T14:43:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-30T16:22:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T09:01:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T09:20:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T09:28:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T09:34:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T10:16:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T10:40:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T11:32:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T11:37:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T11:56:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T13:11:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T13:40:00.000Z",
+    "res_operacao": -90,
+    "custo": 1,
+    "liquido": -91,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T14:25:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-03-31T15:09:00.000Z",
+    "res_operacao": 60,
+    "custo": 1,
+    "liquido": 59,
+    "is_gain": true,
+    "is_loss": false
+  }
+]
