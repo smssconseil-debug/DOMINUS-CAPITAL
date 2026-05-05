@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [interestSent, setInterestSent] = useState(false);
 
   // Filters
+  const [selectedAno, setSelectedAno] = useState(null);
   const [selectedMes, setSelectedMes] = useState(null);
   const [selectedDia, setSelectedDia] = useState(null);
   const [selectedPeriodo, setSelectedPeriodo] = useState(null);
@@ -26,6 +27,7 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const params = new URLSearchParams();
+      if (selectedAno) params.append('ano', selectedAno);
       if (selectedMes) params.append('mes', selectedMes);
       if (selectedDia) params.append('dia', selectedDia);
       if (selectedPeriodo) params.append('periodo', selectedPeriodo);
@@ -41,7 +43,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchMetrics();
-  }, [selectedMes, selectedDia, selectedPeriodo, user]);
+  }, [selectedAno, selectedMes, selectedDia, selectedPeriodo, user]);
 
   const submitSaibaMais = async (e) => {
     if(e) e.preventDefault();
@@ -243,12 +245,26 @@ export default function Dashboard() {
         <div className="w-72 bg-[#0a0a0a] border-l border-[#d4af37]/20 p-5 flex flex-col gap-6 overflow-y-auto scrollbar-hide shadow-2xl z-10">
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <h3 className="text-[#d4af37] font-bold uppercase tracking-widest text-sm">Filtros Avançados</h3>
-            {(selectedMes || selectedDia || selectedPeriodo) && (
-              <button onClick={() => { setSelectedMes(null); setSelectedDia(null); setSelectedPeriodo(null); }} className="text-[10px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded">Limpar</button>
+            {(selectedAno || selectedMes || selectedDia || selectedPeriodo) && (
+              <button onClick={() => { setSelectedAno(null); setSelectedMes(null); setSelectedDia(null); setSelectedPeriodo(null); }} className="text-[10px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded">Limpar</button>
             )}
           </div>
 
-          <div>
+          {metrics?.available_years && metrics.available_years.length > 0 && (
+            <div>
+              <h4 className="text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Ano</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {metrics.available_years.map(a => (
+                  <button key={a} onClick={() => setSelectedAno(selectedAno === a ? null : a)}
+                    className={`text-xs py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedAno === a ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                    {a}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="pt-4 border-t border-white/5">
             <h4 className="text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Meses</h4>
             <div className="grid grid-cols-2 gap-2">
               {meses.map(m => (

@@ -175,13 +175,16 @@ async def submit_interest(req: InterestRequest, user: Optional[dict] = Depends(g
 async def get_metrics(
     request: Request,
     user: Optional[dict] = Depends(get_current_user_optional),
+    ano: Optional[int] = None,
     mes: Optional[str] = None,
     dia: Optional[int] = None,
     periodo: Optional[str] = None
 ):
     trades = await db.trades.find({}, {"_id": 0}).to_list(None)
     if not trades:
-        return {"kpis": {}, "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": []}
+        return {"kpis": {}, "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": [], "available_years": []}
+
+    available_years = sorted(list(set(t['abertura'].year for t in trades)), reverse=True)
 
     meses_map = {
         "janeiro": 1, "fevereiro": 2, "março": 3, "abril": 4, "maio": 5, "junho": 6,
@@ -191,6 +194,8 @@ async def get_metrics(
     filtered_trades = []
     for t in trades:
         abertura = t['abertura']
+        if ano and abertura.year != ano:
+            continue
         if mes and meses_map.get(mes.lower()) != abertura.month:
             continue
         if dia and dia != abertura.day:
@@ -208,7 +213,7 @@ async def get_metrics(
     if not filtered_trades:
         return {
             "kpis": {"lucro_liquido": 0, "lucro_bruto": 0, "custos": 0, "operacoes": 0, "gains": 0, "loss": 0, "assertividade": 0, "dias_operados": 0, "drawdown": 0, "runup": 0},
-            "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": []
+            "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": [], "available_years": available_years
         }
 
     # KPIs
@@ -273,6 +278,25 @@ async def get_metrics(
             "assertividade": round((dm['gains'] / dm['ops'] * 100), 2) if dm['ops'] > 0 else 0
         })
 
+    # Chart (Chronological Daily)
+    chart_map = {}
+    for t in sorted_trades:
+        d_str = t['abertura'].strftime('%Y-%m-%d')
+        if d_str not in chart_map:
+            chart_map[d_str] = {'date': d_str, 'label': t['abertura'].strftime('%d/%m/%y'), 'liquido': 0}
+        chart_map[d_str]['liquido'] += t['liquido']
+    
+    chart = []
+    acumulado = 0
+    for d_str in sorted(chart_map.keys()):
+        acumulado += chart_map[d_str]['liquido']
+        chart.append({
+            'date': d_str,
+            'dia': chart_map[d_str]['label'],
+            'liquido': round(chart_map[d_str]['liquido'], 2),
+            'acumulado': round(acumulado, 2)
+        })
+
     # Monthly
     inv_meses_map = {v: k for k, v in meses_map.items()}
     month_map = {}
@@ -283,8 +307,6 @@ async def get_metrics(
         if k not in month_map:
             month_map[k] = {'mes': k, 'liquido': 0, 'm_num': t['abertura'].month, 'y_num': yr}
         month_map[k]['liquido'] += t['liquido']
-    # Sync Google Sheets on startup
-    asyncio.create_task(sync_google_sheets(db))
     
     monthly = []
     # Total for month calc
@@ -332,7 +354,8 @@ async def get_metrics(
         "monthly": monthly,
         "hourly": hourly,
         "mep": mep,
-        "chart": daily
+        "chart": chart,
+        "available_years": available_years
     }
 
 @api_router.post("/admin/sync")
