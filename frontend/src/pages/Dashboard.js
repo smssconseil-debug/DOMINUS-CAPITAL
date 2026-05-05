@@ -54,10 +54,25 @@ export default function Dashboard() {
     try {
       await axios.post(`${API}/leads/interest`, interestForm, { withCredentials: true });
       setInterestSent(true);
-      setTimeout(() => { setShowSaibaMais(false); setInterestSent(false); }, 3000);
+      setTimeout(() => { 
+        setShowSaibaMais(false); 
+        setInterestSent(false); 
+        setInterestForm({ email: '', phone: '', name: '' });
+      }, 3000);
     } catch (err) {
       console.error("Erro ao enviar interesse");
     }
+  };
+
+  const handlePhoneChange = (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+    
+    let formatted = value;
+    if (value.length > 2) {
+      formatted = `(${value.slice(0, 2)}) ${value.length > 7 ? value.slice(2, 7) + '-' + value.slice(7) : value.slice(2)}`;
+    }
+    setInterestForm({ ...interestForm, phone: formatted });
   };
 
   const formatCurrency = (val) => {
@@ -401,7 +416,7 @@ export default function Dashboard() {
                       className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
                   </div>
                   <div>
-                    <input required type="tel" placeholder="WHATSAPP COM DDD" value={interestForm.phone} onChange={e => setInterestForm({...interestForm, phone: e.target.value})}
+                    <input required type="tel" placeholder="WHATSAPP Ex: (11) 99999-9999" value={interestForm.phone} onChange={handlePhoneChange}
                       className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
                   </div>
                   <button type="submit" className="w-full bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] text-black font-black text-sm md:text-base uppercase tracking-[0.2em] p-3.5 md:p-4 rounded-lg mt-4 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all transform hover:scale-[1.02] active:scale-95">
