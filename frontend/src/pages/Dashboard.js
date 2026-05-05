@@ -34,6 +34,10 @@ export default function Dashboard() {
 
   const submitSaibaMais = async (e) => {
     if (e) e.preventDefault();
+    if (!process.env.REACT_APP_WEB3FORMS_KEY) {
+      setSubmitError('Formulário não configurado. Entre em contato diretamente.');
+      return;
+    }
     setIsSubmitting(true);
     setSubmitError('');
     try {
@@ -58,10 +62,11 @@ export default function Dashboard() {
           setInterestForm({ email: '', phone: '', name: '' });
         }, 3000);
       } else {
-        setSubmitError('Erro ao enviar. Tente novamente.');
+        setSubmitError('Não foi possível enviar. Por favor, tente novamente.');
       }
-    } catch {
-      setSubmitError('Erro de conexão. Tente novamente.');
+    } catch (err) {
+      console.error('Erro ao enviar formulário:', err);
+      setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
     } finally {
       setIsSubmitting(false);
     }
