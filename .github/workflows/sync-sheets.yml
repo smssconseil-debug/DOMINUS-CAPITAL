@@ -1,9 +1,9 @@
 name: Sync Google Sheets → trades.json
 
 on:
-  # Run automatically on a schedule (every day at 06:00 UTC)
+  # Run automatically on a schedule (every 15 minutes)
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '*/15 * * * *'
 
   # Allow triggering manually from the Actions tab
   workflow_dispatch:
