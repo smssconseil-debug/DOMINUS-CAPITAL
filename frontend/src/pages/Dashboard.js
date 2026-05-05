@@ -15,10 +15,13 @@ export default function Dashboard() {
   const [showMobileDaily, setShowMobileDaily] = useState(false);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const [selectedAno, setSelectedAno] = useState(null);
-  const [selectedMes, setSelectedMes] = useState(null);
-  const [selectedDia, setSelectedDia] = useState(null);
-  const [selectedPeriodo, setSelectedPeriodo] = useState(null);
+  const [selectedAno, setSelectedAno] = useState([]);
+  const [selectedMes, setSelectedMes] = useState([]);
+  const [selectedDia, setSelectedDia] = useState([]);
+  const [selectedPeriodo, setSelectedPeriodo] = useState([]);
+
+  const toggle = (setter) => (value) =>
+    setter(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]);
 
   const metrics = useMemo(() => computeMetrics(tradesData, {
     ano: selectedAno,
@@ -278,8 +281,8 @@ export default function Dashboard() {
                <Filter className="w-4 h-4"/> Filtros
             </h3>
             <div className="flex gap-2 items-center">
-              {(selectedAno || selectedMes || selectedDia || selectedPeriodo) && (
-                <button onClick={() => { setSelectedAno(null); setSelectedMes(null); setSelectedDia(null); setSelectedPeriodo(null); }} className="text-[9px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded transition-colors">Limpar</button>
+              {(selectedAno.length > 0 || selectedMes.length > 0 || selectedDia.length > 0 || selectedPeriodo.length > 0) && (
+                <button onClick={() => { setSelectedAno([]); setSelectedMes([]); setSelectedDia([]); setSelectedPeriodo([]); }} className="text-[9px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded transition-colors">Limpar</button>
               )}
               <button onClick={() => setShowMobileFilters(false)} className="xl:hidden text-gray-400 hover:text-white p-1 bg-white/5 rounded">
                 <X className="w-4 h-4" />
@@ -292,8 +295,8 @@ export default function Dashboard() {
               <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Ano</h4>
               <div className="grid grid-cols-2 gap-2">
                 {metrics.available_years.map(a => (
-                  <button key={a} onClick={() => setSelectedAno(selectedAno === a ? null : a)}
-                    className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedAno === a ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                  <button key={a} onClick={() => toggle(setSelectedAno)(a)}
+                    className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedAno.includes(a) ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
                     {a}
                   </button>
                 ))}
@@ -305,8 +308,8 @@ export default function Dashboard() {
             <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Meses</h4>
             <div className="grid grid-cols-2 gap-2">
               {meses.map(m => (
-                <button key={m} onClick={() => setSelectedMes(selectedMes === m ? null : m)}
-                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedMes === m ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                <button key={m} onClick={() => toggle(setSelectedMes)(m)}
+                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedMes.includes(m) ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
                   {m.substring(0,3)}
                 </button>
               ))}
@@ -317,8 +320,8 @@ export default function Dashboard() {
             <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Período</h4>
             <div className="grid grid-cols-2 gap-2">
               {periodos.map(p => (
-                <button key={p} onClick={() => setSelectedPeriodo(selectedPeriodo === p ? null : p)}
-                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedPeriodo === p ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                <button key={p} onClick={() => toggle(setSelectedPeriodo)(p)}
+                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedPeriodo.includes(p) ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
                   {p}
                 </button>
               ))}
@@ -329,8 +332,8 @@ export default function Dashboard() {
             <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Dias do Mês</h4>
             <div className="grid grid-cols-5 gap-1.5">
               {dias.map(d => (
-                <button key={d} onClick={() => setSelectedDia(selectedDia === d ? null : d)}
-                  className={`text-[10px] 2xl:text-xs aspect-square flex items-center justify-center rounded border transition-all font-bold ${selectedDia === d ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.4)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white hover:bg-[#1a1a1a]'}`}>
+                <button key={d} onClick={() => toggle(setSelectedDia)(d)}
+                  className={`text-[10px] 2xl:text-xs aspect-square flex items-center justify-center rounded border transition-all font-bold ${selectedDia.includes(d) ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.4)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white hover:bg-[#1a1a1a]'}`}>
                   {d}
                 </button>
               ))}
