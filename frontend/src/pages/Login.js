@@ -29,7 +29,7 @@ export default function Login() {
           <div className="rounded-full bg-emerald-500/10 p-3 mb-4">
             <LogIn className="h-8 w-8 text-emerald-500" />
           </div>
-          <h2 className="text-2xl font-bold text-white">Trading Dashboard</h2>
+          <h2 className="text-2xl font-bold text-white">Dominus Capital</h2>
           <p className="text-gray-400 mt-2 text-sm">Sign in to access your analytics</p>
         </div>
         

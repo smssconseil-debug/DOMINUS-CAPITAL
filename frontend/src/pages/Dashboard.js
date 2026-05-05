@@ -60,7 +60,7 @@ export default function Dashboard() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Dash Vol Fin JOHN</h1>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Dominus Capital</h1>
             <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
               <RefreshCcw className={`w-3 h-3 ${loading ? 'animate-spin' : ''}`} /> 
               Dados atualizados online
