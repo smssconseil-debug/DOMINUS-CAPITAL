@@ -44,7 +44,7 @@ for (let i = 1; i < lines.length; i++) {
   const m = abertura.match(/^(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2})$/);
   if (!m) { console.warn(`Linha ${i + 1}: data inválida "${abertura}" — ignorada`); skipped++; continue; }
 
-  const aberturaISO = new Date(+m[3], +m[2] - 1, +m[1], +m[4], +m[5]).toISOString();
+  const aberturaISO = new Date(Date.UTC(+m[3], +m[2] - 1, +m[1], +m[4], +m[5])).toISOString();
   const res = parseFloat(res_str.replace(',', '.'));
   if (isNaN(res)) { skipped++; continue; }
 

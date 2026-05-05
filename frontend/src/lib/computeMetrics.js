@@ -18,19 +18,19 @@ export function computeMetrics(allTrades, filters = {}) {
     julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12,
   };
 
-  // Parse ISO dates once
+  // Parse ISO dates once — use UTC getters to match the UTC timestamps stored in trades.json
   const trades = allTrades.map(t => ({ ...t, aberturaDate: new Date(t.abertura) }));
 
-  const available_years = [...new Set(trades.map(t => t.aberturaDate.getFullYear()))].sort((a, b) => b - a);
+  const available_years = [...new Set(trades.map(t => t.aberturaDate.getUTCFullYear()))].sort((a, b) => b - a);
 
   // Apply filters
   const filtered = trades.filter(t => {
     const d = t.aberturaDate;
-    if (ano && d.getFullYear() !== ano) return false;
-    if (mes && mesesMap[mes.toLowerCase()] !== d.getMonth() + 1) return false;
-    if (dia && dia !== d.getDate()) return false;
+    if (ano && d.getUTCFullYear() !== ano) return false;
+    if (mes && mesesMap[mes.toLowerCase()] !== d.getUTCMonth() + 1) return false;
+    if (dia && dia !== d.getUTCDate()) return false;
     if (periodo) {
-      const hour = d.getHours();
+      const hour = d.getUTCHours();
       const isManha = hour < 12;
       if (periodo.toLowerCase() === 'manhã' && !isManha) return false;
       if (periodo.toLowerCase() === 'tarde' && isManha) return false;
@@ -55,7 +55,7 @@ export function computeMetrics(allTrades, filters = {}) {
   const gains = filtered.filter(t => t.is_gain).length;
   const loss = filtered.filter(t => t.is_loss).length;
   const assertividade = round(operacoes > 0 ? (gains / operacoes) * 100 : 0);
-  const dias_operados = new Set(sorted.map(t => t.aberturaDate.toISOString().slice(0, 10))).size;
+  const dias_operados = new Set(sorted.map(t => t.abertura.slice(0, 10))).size;
 
   // DrawDown / Run-Up
   let cumulative = 0, maxCum = 0, drawdown = 0, runup = 0;
@@ -83,7 +83,7 @@ export function computeMetrics(allTrades, filters = {}) {
   // Daily
   const dailyMap = {};
   for (const t of sorted) {
-    const d = t.aberturaDate.getDate();
+    const d = t.aberturaDate.getUTCDate();
     if (!dailyMap[d]) dailyMap[d] = { dia: d, liquido: 0, gains: 0, ops: 0 };
     dailyMap[d].liquido += t.liquido;
     if (t.is_gain) dailyMap[d].gains++;
@@ -104,8 +104,8 @@ export function computeMetrics(allTrades, filters = {}) {
   // Chart (chronological by date string)
   const chartMap = {};
   for (const t of sorted) {
-    const dStr = t.aberturaDate.toISOString().slice(0, 10);
-    const label = `${pad(t.aberturaDate.getDate())}/${pad(t.aberturaDate.getMonth() + 1)}/${String(t.aberturaDate.getFullYear()).slice(-2)}`;
+    const dStr = t.abertura.slice(0, 10);
+    const label = `${pad(t.aberturaDate.getUTCDate())}/${pad(t.aberturaDate.getUTCMonth() + 1)}/${String(t.aberturaDate.getUTCFullYear()).slice(-2)}`;
     if (!chartMap[dStr]) chartMap[dStr] = { date: dStr, label, liquido: 0 };
     chartMap[dStr].liquido += t.liquido;
   }
@@ -119,8 +119,8 @@ export function computeMetrics(allTrades, filters = {}) {
   const invMeses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
   const monthMap = {};
   for (const t of sorted) {
-    const mNum = t.aberturaDate.getMonth() + 1;
-    const yr = t.aberturaDate.getFullYear();
+    const mNum = t.aberturaDate.getUTCMonth() + 1;
+    const yr = t.aberturaDate.getUTCFullYear();
     const k = `${invMeses[mNum - 1]}/${String(yr).slice(-2)}`;
     if (!monthMap[k]) monthMap[k] = { mes: k, liquido: 0, m_num: mNum, y_num: yr };
     monthMap[k].liquido += t.liquido;
@@ -137,7 +137,7 @@ export function computeMetrics(allTrades, filters = {}) {
   // Hourly
   const hourMap = {};
   for (const t of sorted) {
-    const h = t.aberturaDate.getHours();
+    const h = t.aberturaDate.getUTCHours();
     const label = `${pad(h)}h - ${pad(h + 1)}h`;
     if (!hourMap[label]) hourMap[label] = { horario: label, liquido: 0, h };
     hourMap[label].liquido += t.liquido;
