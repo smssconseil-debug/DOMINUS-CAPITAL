@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import smtplib
 from email.mime.text import MIMEText
+import asyncio
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -19,6 +20,7 @@ from auth import (
     hash_password, verify_password, create_access_token, create_refresh_token, 
     get_current_user, get_current_user_optional
 )
+from sheet_sync import sync_google_sheets
 
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
@@ -281,6 +283,8 @@ async def get_metrics(
         if k not in month_map:
             month_map[k] = {'mes': k, 'liquido': 0, 'm_num': t['abertura'].month, 'y_num': yr}
         month_map[k]['liquido'] += t['liquido']
+    # Sync Google Sheets on startup
+    asyncio.create_task(sync_google_sheets(db))
     
     monthly = []
     # Total for month calc
@@ -331,6 +335,13 @@ async def get_metrics(
         "chart": daily
     }
 
+@api_router.post("/admin/sync")
+async def manual_sync(user: dict = Depends(get_current_user)):
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Acesso negado")
+    result = await sync_google_sheets(db)
+    return result
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -344,6 +355,7 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     await db.users.create_index("email", unique=True)
+    asyncio.create_task(sync_google_sheets(db))
     # create default admin
     admin_email = os.environ.get("ADMIN_EMAIL", "admin@example.com")
     existing = await db.users.find_one({"email": admin_email})
