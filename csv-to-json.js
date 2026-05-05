@@ -12,11 +12,15 @@
  * Expected CSV columns (order-independent, header row required):
  *   ativo       - asset ticker, e.g. WDOFUT
  *   abertura    - open datetime: "YYYY-MM-DD HH:MM:SS" or "DD/MM/YYYY HH:MM:SS"
- *   res_operacao - gross result in BRL (number)
- *   custo       - cost/fee in BRL (number)
+ *   resultado   - gross result in BRL (number)  [also accepted: res_operacao]
+ *   total       - net result after fees in BRL (number)  [also accepted: liquido]
+ *
+ * Optional columns:
+ *   fechamento  - close datetime (ignored in output)
+ *   custo       - cost/fee in BRL; if absent, derived as resultado - total
  *
  * Derived fields (computed automatically):
- *   liquido = res_operacao - custo
+ *   liquido = total (or resultado - custo if total absent)
  *   is_gain = liquido > 0
  *   is_loss = liquido < 0
  */
@@ -143,21 +147,38 @@ async function main() {
   const rows = parseCsv(csvText);
   console.log(`Parsed ${rows.length} rows`);
 
-  // Validate required columns
-  const required = ['ativo', 'abertura', 'res_operacao', 'custo'];
+  // Validate required columns (accept both naming conventions)
   const headers = Object.keys(rows[0] || {});
+  const required = ['ativo', 'abertura'];
   for (const col of required) {
     if (!headers.includes(col)) {
       throw new Error(`Missing required column "${col}". Found columns: ${headers.join(', ')}`);
     }
   }
+  // Accept "resultado" or legacy "res_operacao"
+  const colRes = headers.includes('resultado') ? 'resultado' : 'res_operacao';
+  if (!headers.includes(colRes)) {
+    throw new Error(`Missing required column "resultado" (or "res_operacao"). Found columns: ${headers.join(', ')}`);
+  }
+  // Accept "total" or legacy "liquido"; "custo" is optional
+  const hasCusto = headers.includes('custo');
+  const colTotal = headers.includes('total') ? 'total' : headers.includes('liquido') ? 'liquido' : null;
 
   const trades = rows
     .filter((r) => r.ativo && r.abertura) // skip blank rows
     .map((r) => {
-      const res_operacao = round2(parseNumber(r.res_operacao));
-      const custo = round2(parseNumber(r.custo));
-      const liquido = round2(res_operacao - custo);
+      const res_operacao = round2(parseNumber(r[colRes]));
+      let custo, liquido;
+      if (hasCusto) {
+        custo   = round2(parseNumber(r.custo));
+        liquido = colTotal ? round2(parseNumber(r[colTotal])) : round2(res_operacao - custo);
+      } else if (colTotal) {
+        liquido = round2(parseNumber(r[colTotal]));
+        custo   = round2(res_operacao - liquido);
+      } else {
+        custo   = 0;
+        liquido = res_operacao;
+      }
       return {
         ativo: r.ativo.trim().toUpperCase(),
         abertura: parseAbertura(r.abertura),
