@@ -26,14 +26,19 @@ export function computeMetrics(allTrades, filters = {}) {
   // Apply filters
   const filtered = trades.filter(t => {
     const d = t.aberturaDate;
-    if (ano && d.getUTCFullYear() !== ano) return false;
-    if (mes && mesesMap[mes.toLowerCase()] !== d.getUTCMonth() + 1) return false;
-    if (dia && dia !== d.getUTCDate()) return false;
-    if (periodo) {
+    if (ano && ano.length > 0 && !ano.includes(d.getUTCFullYear())) return false;
+    if (mes && mes.length > 0 && !mes.some(m => mesesMap[m.toLowerCase()] === d.getUTCMonth() + 1)) return false;
+    if (dia && dia.length > 0 && !dia.includes(d.getUTCDate())) return false;
+    if (periodo && periodo.length > 0) {
       const hour = d.getUTCHours();
       const isManha = hour < 12;
-      if (periodo.toLowerCase() === 'manhã' && !isManha) return false;
-      if (periodo.toLowerCase() === 'tarde' && isManha) return false;
+      const matchesPeriodo = periodo.some(p => {
+        const pl = p.toLowerCase();
+        if (pl === 'manhã') return isManha;
+        if (pl === 'tarde') return !isManha;
+        return false;
+      });
+      if (!matchesPeriodo) return false;
     }
     return true;
   });
