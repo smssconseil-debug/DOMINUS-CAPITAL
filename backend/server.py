@@ -181,12 +181,6 @@ async def get_metrics(
     if not trades:
         return {"kpis": {}, "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": []}
 
-    # Access Control: If not logged in, restrict to last 60 days
-    if not user:
-        max_date = max(t['abertura'] for t in trades)
-        cutoff_date = max_date - timedelta(days=60)
-        trades = [t for t in trades if t['abertura'] >= cutoff_date]
-
     meses_map = {
         "janeiro": 1, "fevereiro": 2, "março": 3, "abril": 4, "maio": 5, "junho": 6,
         "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12
@@ -211,7 +205,6 @@ async def get_metrics(
     # If no data after filters
     if not filtered_trades:
         return {
-            "is_restricted": not user,
             "kpis": {"lucro_liquido": 0, "lucro_bruto": 0, "custos": 0, "operacoes": 0, "gains": 0, "loss": 0, "assertividade": 0, "dias_operados": 0, "drawdown": 0, "runup": 0},
             "daily": [], "monthly": [], "hourly": [], "mep": [], "chart": []
         }
@@ -330,7 +323,6 @@ async def get_metrics(
     ]
 
     return {
-        "is_restricted": not user,
         "kpis": kpis,
         "daily": daily,
         "monthly": monthly,

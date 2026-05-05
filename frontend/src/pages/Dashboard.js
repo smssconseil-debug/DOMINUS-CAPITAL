@@ -4,9 +4,9 @@ import { API, AuthContext } from '../App';
 import { Link } from 'react-router-dom';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, 
-  Area, AreaChart, BarChart, Bar, Cell, PieChart, Pie, Legend
+  Area, AreaChart, BarChart, Bar, Cell, PieChart, Pie
 } from 'recharts';
-import { LogOut, CheckCircle, TrendingUp, ShieldCheck, Cpu, PlayCircle, Bot, X, Lock, Trophy, Target, Clock, CalendarDays } from 'lucide-react';
+import { LogOut, CheckCircle, TrendingUp, ShieldCheck, Cpu, PlayCircle, Bot, X, CalendarDays, Percent, DollarSign, Activity } from 'lucide-react';
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState(null);
@@ -17,10 +17,20 @@ export default function Dashboard() {
   const [interestForm, setInterestForm] = useState({ email: '', phone: '', name: '' });
   const [interestSent, setInterestSent] = useState(false);
 
+  // Filters
+  const [selectedMes, setSelectedMes] = useState(null);
+  const [selectedDia, setSelectedDia] = useState(null);
+  const [selectedPeriodo, setSelectedPeriodo] = useState(null);
+
   const fetchMetrics = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${API}/dashboard/metrics`, { withCredentials: true });
+      const params = new URLSearchParams();
+      if (selectedMes) params.append('mes', selectedMes);
+      if (selectedDia) params.append('dia', selectedDia);
+      if (selectedPeriodo) params.append('periodo', selectedPeriodo);
+
+      const res = await axios.get(`${API}/dashboard/metrics?${params.toString()}`, { withCredentials: true });
       setMetrics(res.data);
     } catch (err) {
       console.error(err);
@@ -31,12 +41,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchMetrics();
-  }, [user]); // Refetch if user logs in/out
-
-  const handleLogout = async () => {
-    await axios.post(`${API}/auth/logout`, {}, { withCredentials: true });
-    setUser(null);
-  };
+  }, [selectedMes, selectedDia, selectedPeriodo, user]);
 
   const submitSaibaMais = async (e) => {
     if(e) e.preventDefault();
@@ -49,26 +54,17 @@ export default function Dashboard() {
     }
   };
 
-  const handleSaibaMaisClick = () => {
-    if (user) {
-      submitSaibaMais();
-    } else {
-      setShowSaibaMais(true);
-    }
-  };
-
   const formatCurrency = (val) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
   };
 
-  if (!metrics && loading) {
-    return <div className="flex h-screen items-center justify-center bg-[#050505] text-[#d4af37] text-xl font-bold tracking-widest animate-pulse">CARREGANDO DADOS GÊNESIS...</div>;
-  }
+  const meses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  const dias = Array.from({ length: 31 }, (_, i) => i + 1);
+  const periodos = ['Manhã', 'Tarde'];
 
-  // Derived calculations for new charts
-  const mesesPositivos = metrics?.monthly?.filter(m => m.liquido > 0).length || 0;
-  const totalMeses = metrics?.monthly?.length || 0;
-  const percentMesesPositivos = totalMeses > 0 ? Math.round((mesesPositivos / totalMeses) * 100) : 0;
+  if (!metrics && loading) {
+    return <div className="flex h-screen items-center justify-center bg-[#050505] text-[#d4af37] text-2xl font-black tracking-widest animate-pulse">CARREGANDO DADOS GÊNESIS...</div>;
+  }
 
   const pieData = metrics ? [
     { name: 'Gains', value: metrics.kpis.gains, color: '#10b981' },
@@ -76,402 +72,321 @@ export default function Dashboard() {
   ] : [];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#050505] text-gray-100 font-sans bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] relative">
+    <div className="flex flex-col h-screen overflow-hidden bg-[#050505] text-gray-100 font-sans bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
       
-      {/* Top Bar */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37]"></div>
-
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col pt-8">
+      {/* Top Bar / Header */}
+      <div className="flex flex-col md:flex-row justify-between items-center bg-[#0a0a0a] border-b border-[#d4af37]/30 p-6 shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative z-20">
+        <div className="text-center md:text-left">
+          <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+             DOMINUS CAPITAL
+          </h1>
+          <p className="text-[#d4af37] tracking-[0.4em] text-sm md:text-base font-bold mt-1 uppercase">
+            Performance Institucional Gênesis
+          </p>
+        </div>
         
-        {/* Header Section */}
-        <div className="px-8 flex justify-between items-start mb-6">
-          <div>
-            <h2 className="text-[#d4af37] text-sm uppercase tracking-[0.2em] font-bold mb-1">DOMINUS CAPITAL APRESENTA</h2>
-            <h1 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">RESULTADOS REAIS.</h1>
-            <h1 className="text-3xl md:text-4xl font-black text-[#d4af37] uppercase tracking-tight">DESEMPENHO COMPROVADO.</h1>
-            <p className="text-gray-400 mt-3 text-sm md:text-base font-medium tracking-wide">NÚMEROS 100% REAIS. OPERAÇÕES REAIS. RESULTADOS REAIS.</p>
+        <button 
+          onClick={() => setShowSaibaMais(true)} 
+          className="mt-6 md:mt-0 relative group overflow-hidden rounded-lg p-[2px] shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-shadow"
+        >
+          <span className="absolute inset-0 bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] animate-[spin_3s_linear_infinite] group-hover:animate-none"></span>
+          <div className="relative bg-[#050505] px-8 py-4 rounded-lg flex items-center gap-4 transition-all group-hover:bg-gradient-to-r group-hover:from-[#d4af37] group-hover:to-[#b5952f]">
+             <Bot className="w-8 h-8 text-[#d4af37] group-hover:text-black group-hover:animate-bounce" />
+             <span className="text-xl md:text-2xl font-black text-[#d4af37] group-hover:text-black uppercase tracking-wider">
+               SAIBA MAIS SOBRE O ROBÔ
+             </span>
           </div>
-          
-          <div className="flex flex-col items-end gap-3">
-            {user ? (
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-400">Olá, <span className="text-[#d4af37] font-semibold">{user.name || user.email}</span></span>
-                <button onClick={handleLogout} className="text-xs bg-red-500/10 text-red-500 border border-red-500/30 px-3 py-1.5 rounded hover:bg-red-500/20 transition-all flex items-center gap-2">
-                  <LogOut className="w-3 h-3" /> Sair
-                </button>
-              </div>
-            ) : (
-              <div className="flex gap-3">
-                <Link to="/login" className="text-sm border border-[#d4af37]/50 text-[#d4af37] hover:bg-[#d4af37]/10 px-6 py-2 rounded-md font-semibold transition-all">
-                  LOGIN
-                </Link>
-                <Link to="/register" className="text-sm bg-gradient-to-r from-[#d4af37] to-[#b5952f] text-black hover:opacity-90 px-6 py-2 rounded-md font-bold transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]">
-                  CADASTRE-SE
-                </Link>
-              </div>
-            )}
-            
-            <button onClick={handleSaibaMaisClick} className="flex items-center gap-2 text-sm bg-[#111] border border-white/10 hover:border-[#d4af37]/50 px-4 py-2 rounded text-white transition-all group">
-              <Bot className="w-4 h-4 text-[#d4af37] group-hover:animate-pulse" /> Saiba mais sobre o Gênesis
-            </button>
+        </button>
+      </div>
+
+      {/* Main Layout Area */}
+      <div className="flex flex-1 overflow-hidden">
+        
+        {/* LEFT COLUMN: Daily Table */}
+        <div className="hidden lg:flex w-[350px] bg-[#0a0a0a] border-r border-[#d4af37]/20 flex-col z-10 shadow-2xl">
+          <div className="bg-[#111] p-4 border-b border-[#d4af37]/20">
+            <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest text-center">Desempenho Diário</h3>
+          </div>
+          <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-[#d4af37]/30 flex-1">
+            <table className="w-full text-xs text-right border-collapse">
+              <thead className="bg-[#161616] text-gray-400 sticky top-0 shadow-md">
+                <tr>
+                  <th className="p-3 text-center border-b border-[#d4af37]/20">Dia</th>
+                  <th className="p-3 border-b border-[#d4af37]/20">Líquido</th>
+                  <th className="p-3 border-b border-[#d4af37]/20">Acumulado</th>
+                  <th className="p-3 border-b border-[#d4af37]/20">Assert.</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {metrics?.daily.map((d, i) => (
+                  <tr key={i} className="hover:bg-white/5 transition-colors">
+                    <td className="p-3 text-center font-bold text-gray-500 border-r border-white/5">{d.dia}</td>
+                    <td className={`p-3 font-black border-r border-white/5 ${d.liquido >= 0 ? 'text-emerald-500 bg-emerald-500/5' : 'text-rose-500 bg-rose-500/5'}`}>
+                      {formatCurrency(d.liquido)}
+                    </td>
+                    <td className="p-3 font-semibold text-gray-300 border-r border-white/5">{formatCurrency(d.acumulado)}</td>
+                    <td className="p-3 text-gray-400 font-bold">{d.assertividade}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
-        {/* Visitor Restriction Banner */}
-        {metrics?.is_restricted && (
-          <div className="mx-8 mb-6 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-lg p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Lock className="text-[#d4af37] w-5 h-5" />
-              <div>
-                <p className="text-[#d4af37] font-bold text-sm uppercase tracking-wider">Modo Visitante</p>
-                <p className="text-gray-300 text-xs mt-0.5">Exibindo demonstração dos últimos 2 meses. Para acessar o histórico completo de 16 meses, faça seu cadastro gratuito.</p>
-              </div>
-            </div>
-            <Link to="/register" className="bg-[#d4af37] text-black text-xs font-bold px-4 py-2 rounded hover:opacity-90 shadow-md">VER HISTÓRICO COMPLETO</Link>
-          </div>
-        )}
-
-        <div className="flex-1 px-8 pb-8 flex flex-col gap-6">
+        {/* CENTER COLUMN: Dashboard & Charts */}
+        <div className="flex-1 flex flex-col overflow-y-auto scrollbar-hide p-6 gap-6 relative">
           
-          {/* TOP BIG KPIs ROW */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            <div className="xl:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-6 relative overflow-hidden shadow-2xl flex items-center justify-between group hover:border-[#d4af37]/30 transition-all">
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <TrendingUp className="w-32 h-32 text-[#d4af37]" />
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-[0.2em] mb-1">Lucro Total Líquido</h3>
-                <div className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-                  {formatCurrency(metrics?.kpis?.lucro_liquido || 0)}
-                </div>
-              </div>
-              <div className="relative z-10 text-right border-l border-white/10 pl-6">
-                <div className="text-gray-500 uppercase text-[10px] tracking-widest font-bold">Período Analisado</div>
-                <div className="text-white font-bold text-lg">{metrics?.is_restricted ? 'Últimos 2 Meses' : 'Total 16 Meses'}</div>
-              </div>
+          {/* Top KPIs Row (PowerBI Style) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-10 gap-3">
+            <div className="col-span-2 bg-[#111] border border-[#d4af37]/50 rounded-lg p-4 flex flex-col justify-center relative overflow-hidden shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+              <div className="absolute right-0 top-0 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+              <span className="text-[#d4af37] text-xs font-bold uppercase tracking-widest mb-1 relative z-10">Lucro Líquido</span>
+              <span className={`text-2xl xl:text-3xl font-black relative z-10 ${metrics?.kpis.lucro_liquido >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {formatCurrency(metrics?.kpis.lucro_liquido || 0)}
+              </span>
+            </div>
+            
+            <div className="col-span-2 bg-[#0a0a0a] border border-white/10 rounded-lg p-4 flex flex-col justify-center">
+              <span className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Lucro Bruto</span>
+              <span className="text-xl font-bold text-white">{formatCurrency(metrics?.kpis.lucro_bruto || 0)}</span>
+              <span className="text-[10px] text-rose-400 font-semibold mt-1">Custos: {formatCurrency(metrics?.kpis.custos || 0)}</span>
             </div>
 
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6 flex flex-col justify-center shadow-lg">
-              <h3 className="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-1 text-center">Fator de Lucro</h3>
-              <div className="text-3xl font-black text-white text-center">
-                {((metrics?.kpis?.lucro_bruto || 0) / (Math.abs(metrics?.kpis?.custos || 1) + 1)).toFixed(2)}
+            <SmallKpi title="Operações" value={metrics?.kpis.operacoes || 0} />
+            <SmallKpi title="Gains" value={metrics?.kpis.gains || 0} color="text-emerald-500" />
+            <SmallKpi title="Loss" value={metrics?.kpis.loss || 0} color="text-rose-500" />
+            <SmallKpi title="Assertividade" value={`${metrics?.kpis.assertividade || 0}%`} color="text-[#d4af37]" />
+            <SmallKpi title="Dias Operados" value={metrics?.kpis.dias_operados || 0} />
+            
+            <div className="col-span-1 flex flex-col gap-2">
+              <div className="flex-1 bg-rose-500/10 border border-rose-500/20 rounded-md flex flex-col justify-center px-3">
+                <span className="text-[9px] text-rose-500/70 font-bold uppercase">DrawDown</span>
+                <span className="text-sm font-bold text-rose-500">{formatCurrency(metrics?.kpis.drawdown || 0)}</span>
               </div>
-              <p className="text-xs text-center text-[#d4af37] mt-1 font-semibold">Excelente Eficiência</p>
-            </div>
-
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6 flex flex-col justify-center shadow-lg">
-              <h3 className="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-1 text-center">Trades Executados</h3>
-              <div className="text-3xl font-black text-white text-center">{metrics?.kpis?.operacoes || 0}</div>
-              <p className="text-xs text-center text-[#d4af37] mt-1 font-semibold">100% Automatizado</p>
+              <div className="flex-1 bg-emerald-500/10 border border-emerald-500/20 rounded-md flex flex-col justify-center px-3">
+                <span className="text-[9px] text-emerald-500/70 font-bold uppercase">Run-Up</span>
+                <span className="text-sm font-bold text-emerald-500">{formatCurrency(metrics?.kpis.runup || 0)}</span>
+              </div>
             </div>
           </div>
 
-          {/* HIGHLIGHT CARDS ROW */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <InfoCard icon={<Cpu />} title="Sistema" value="100% Automatizado" sub="0% Intervenção Humana" />
-            <InfoCard icon={<ShieldCheck />} title="Gestão de Risco" value="Risco Controlado" sub="Proteção Automática" />
-            <InfoCard icon={<Trophy />} title="Consistência" value={`${mesesPositivos} de ${totalMeses} Meses`} sub={`${percentMesesPositivos}% de Meses Positivos`} />
-            <InfoCard icon={<CheckCircle />} title="Disciplina" value="Processo Rígido" sub="Baseado em Dados Reais" />
-          </div>
-
-          {/* DASHBOARD CHARTS - ROW 1 */}
+          {/* Charts Row */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             
-            {/* AREA CHART: EVOLUÇÃO */}
-            <div className="xl:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-6 shadow-xl flex flex-col min-h-[350px]">
-              <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest flex items-center gap-2"><TrendingUp className="w-4 h-4"/> Evolução do Capital Real</h3>
-                  <p className="text-xs text-gray-500 mt-1">Acúmulo de patrimônio trade a trade.</p>
-                </div>
-                <div className="text-right hidden sm:block">
-                   <p className="text-[10px] text-gray-500 uppercase tracking-widest">Drawdown Máximo</p>
-                   <p className="text-rose-500 font-bold">{formatCurrency(metrics?.kpis?.drawdown || 0)}</p>
-                </div>
-              </div>
+            {/* Big Area Chart */}
+            <div className="xl:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-5 shadow-2xl flex flex-col min-h-[350px]">
+              <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                <TrendingUp className="w-4 h-4"/> Evolução Patrimonial
+              </h3>
               <div className="flex-1 w-full">
                 {metrics && metrics.chart.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={metrics.chart} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
                       <defs>
-                        <linearGradient id="colorAcum" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#d4af37" stopOpacity={0.5}/>
+                        <linearGradient id="colorAcum2" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#d4af37" stopOpacity={0.4}/>
                           <stop offset="95%" stopColor="#d4af37" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
-                      <XAxis dataKey="dia" stroke="#555" tick={{fill: '#888', fontSize: 11}} tickMargin={10} />
+                      <XAxis dataKey="dia" stroke="#555" tick={{fill: '#888', fontSize: 11}} />
                       <YAxis stroke="#555" tick={{fill: '#888', fontSize: 11}} tickFormatter={(val) => `R$${(val/1000).toFixed(0)}k`} width={60} />
                       <RechartsTooltip 
                         contentStyle={{ backgroundColor: '#111', border: '1px solid #d4af37', borderRadius: '4px' }}
                         itemStyle={{ color: '#fff' }}
-                        formatter={(value) => [formatCurrency(value), "Capital Total"]}
-                        labelStyle={{ color: '#888' }}
+                        formatter={(value) => [formatCurrency(value), "Capital Acumulado"]}
                       />
-                      <Area type="monotone" dataKey="acumulado" stroke="#d4af37" strokeWidth={3} fillOpacity={1} fill="url(#colorAcum)" />
+                      <Area type="monotone" dataKey="acumulado" stroke="#d4af37" strokeWidth={3} fillOpacity={1} fill="url(#colorAcum2)" />
                     </AreaChart>
                   </ResponsiveContainer>
                 ) : (
-                  <div className="h-full flex items-center justify-center text-gray-600">Sem dados</div>
+                  <div className="h-full flex items-center justify-center text-gray-600">Sem dados para este filtro</div>
                 )}
               </div>
             </div>
 
-            {/* DONUT CHART: WIN RATE */}
-            <div className="xl:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-6 shadow-xl flex flex-col items-center justify-center relative">
-               <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest absolute top-6 left-6 flex items-center gap-2"><Target className="w-4 h-4"/> Win Rate</h3>
-               
-               <div className="w-full h-[250px] mt-6">
+            {/* Win Rate Donut */}
+            <div className="xl:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-5 shadow-2xl flex flex-col items-center justify-center relative">
+               <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest absolute top-5 left-5 flex items-center gap-2"><Percent className="w-4 h-4"/> Win Rate</h3>
+               <div className="w-full h-[200px] mt-4">
                  {metrics && (
                    <ResponsiveContainer width="100%" height="100%">
                      <PieChart>
-                       <Pie
-                         data={pieData}
-                         cx="50%"
-                         cy="50%"
-                         innerRadius={70}
-                         outerRadius={90}
-                         paddingAngle={5}
-                         dataKey="value"
-                         stroke="none"
-                       >
-                         {pieData.map((entry, index) => (
-                           <Cell key={`cell-${index}`} fill={entry.color} />
-                         ))}
+                       <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">
+                         {pieData.map((entry, index) => (<Cell key={`cell-${index}`} fill={entry.color} />))}
                        </Pie>
-                       <RechartsTooltip 
-                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '4px' }}
-                          itemStyle={{ color: '#fff' }}
-                       />
+                       <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '4px' }} itemStyle={{ color: '#fff' }} />
                      </PieChart>
                    </ResponsiveContainer>
                  )}
                </div>
-               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-6">
+               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-4">
                   <span className="text-3xl font-black text-white">{metrics?.kpis?.assertividade || 0}%</span>
-                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Acerto</span>
                </div>
-               
-               <div className="flex gap-6 mt-2">
-                 <div className="flex items-center gap-2">
-                   <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-                   <span className="text-sm text-gray-400">Gains ({metrics?.kpis?.gains})</span>
-                 </div>
-                 <div className="flex items-center gap-2">
-                   <div className="w-3 h-3 rounded-full bg-rose-500"></div>
-                   <span className="text-sm text-gray-400">Loss ({metrics?.kpis?.loss})</span>
-                 </div>
+               <div className="flex gap-4 mt-2">
+                 <div className="flex items-center gap-1.5 text-xs text-gray-400 font-bold"><div className="w-3 h-3 rounded bg-emerald-500"></div> GAINS</div>
+                 <div className="flex items-center gap-1.5 text-xs text-gray-400 font-bold"><div className="w-3 h-3 rounded bg-rose-500"></div> LOSS</div>
                </div>
             </div>
-
           </div>
 
-          {/* DASHBOARD CHARTS - ROW 2 */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-             
-             {/* MONTHLY BAR CHART */}
-             <div className="xl:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-6 shadow-xl flex flex-col min-h-[300px]">
-                <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest mb-6 flex items-center gap-2"><CalendarDays className="w-4 h-4"/> Lucro/Prejuízo por Mês</h3>
-                <div className="flex-1 w-full">
-                  {metrics && metrics.monthly.length > 0 ? (
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={metrics.monthly} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
-                        <XAxis dataKey="mes" stroke="#555" tick={{fill: '#888', fontSize: 11}} tickFormatter={(v) => v.split('/')[0].substring(0,3)} />
-                        <YAxis stroke="#555" tick={{fill: '#888', fontSize: 11}} tickFormatter={(val) => `R$${(val/1000).toFixed(0)}k`} width={60} />
-                        <RechartsTooltip 
-                          cursor={{fill: '#222'}}
-                          contentStyle={{ backgroundColor: '#111', border: '1px solid #d4af37', borderRadius: '4px' }}
-                          formatter={(value) => [formatCurrency(value), "Resultado"]}
-                          labelFormatter={(label) => `Mês: ${label}`}
-                        />
-                        <Bar dataKey="liquido" radius={[4, 4, 0, 0]}>
-                          {metrics.monthly.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.liquido >= 0 ? '#10b981' : '#ef4444'} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  ) : (
-                    <div className="h-full flex items-center justify-center text-gray-600">Sem dados</div>
-                  )}
-                </div>
-             </div>
-
-             {/* MONTHLY TABLE */}
-             <div className="xl:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl flex flex-col max-h-[350px] shadow-xl overflow-hidden">
-                <div className="p-4 border-b border-white/10 flex justify-between items-center bg-[#111]">
-                  <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest">Resumo Mensal</h3>
-                </div>
-                <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-[#d4af37]/20 flex-1">
-                  <table className="w-full text-xs">
-                    <thead className="bg-[#161616] text-gray-500 sticky top-0">
-                      <tr>
-                        <th className="p-3 text-left font-semibold uppercase">Mês/Ano</th>
-                        <th className="p-3 text-right font-semibold uppercase">Lucro (R$)</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                      {metrics?.monthly.map((row, i) => (
-                        <tr key={i} className="hover:bg-white/5">
-                          <td className="p-3 text-gray-300 capitalize">{row.mes}</td>
-                          <td className={`p-3 text-right font-bold ${row.liquido >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
-                            {row.liquido >= 0 ? '+' : ''}{formatCurrency(row.liquido)}
-                          </td>
-                        </tr>
-                      ))}
-                      {metrics?.monthly.length === 0 && (
-                        <tr><td colSpan="2" className="p-4 text-center text-gray-500">Sem dados</td></tr>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-             </div>
-             
-          </div>
-
-          {/* DASHBOARD CHARTS - ROW 3 */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-            
-            {/* HOURLY PERFORMANCE */}
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6 shadow-xl flex flex-col min-h-[300px]">
-                <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest mb-6 flex items-center gap-2"><Clock className="w-4 h-4"/> Desempenho por Horário</h3>
-                <div className="flex-1 w-full">
-                  {metrics && metrics.hourly.length > 0 ? (
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={metrics.hourly} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
-                        <XAxis dataKey="horario" stroke="#555" tick={{fill: '#888', fontSize: 10}} interval={0} angle={-45} textAnchor="end" height={60} />
-                        <YAxis stroke="#555" tick={{fill: '#888', fontSize: 11}} tickFormatter={(val) => `R$${(val/1000).toFixed(0)}k`} width={60} />
-                        <RechartsTooltip 
-                          cursor={{fill: '#222'}}
-                          contentStyle={{ backgroundColor: '#111', border: '1px solid #d4af37', borderRadius: '4px' }}
-                          formatter={(value) => [formatCurrency(value), "Resultado"]}
-                        />
-                        <Bar dataKey="liquido" radius={[4, 4, 0, 0]}>
-                          {metrics.hourly.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.liquido >= 0 ? '#10b981' : '#ef4444'} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  ) : (
-                    <div className="h-full flex items-center justify-center text-gray-600">Sem dados</div>
-                  )}
-                </div>
-             </div>
-
-             {/* DAILY TABLE SUMMARY */}
-             <div className="bg-[#0a0a0a] border border-white/10 rounded-xl flex flex-col max-h-[300px] shadow-xl overflow-hidden">
-                <div className="p-4 border-b border-white/10 flex justify-between items-center bg-[#111]">
-                  <h3 className="text-[#d4af37] text-sm font-bold uppercase tracking-widest">Resumo Operacional Diário (Média)</h3>
-                </div>
-                <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-[#d4af37]/20 flex-1">
-                  <table className="w-full text-xs">
-                    <thead className="bg-[#161616] text-gray-500 sticky top-0">
-                      <tr>
-                        <th className="p-3 text-left font-semibold uppercase">Dia do Mês</th>
-                        <th className="p-3 text-right font-semibold uppercase">Líquido Acum.</th>
-                        <th className="p-3 text-right font-semibold uppercase">Win Rate</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                      {metrics?.daily.map((row, i) => (
-                        <tr key={i} className="hover:bg-white/5">
-                          <td className="p-3 text-gray-300">Dia {row.dia}</td>
-                          <td className={`p-3 text-right font-bold ${row.liquido >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
-                            {formatCurrency(row.liquido)}
-                          </td>
-                          <td className="p-3 text-right text-gray-400">{row.assertividade}%</td>
-                        </tr>
-                      ))}
-                      {metrics?.daily.length === 0 && (
-                        <tr><td colSpan="3" className="p-4 text-center text-gray-500">Sem dados</td></tr>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-             </div>
-
+          {/* Bottom Tables / Mini Charts */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <SimpleTable title="Resumo Mensal" data={metrics?.monthly} cols={['mes', 'liquido', 'percent']} />
+            <SimpleTable title="Resumo por Horário" data={metrics?.hourly} cols={['horario', 'liquido', 'percent']} />
+            <SimpleTable title="MEP Líquido" data={metrics?.mep} cols={['mep', 'liquido', 'percent']} />
           </div>
 
         </div>
+
+        {/* RIGHT COLUMN: Filters Sidebar */}
+        <div className="w-72 bg-[#0a0a0a] border-l border-[#d4af37]/20 p-5 flex flex-col gap-6 overflow-y-auto scrollbar-hide shadow-2xl z-10">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+            <h3 className="text-[#d4af37] font-bold uppercase tracking-widest text-sm">Filtros Avançados</h3>
+            {(selectedMes || selectedDia || selectedPeriodo) && (
+              <button onClick={() => { setSelectedMes(null); setSelectedDia(null); setSelectedPeriodo(null); }} className="text-[10px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded">Limpar</button>
+            )}
+          </div>
+
+          <div>
+            <h4 className="text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Meses</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {meses.map(m => (
+                <button key={m} onClick={() => setSelectedMes(selectedMes === m ? null : m)}
+                  className={`text-xs py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedMes === m ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                  {m.substring(0,3)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-white/5">
+            <h4 className="text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Período</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {periodos.map(p => (
+                <button key={p} onClick={() => setSelectedPeriodo(selectedPeriodo === p ? null : p)}
+                  className={`text-xs py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedPeriodo === p ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                  {p}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-white/5 pb-8">
+            <h4 className="text-[10px] text-gray-500 uppercase font-bold mb-3 tracking-widest">Dias do Mês</h4>
+            <div className="grid grid-cols-5 gap-1.5">
+              {dias.map(d => (
+                <button key={d} onClick={() => setSelectedDia(selectedDia === d ? null : d)}
+                  className={`text-xs aspect-square flex items-center justify-center rounded border transition-all font-bold ${selectedDia === d ? 'bg-[#d4af37] text-black border-[#d4af37]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
+                  {d}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      {/* Modal Saiba Mais */}
-      {showSaibaMais && !user && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0a0a0a] border border-[#d4af37]/50 rounded-2xl w-full max-w-md p-8 relative shadow-[0_0_50px_rgba(212,175,55,0.15)]">
-            <button onClick={() => setShowSaibaMais(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white">
-              <X className="w-6 h-6" />
+      {/* Modal Saiba Mais (For All) */}
+      {showSaibaMais && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="bg-[#050505] border-2 border-[#d4af37] rounded-xl w-full max-w-lg p-10 relative shadow-[0_0_100px_rgba(212,175,55,0.2)]">
+            <button onClick={() => setShowSaibaMais(false)} className="absolute top-6 right-6 text-gray-500 hover:text-white bg-white/5 p-2 rounded-full">
+              <X className="w-5 h-5" />
             </button>
             
             {interestSent ? (
-              <div className="text-center py-8">
-                <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Interesse Registrado!</h3>
-                <p className="text-gray-400">Em breve nossa equipe entrará em contato com você sobre o Gênesis.</p>
+              <div className="text-center py-10">
+                <CheckCircle className="w-20 h-20 text-[#d4af37] mx-auto mb-6 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
+                <h3 className="text-3xl font-black text-white mb-3 tracking-tight uppercase">RECEBEMOS SEU CONTATO!</h3>
+                <p className="text-gray-400 text-lg">Um especialista da <strong className="text-[#d4af37]">Dominus Capital</strong> entrará em contato em breve para apresentar o Gênesis.</p>
               </div>
             ) : (
               <>
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-[#d4af37] mb-2 uppercase tracking-wide">Descubra o Gênesis</h3>
-                  <p className="text-gray-400 text-sm">Deixe seus dados e nossa equipe entrará em contato para apresentar a plataforma.</p>
+                <div className="text-center mb-8">
+                  <div className="inline-block p-4 rounded-full bg-[#d4af37]/10 mb-4 border border-[#d4af37]/30">
+                    <Bot className="w-10 h-10 text-[#d4af37]" />
+                  </div>
+                  <h3 className="text-3xl font-black text-[#d4af37] mb-2 uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">ROBÔ GÊNESIS</h3>
+                  <p className="text-gray-300 text-sm font-medium tracking-wide">Desbloqueie a automação financeira definitiva. Deixe seus dados abaixo para agendarmos uma apresentação.</p>
                 </div>
                 
-                <form onSubmit={submitSaibaMais} className="space-y-4">
+                <form onSubmit={submitSaibaMais} className="space-y-5">
                   <div>
-                    <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">Nome</label>
-                    <input required type="text" value={interestForm.name} onChange={e => setInterestForm({...interestForm, name: e.target.value})}
-                      className="w-full bg-[#111] border border-white/10 rounded p-3 text-white focus:border-[#d4af37] outline-none" />
+                    <input required type="text" placeholder="SEU NOME COMPLETO" value={interestForm.name} onChange={e => setInterestForm({...interestForm, name: e.target.value})}
+                      className="w-full bg-[#111] border border-white/10 rounded-lg p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-sm font-bold tracking-widest transition-all" />
                   </div>
                   <div>
-                    <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">Email</label>
-                    <input required type="email" value={interestForm.email} onChange={e => setInterestForm({...interestForm, email: e.target.value})}
-                      className="w-full bg-[#111] border border-white/10 rounded p-3 text-white focus:border-[#d4af37] outline-none" />
+                    <input required type="email" placeholder="SEU MELHOR EMAIL" value={interestForm.email} onChange={e => setInterestForm({...interestForm, email: e.target.value})}
+                      className="w-full bg-[#111] border border-white/10 rounded-lg p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-sm font-bold tracking-widest transition-all" />
                   </div>
                   <div>
-                    <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">WhatsApp</label>
-                    <input required type="tel" value={interestForm.phone} onChange={e => setInterestForm({...interestForm, phone: e.target.value})}
-                      className="w-full bg-[#111] border border-white/10 rounded p-3 text-white focus:border-[#d4af37] outline-none" />
+                    <input required type="tel" placeholder="WHATSAPP COM DDD" value={interestForm.phone} onChange={e => setInterestForm({...interestForm, phone: e.target.value})}
+                      className="w-full bg-[#111] border border-white/10 rounded-lg p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-sm font-bold tracking-widest transition-all" />
                   </div>
-                  <button type="submit" className="w-full bg-gradient-to-r from-[#d4af37] to-[#b5952f] text-black font-bold uppercase tracking-wider p-3 rounded mt-4 hover:opacity-90 transition-all">
-                    Solicitar Contato
+                  <button type="submit" className="w-full bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] text-black font-black text-lg uppercase tracking-[0.2em] p-4 rounded-lg mt-6 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all transform hover:scale-[1.02]">
+                    QUERO CONHECER AGORA
                   </button>
                 </form>
-                <div className="mt-4 text-center">
-                  <p className="text-xs text-gray-500">Para liberar o histórico de 16 meses agora, <Link to="/register" className="text-[#d4af37] hover:underline" onClick={() => setShowSaibaMais(false)}>Faça seu Cadastro</Link>.</p>
-                </div>
               </>
             )}
           </div>
         </div>
       )}
-      
-      {showSaibaMais && user && interestSent && (
-         <div className="fixed bottom-8 right-8 bg-[#111] border border-[#d4af37] p-4 rounded-lg shadow-2xl flex items-center gap-3 z-50 animate-in slide-in-from-bottom-5">
-           <CheckCircle className="text-[#d4af37] w-6 h-6" />
-           <div>
-             <p className="text-white font-bold text-sm">Interesse Registrado!</p>
-             <p className="text-gray-400 text-xs">Avisamos nossa equipe com seu email de cadastro.</p>
-           </div>
-         </div>
-      )}
     </div>
   );
 }
 
-function InfoCard({ icon, title, value, sub }) {
+function SmallKpi({ title, value, color = "text-white" }) {
   return (
-    <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-4 flex items-center gap-4 hover:border-[#d4af37]/30 transition-all shadow-md group">
-      <div className="text-[#d4af37] p-3 bg-[#d4af37]/5 rounded-lg group-hover:bg-[#d4af37]/10 transition-colors">
-        {icon}
+    <div className="bg-[#0a0a0a] border border-white/10 rounded-lg p-4 flex flex-col justify-center text-center">
+      <span className="text-gray-500 text-[9px] font-bold uppercase tracking-widest mb-1">{title}</span>
+      <span className={`text-xl font-black ${color}`}>{value}</span>
+    </div>
+  );
+}
+
+function SimpleTable({ title, data, cols }) {
+  if (!data) return null;
+  return (
+    <div className="bg-[#0a0a0a] rounded-xl border border-white/10 overflow-hidden flex flex-col h-[280px] shadow-lg">
+      <div className="p-4 border-b border-[#d4af37]/20 bg-[#111]">
+        <h3 className="font-bold text-xs text-[#d4af37] uppercase tracking-widest">{title}</h3>
       </div>
-      <div>
-        <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{title}</p>
-        <p className="text-sm font-bold text-white leading-tight">{value}</p>
-        <p className="text-[10px] text-[#d4af37] font-medium">{sub}</p>
+      <div className="overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-[#d4af37]/20">
+        <table className="w-full text-xs text-right border-collapse">
+          <thead className="bg-[#161616] text-gray-500 sticky top-0 shadow-sm z-10">
+            <tr>
+              {cols.map((c, i) => (
+                <th key={c} className={`p-3 font-bold uppercase tracking-wider border-b border-white/10 ${i===0 ? 'text-left' : ''}`}>{c}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/5">
+            {data.map((row, i) => (
+              <tr key={i} className="hover:bg-[#111] transition-colors">
+                {cols.map((c, j) => {
+                  let val = row[c];
+                  if (c === 'liquido') {
+                    val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+                  } else if (c === 'percent') {
+                    val = `${val}%`;
+                  }
+                  const isCurrency = c === 'liquido';
+                  const isPositive = isCurrency && row[c] >= 0;
+                  const isNegative = isCurrency && row[c] < 0;
+                  
+                  return (
+                    <td key={j} className={`p-3 border-r border-white/5 last:border-r-0 ${j===0 ? 'text-left text-gray-400 font-bold capitalize' : ''} ${isPositive ? 'text-emerald-400 font-bold' : isNegative ? 'text-rose-400 font-bold' : 'text-gray-300'}`}>
+                      {val}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+            {data.length === 0 && <tr><td colSpan={cols.length} className="p-4 text-center text-gray-500">Sem dados</td></tr>}
+          </tbody>
+        </table>
       </div>
     </div>
   );

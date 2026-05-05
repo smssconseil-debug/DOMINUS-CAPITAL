@@ -2,7 +2,6 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 
 export const AuthContext = createContext();
@@ -27,16 +26,15 @@ function App() {
       });
   }, []);
 
-  if (loading) return <div className="h-screen w-screen flex items-center justify-center bg-[#050505] text-yellow-500">Iniciando sistema Gênesis...</div>;
+  if (loading) return <div className="h-screen w-screen flex items-center justify-center bg-[#050505] text-[#d4af37] text-xl font-bold tracking-widest">INICIANDO SISTEMA GÊNESIS...</div>;
 
   return (
     <AuthContext.Provider value={{ user, setUser, loading }}>
-      <div className="dark min-h-screen bg-[#050505] text-gray-100 font-sans selection:bg-yellow-500/30">
+      <div className="dark min-h-screen bg-[#050505] text-gray-100 font-sans selection:bg-[#d4af37]/30">
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* Dashboard is public now, it handles internal restrictions */}
+            {/* Removing Register route as per user request to simplify and just keep 'Saiba Mais' */}
             <Route path="/" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
