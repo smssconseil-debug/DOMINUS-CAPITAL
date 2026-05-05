@@ -2,7 +2,7 @@ import os
 import bcrypt
 import jwt
 from datetime import datetime, timezone, timedelta
-from fastapi import Request, HTTPException, Depends
+from fastapi import Request, HTTPException
 from bson import ObjectId
 
 JWT_ALGORITHM = "HS256"
@@ -48,7 +48,6 @@ async def get_current_user(request: Request) -> dict:
         if payload.get("type") != "access":
             raise HTTPException(status_code=401, detail="Invalid token type")
         
-        # Access DB
         from server import db
         user = await db.users.find_one({"_id": ObjectId(payload["sub"])})
         if not user:
@@ -57,7 +56,28 @@ async def get_current_user(request: Request) -> dict:
         user["_id"] = str(user["_id"])
         user.pop("password_hash", None)
         return user
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+    except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+async def get_current_user_optional(request: Request) -> dict | None:
+    token = request.cookies.get("access_token")
+    if not token:
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header[7:]
+    if not token:
+        return None
+    try:
+        payload = jwt.decode(token, get_jwt_secret(), algorithms=[JWT_ALGORITHM])
+        if payload.get("type") != "access":
+            return None
+        
+        from server import db
+        user = await db.users.find_one({"_id": ObjectId(payload["sub"])})
+        if user:
+            user["_id"] = str(user["_id"])
+            user.pop("password_hash", None)
+            return user
+    except Exception:
+        pass
+    return None
