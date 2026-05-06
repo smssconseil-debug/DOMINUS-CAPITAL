@@ -6,6 +6,8 @@
  * @param {Object} filters       - { ano, mes, dia, periodo }
  * @returns {Object}             - Same shape as the /dashboard/metrics API response
  */
+const CAPITAL_INICIAL = 1000;
+
 export function computeMetrics(allTrades, filters = {}) {
   const { ano, mes, dia, periodo } = filters;
 
@@ -139,7 +141,7 @@ export function computeMetrics(allTrades, filters = {}) {
       return {
         mes: v.mes,
         liquido: round(v.liquido),
-        percent: round(acumMonthly !== 0 ? (v.liquido / acumMonthly) * 100 : 0),
+        percent: round((v.liquido / CAPITAL_INICIAL) * 100),
         acumulado: round(acumMonthly),
       };
     });
