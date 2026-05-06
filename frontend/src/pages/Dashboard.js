@@ -250,7 +250,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 w-full">
             <div className="lg:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl flex flex-col min-h-[300px] sm:min-h-[350px] min-w-0">
               <h3 className="text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4"/> Evolução Patrimonial
+                <TrendingUp className="w-4 h-4"/> Evolução do Capital Real
               </h3>
               <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
                 {metrics.chart.length > 0 ? (
@@ -309,7 +309,7 @@ export default function Dashboard() {
 
           {/* Bottom Tables */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full pb-8">
-            <SimpleTable title="Resumo Mensal" data={metrics.monthly} cols={['mes', 'liquido', 'percent']} />
+            <SimpleTable title="Resumo Mensal" data={metrics.monthly} cols={['mes', 'liquido', 'percent', 'acumulado']} />
             <SimpleTable title="Resumo por Horário" data={metrics.hourly} cols={['horario', 'liquido', 'percent']} />
             <SimpleTable title="MEP Líquido" data={metrics.mep} cols={['mep', 'liquido', 'percent']} />
           </div>
@@ -453,6 +453,7 @@ function SmallKpi({ title, value, color = "text-white", className = "" }) {
 }
 
 function SimpleTable({ title, data, cols }) {
+  const colLabels = { mes: 'Mês/Ano', liquido: 'Lucro (R$)', percent: '% Capital', acumulado: 'Acumulado (R$)' };
   if (!data) return null;
   return (
     <div className="bg-[#0a0a0a] rounded-xl border border-white/10 overflow-hidden flex flex-col h-[280px] shadow-xl min-w-0">
@@ -464,7 +465,7 @@ function SimpleTable({ title, data, cols }) {
           <thead className="bg-[#161616] text-gray-500 sticky top-0 shadow-sm z-10">
             <tr>
               {cols.map((c, i) => (
-                <th key={c} className={`p-2.5 md:p-3 font-bold uppercase tracking-wider border-b border-white/10 whitespace-nowrap ${i===0 ? 'text-left' : ''}`}>{c}</th>
+                <th key={c} className={`p-2.5 md:p-3 font-bold uppercase tracking-wider border-b border-white/10 whitespace-nowrap ${i===0 ? 'text-left' : ''}`}>{colLabels[c] || c}</th>
               ))}
             </tr>
           </thead>
@@ -473,12 +474,12 @@ function SimpleTable({ title, data, cols }) {
               <tr key={i} className="hover:bg-[#111] transition-colors">
                 {cols.map((c, j) => {
                   let val = row[c];
-                  if (c === 'liquido') {
+                  if (c === 'liquido' || c === 'acumulado') {
                     val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
                   } else if (c === 'percent') {
                     val = `${val}%`;
                   }
-                  const isCurrency = c === 'liquido';
+                  const isCurrency = c === 'liquido' || c === 'acumulado';
                   const isPositive = isCurrency && row[c] >= 0;
                   const isNegative = isCurrency && row[c] < 0;
                   return (

@@ -6,6 +6,8 @@
  * @param {Object} filters       - { ano, mes, dia, periodo }
  * @returns {Object}             - Same shape as the /dashboard/metrics API response
  */
+const CAPITAL_INICIAL = 1000;
+
 export function computeMetrics(allTrades, filters = {}) {
   const { ano, mes, dia, periodo } = filters;
 
@@ -115,7 +117,7 @@ export function computeMetrics(allTrades, filters = {}) {
     if (!chartMap[dStr]) chartMap[dStr] = { date: dStr, label, liquido: 0 };
     chartMap[dStr].liquido += t.liquido;
   }
-  let acumChart = 0;
+  let acumChart = CAPITAL_INICIAL;
   const chart = Object.keys(chartMap).sort().map(dStr => {
     acumChart += chartMap[dStr].liquido;
     return { date: dStr, dia: chartMap[dStr].label, liquido: round(chartMap[dStr].liquido), acumulado: round(acumChart) };
@@ -131,14 +133,18 @@ export function computeMetrics(allTrades, filters = {}) {
     if (!monthMap[k]) monthMap[k] = { mes: k, liquido: 0, m_num: mNum, y_num: yr };
     monthMap[k].liquido += t.liquido;
   }
-  const totalLiqMonths = Object.values(monthMap).reduce((s, v) => s + v.liquido, 0);
+  let acumMonthly = 0;
   const monthly = Object.values(monthMap)
     .sort((a, b) => a.y_num !== b.y_num ? a.y_num - b.y_num : a.m_num - b.m_num)
-    .map(v => ({
-      mes: v.mes,
-      liquido: round(v.liquido),
-      percent: round(totalLiqMonths !== 0 ? (v.liquido / totalLiqMonths) * 100 : 0),
-    }));
+    .map(v => {
+      acumMonthly += v.liquido;
+      return {
+        mes: v.mes,
+        liquido: round(v.liquido),
+        percent: round((v.liquido / CAPITAL_INICIAL) * 100),
+        acumulado: round(acumMonthly),
+      };
+    });
 
   // Hourly
   const hourMap = {};
