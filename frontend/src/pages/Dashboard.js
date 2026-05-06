@@ -32,6 +32,21 @@ export default function Dashboard() {
     periodo: selectedPeriodo,
   }), [selectedAno, selectedMes, selectedDia, selectedPeriodo]);
 
+  const filterLabel = useMemo(() => {
+    const hasFilter = selectedAno.length > 0 || selectedMes.length > 0 || selectedDia.length > 0 || selectedPeriodo.length > 0;
+    if (!hasFilter) return 'Histórico Completo';
+    const parts = [];
+    if (selectedAno.length > 0) parts.push([...selectedAno].sort((a, b) => a - b).join(', '));
+    if (selectedMes.length > 0) {
+      const mesesOrdem = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+      const sorted = [...selectedMes].sort((a, b) => mesesOrdem.indexOf(a.toLowerCase()) - mesesOrdem.indexOf(b.toLowerCase()));
+      parts.push(sorted.map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(', '));
+    }
+    if (selectedDia.length > 0) parts.push('Dias: ' + [...selectedDia].sort((a, b) => a - b).join(', '));
+    if (selectedPeriodo.length > 0) parts.push(selectedPeriodo.join(', '));
+    return parts.join(' · ');
+  }, [selectedAno, selectedMes, selectedDia, selectedPeriodo]);
+
   const submitSaibaMais = async (e) => {
     if (e) e.preventDefault();
     if (!process.env.REACT_APP_FORMSPREE_URL) {
@@ -139,7 +154,10 @@ export default function Dashboard() {
           ${showMobileDaily ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'}
         `}>
           <div className="bg-[#111] p-3 2xl:p-4 border-b border-[#d4af37]/20 flex justify-between items-center shrink-0">
-            <h3 className="text-[#d4af37] text-xs 2xl:text-sm font-bold uppercase tracking-widest">Desempenho Diário</h3>
+            <div className="flex flex-col min-w-0">
+              <h3 className="text-[#d4af37] text-xs 2xl:text-sm font-bold uppercase tracking-widest leading-tight">Desempenho Diário</h3>
+              <span className="text-[9px] 2xl:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5 truncate">{filterLabel}</span>
+            </div>
             <button onClick={() => setShowMobileDaily(false)} className="xl:hidden text-gray-400 hover:text-white p-1">
               <X className="w-5 h-5" />
             </button>
