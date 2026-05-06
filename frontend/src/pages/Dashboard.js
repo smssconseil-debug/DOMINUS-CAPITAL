@@ -34,27 +34,24 @@ export default function Dashboard() {
 
   const submitSaibaMais = async (e) => {
     if (e) e.preventDefault();
-    if (!process.env.REACT_APP_WEB3FORMS_KEY) {
+    if (!process.env.REACT_APP_FORMSPREE_URL) {
       setSubmitError('Formulário não configurado. Entre em contato diretamente.');
       return;
     }
     setIsSubmitting(true);
     setSubmitError('');
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(process.env.REACT_APP_FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: process.env.REACT_APP_WEB3FORMS_KEY,
           subject: `Novo lead Robô Gênesis: ${interestForm.name}`,
-          from_name: 'Dominus Capital',
-          Nome: interestForm.name,
-          Email: interestForm.email,
-          WhatsApp: interestForm.phone,
+          nome: interestForm.name,
+          email: interestForm.email,
+          whatsapp: interestForm.phone,
         }),
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setInterestSent(true);
         setTimeout(() => {
           setShowSaibaMais(false);
