@@ -222,7 +222,7 @@ export default function Dashboard() {
               <div className="sm:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 flex flex-col justify-center">
                 <span className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Lucro Bruto</span>
                 <span className="text-xl xl:text-2xl font-bold text-white truncate">{formatCurrency(metrics.kpis.lucro_bruto || 0)}</span>
-                <span className="text-[10px] text-rose-400 font-semibold mt-1 truncate">Custos: {formatCurrency(metrics.kpis.custos || 0)}</span>
+                <span className="text-[10px] text-rose-400 font-semibold mt-1 truncate">Losers: {formatCurrency(metrics.kpis.total_perdido || 0)}</span>
               </div>
 
               <div className="sm:col-span-1 flex flex-col gap-2 h-full">
