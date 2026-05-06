@@ -11,6 +11,8 @@ export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
   const [interestForm, setInterestForm] = useState({ email: '', phone: '', name: '' });
   const [interestSent, setInterestSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const [showMobileDaily, setShowMobileDaily] = useState(false);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
@@ -30,14 +32,41 @@ export default function Dashboard() {
     periodo: selectedPeriodo,
   }), [selectedAno, selectedMes, selectedDia, selectedPeriodo]);
 
-  const submitSaibaMais = (e) => {
+  const submitSaibaMais = async (e) => {
     if (e) e.preventDefault();
-    setInterestSent(true);
-    setTimeout(() => {
-      setShowSaibaMais(false);
-      setInterestSent(false);
-      setInterestForm({ email: '', phone: '', name: '' });
-    }, 3000);
+    if (!process.env.REACT_APP_FORMSPREE_URL) {
+      setSubmitError('Formulário não configurado. Entre em contato diretamente.');
+      return;
+    }
+    setIsSubmitting(true);
+    setSubmitError('');
+    try {
+      const res = await fetch(process.env.REACT_APP_FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          subject: `Novo lead Robô Gênesis: ${interestForm.name}`,
+          nome: interestForm.name,
+          email: interestForm.email,
+          whatsapp: interestForm.phone,
+        }),
+      });
+      if (res.ok) {
+        setInterestSent(true);
+        setTimeout(() => {
+          setShowSaibaMais(false);
+          setInterestSent(false);
+          setInterestForm({ email: '', phone: '', name: '' });
+        }, 3000);
+      } else {
+        setSubmitError('Não foi possível enviar. Por favor, tente novamente.');
+      }
+    } catch (err) {
+      console.error('Erro ao enviar formulário:', err);
+      setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handlePhoneChange = (e) => {
@@ -380,8 +409,11 @@ export default function Dashboard() {
                     <input required type="tel" placeholder="WHATSAPP Ex: (11) 99999-9999" value={interestForm.phone} onChange={handlePhoneChange}
                       className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
                   </div>
-                  <button type="submit" className="w-full bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] text-black font-black text-sm md:text-base uppercase tracking-[0.2em] p-3.5 md:p-4 rounded-lg mt-4 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all transform hover:scale-[1.02] active:scale-95">
-                    QUERO CONHECER AGORA
+                  {submitError && (
+                    <p className="text-red-400 text-xs text-center font-bold">{submitError}</p>
+                  )}
+                  <button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] text-black font-black text-sm md:text-base uppercase tracking-[0.2em] p-3.5 md:p-4 rounded-lg mt-4 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100">
+                    {isSubmitting ? 'ENVIANDO...' : 'QUERO CONHECER AGORA'}
                   </button>
                 </form>
               </>
