@@ -25,7 +25,7 @@ jobs:
 
       - name: Fetch CSV and convert to JSON
         env:
-          SHEETS_CSV_URL: ${{ secrets.SHEETS_CSV_URL }}
+          SHEETS_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-1dqqViEeM2GWrwryYk_FxOEs4mGkk-6QzaZd81KgFXKWElFI-krU3S35Pd78V978Y3XuMZpFmbfd/pub?gid=903169559&single=true&output=csv"
         run: node csv-to-json.js
 
       - name: Commit and push if trades.json changed
