@@ -85,18 +85,19 @@ export function computeMetrics(allTrades, filters = {}) {
     runup: round(runup),
   };
 
-  // Daily
+  // Daily — key by full date string to avoid merging same day-of-month across different months
   const dailyMap = {};
   for (const t of sorted) {
-    const d = t.aberturaDate.getUTCDate();
-    if (!dailyMap[d]) dailyMap[d] = { dia: d, liquido: 0, gains: 0, ops: 0 };
-    dailyMap[d].liquido += t.liquido;
-    if (t.is_gain) dailyMap[d].gains++;
-    dailyMap[d].ops++;
+    const dStr = t.abertura.slice(0, 10);
+    const label = `${pad(t.aberturaDate.getUTCDate())}/${pad(t.aberturaDate.getUTCMonth() + 1)}/${String(t.aberturaDate.getUTCFullYear()).slice(-2)}`;
+    if (!dailyMap[dStr]) dailyMap[dStr] = { dStr, dia: label, liquido: 0, gains: 0, ops: 0 };
+    dailyMap[dStr].liquido += t.liquido;
+    if (t.is_gain) dailyMap[dStr].gains++;
+    dailyMap[dStr].ops++;
   }
   let acum = 0;
-  const daily = Object.keys(dailyMap).sort((a, b) => a - b).map(d => {
-    const dm = dailyMap[d];
+  const daily = Object.keys(dailyMap).sort().map(dStr => {
+    const dm = dailyMap[dStr];
     acum += dm.liquido;
     return {
       dia: dm.dia,
