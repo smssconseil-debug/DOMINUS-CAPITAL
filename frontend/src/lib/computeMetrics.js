@@ -47,7 +47,7 @@ export function computeMetrics(allTrades, filters = {}) {
 
   if (filtered.length === 0) {
     return {
-      kpis: { lucro_liquido: 0, lucro_bruto: 0, custos: 0, operacoes: 0, gains: 0, loss: 0, assertividade: 0, dias_operados: 0, drawdown: 0, runup: 0 },
+      kpis: { lucro_liquido: 0, lucro_bruto: 0, total_perdido: 0, operacoes: 0, gains: 0, loss: 0, assertividade: 0, dias_operados: 0, drawdown: 0, runup: 0 },
       daily: [], monthly: [], hourly: [], mep: [], chart: [], available_years,
     };
   }
@@ -56,7 +56,7 @@ export function computeMetrics(allTrades, filters = {}) {
 
   // KPIs
   const lucro_bruto = round(filtered.reduce((s, t) => s + (t.res_operacao > 0 ? t.res_operacao : 0), 0));
-  const custos = round(filtered.reduce((s, t) => s + t.custo, 0));
+  const total_perdido = round(filtered.reduce((s, t) => s + (t.res_operacao < 0 ? t.res_operacao : 0), 0));
   const lucro_liquido = round(filtered.reduce((s, t) => s + t.liquido, 0));
   const operacoes = filtered.length;
   const gains = filtered.filter(t => t.is_gain).length;
@@ -77,7 +77,7 @@ export function computeMetrics(allTrades, filters = {}) {
   const kpis = {
     lucro_liquido,
     lucro_bruto,
-    custos,
+    total_perdido,
     operacoes,
     gains,
     loss,
