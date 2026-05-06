@@ -190,6 +190,49 @@ async function main() {
       };
     });
 
+  // Detect if the 'total'/'liquido' column is a running cumulative sum instead of
+  // a per-trade net result. This happens when the sheet accumulates results in a
+  // running balance column. If detected, compute the per-trade net as the
+  // differential between consecutive rows (sorted by open time).
+  //
+  // MIN_TRADES_FOR_DETECTION: need at least 3 rows to form 2 consecutive pairs
+  //   and make a statistically meaningful detection.
+  // CUMULATIVE_MATCH_TOLERANCE: allow up to R$0.02 rounding error per row.
+  // CUMULATIVE_DETECTION_THRESHOLD: if ≥90% of consecutive row-pairs satisfy
+  //   liquido[i] ≈ liquido[i-1] + res_operacao[i], treat the column as cumulative.
+  const MIN_TRADES_FOR_DETECTION      = 3;
+  const CUMULATIVE_MATCH_TOLERANCE    = 0.02;
+  const CUMULATIVE_DETECTION_THRESHOLD = 0.9;
+
+  if (colTotal && !hasCusto && trades.length > MIN_TRADES_FOR_DETECTION) {
+    const sortedByDate = [...trades].sort((a, b) => (a.abertura < b.abertura ? -1 : 1));
+    let matchCount = 0;
+    for (let i = 1; i < sortedByDate.length; i++) {
+      const expected = round2(sortedByDate[i - 1].liquido + sortedByDate[i].res_operacao);
+      if (Math.abs(expected - sortedByDate[i].liquido) < CUMULATIVE_MATCH_TOLERANCE) matchCount++;
+    }
+    const isCumulative = matchCount / (sortedByDate.length - 1) > CUMULATIVE_DETECTION_THRESHOLD;
+    if (isCumulative) {
+      console.log(
+        `WARNING: Column "${colTotal}" appears to be a running cumulative total ` +
+        `(${((matchCount / (sortedByDate.length - 1)) * 100).toFixed(1)}% of rows match). ` +
+        'Computing per-trade net result as differential between consecutive rows.'
+      );
+      // Work back-to-front so each subtraction uses the original cumulative of the prior row
+      for (let i = sortedByDate.length - 1; i >= 1; i--) {
+        sortedByDate[i].liquido = round2(sortedByDate[i].liquido - sortedByDate[i - 1].liquido);
+      }
+      // Recompute derived fields for all trades
+      for (const t of sortedByDate) {
+        t.custo   = round2(t.res_operacao - t.liquido);
+        t.is_gain = t.liquido > 0;
+        t.is_loss = t.liquido < 0;
+      }
+      // Replace the trades array with the corrected, date-sorted entries
+      trades.splice(0, trades.length, ...sortedByDate);
+    }
+  }
+
   console.log(`Converted ${trades.length} valid trades`);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
