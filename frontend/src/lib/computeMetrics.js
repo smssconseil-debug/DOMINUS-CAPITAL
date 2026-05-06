@@ -117,7 +117,7 @@ export function computeMetrics(allTrades, filters = {}) {
     if (!chartMap[dStr]) chartMap[dStr] = { date: dStr, label, liquido: 0 };
     chartMap[dStr].liquido += t.liquido;
   }
-  let acumChart = 0;
+  let acumChart = CAPITAL_INICIAL;
   const chart = Object.keys(chartMap).sort().map(dStr => {
     acumChart += chartMap[dStr].liquido;
     return { date: dStr, dia: chartMap[dStr].label, liquido: round(chartMap[dStr].liquido), acumulado: round(acumChart) };
