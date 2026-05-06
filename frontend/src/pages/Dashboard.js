@@ -250,7 +250,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 w-full">
             <div className="lg:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl flex flex-col min-h-[300px] sm:min-h-[350px] min-w-0">
               <h3 className="text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4"/> Evolução Patrimonial
+                <TrendingUp className="w-4 h-4"/> Evolução do Capital Real
               </h3>
               <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
                 {metrics.chart.length > 0 ? (
