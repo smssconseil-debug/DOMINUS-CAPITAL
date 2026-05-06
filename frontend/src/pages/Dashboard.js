@@ -156,7 +156,7 @@ export default function Dashboard() {
           <div className="bg-[#111] p-3 2xl:p-4 border-b border-[#d4af37]/20 flex justify-between items-center shrink-0">
             <div className="flex flex-col min-w-0">
               <h3 className="text-[#d4af37] text-xs 2xl:text-sm font-bold uppercase tracking-widest leading-tight">Desempenho Diário</h3>
-              <span className="text-[9px] 2xl:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5 truncate">{filterLabel}</span>
+              <span className="text-[9px] 2xl:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5 break-words">{filterLabel}</span>
             </div>
             <button onClick={() => setShowMobileDaily(false)} className="xl:hidden text-gray-400 hover:text-white p-1">
               <X className="w-5 h-5" />
