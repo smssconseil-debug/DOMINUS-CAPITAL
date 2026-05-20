@@ -116,7 +116,7 @@ export default function Dashboard() {
         <div className="text-center lg:text-left mt-2 lg:mt-0 w-full lg:w-auto">
           <div className="flex items-center justify-center gap-3 lg:justify-start">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#121212] shadow-[0_0_24px_rgba(212,175,55,0.2)]">
-              <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="Dominus Capital" className="h-8 w-8" />
+              <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="Dominus Capital logo" className="h-8 w-8" />
             </span>
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] leading-tight">

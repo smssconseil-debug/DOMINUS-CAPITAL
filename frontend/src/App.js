@@ -32,7 +32,7 @@ function BrandSignature() {
   return (
     <div className="flex items-center gap-3">
       <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#d4af37]/50 bg-[#121212] shadow-[0_0_20px_rgba(212,175,55,0.18)]">
-        <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="Dominus Capital" className="h-7 w-7" />
+        <img src={`${process.env.PUBLIC_URL}/favicon.svg`} alt="Dominus Capital logo" className="h-7 w-7" />
       </span>
       <div className="leading-tight">
         <span className="block text-sm font-black tracking-[0.18em] text-[#d4af37] sm:text-base">DOMINUS CAPITAL</span>
