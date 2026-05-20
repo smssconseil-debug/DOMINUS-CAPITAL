@@ -9,7 +9,7 @@ function App() {
     <div className="dark min-h-screen bg-[#050505] text-gray-100 font-sans selection:bg-[#d4af37]/30">
       <nav className="sticky top-0 z-50 border-b border-[#d4af37]/20 bg-[#0a0a0a]/95 backdrop-blur px-4 py-3">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
-          <span className="text-sm font-black tracking-[0.18em] text-[#d4af37] sm:text-base">DOMINUS CAPITAL</span>
+          <BrandSignature />
           <div className="flex flex-wrap gap-2">
             <NavItem to="/" label="Painel" icon={BarChart3} />
             <NavItem to="/sobre" label="Sobre" icon={Info} />
@@ -24,6 +24,22 @@ function App() {
         <Route path="/contato" element={<Contato />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+    </div>
+  );
+}
+
+function BrandSignature() {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#d4af37]/50 bg-[#121212] text-xs font-black tracking-[0.15em] text-[#f9e596] shadow-[0_0_20px_rgba(212,175,55,0.18)]">
+        DC
+      </span>
+      <div className="leading-tight">
+        <span className="block text-sm font-black tracking-[0.18em] text-[#d4af37] sm:text-base">DOMINUS CAPITAL</span>
+        <span className="block text-[9px] font-bold uppercase tracking-[0.24em] text-[#f9e596]/70 sm:text-[10px]">
+          Gestão Quantitativa
+        </span>
+      </div>
     </div>
   );
 }

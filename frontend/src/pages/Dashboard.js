@@ -114,12 +114,19 @@ export default function Dashboard() {
         <div className="absolute top-0 left-0 right-0 h-1 md:h-1.5 bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37]"></div>
         
         <div className="text-center lg:text-left mt-2 lg:mt-0 w-full lg:w-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] leading-tight">
-             DOMINUS CAPITAL
-          </h1>
-          <p className="text-[#d4af37] tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-xs font-bold mt-0.5 uppercase">
-            RESULTADOS REAIS, DISCIPLINA, TECNOLOGIA , PERFORMANCE
-          </p>
+          <div className="flex items-center justify-center gap-3 lg:justify-start">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#d4af37]/50 bg-[#121212] text-sm font-black tracking-[0.15em] text-[#f9e596] shadow-[0_0_24px_rgba(212,175,55,0.2)]">
+              DC
+            </span>
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] leading-tight">
+                DOMINUS CAPITAL
+              </h1>
+              <p className="text-[#d4af37] tracking-[0.18em] sm:tracking-[0.24em] text-[9px] sm:text-[10px] font-bold mt-0.5 uppercase">
+                Resultados reais · disciplina · tecnologia · performance
+              </p>
+            </div>
+          </div>
         </div>
         
         <button 
