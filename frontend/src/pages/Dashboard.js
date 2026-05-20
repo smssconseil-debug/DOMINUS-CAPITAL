@@ -122,7 +122,7 @@ export default function Dashboard() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] leading-tight">
                 DOMINUS CAPITAL
               </h1>
-              <p className="text-[#d4af37] tracking-[0.18em] sm:tracking-[0.24em] text-[9px] sm:text-[10px] font-bold mt-0.5 uppercase">
+              <p className="text-[#d4af37] tracking-[0.18em] sm:tracking-[0.24em] text-[9px] sm:text-[10px] font-bold mt-0.5">
                 Resultados reais · disciplina · tecnologia · performance
               </p>
             </div>
