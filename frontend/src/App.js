@@ -37,7 +37,7 @@ function BrandSignature() {
       <div className="leading-tight">
         <span className="block text-sm font-black tracking-[0.18em] text-[#d4af37] sm:text-base">DOMINUS CAPITAL</span>
         <span className="block text-[9px] font-bold uppercase tracking-[0.24em] text-[#f9e596]/70 sm:text-[10px]">
-          Gestão Quantitativa
+          RESULTADOS REAIS, DISCIPLINA, TECNOLOGIA, PERFORMANCE
         </span>
       </div>
     </div>
