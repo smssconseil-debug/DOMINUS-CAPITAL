@@ -63,7 +63,7 @@ function App() {
 }
 
 function DominusLogo({ className = '' }) {
-  const gradientRef = `dominus-gold-${useId().replace(/:/g, '')}`;
+  const gradientRef = `dominus-gold-${useId().replace(/[^a-zA-Z0-9-_]/g, '')}`;
 
   return (
     <svg viewBox="0 0 64 64" aria-hidden="true" className={className}>

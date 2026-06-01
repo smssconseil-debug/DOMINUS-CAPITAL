@@ -42,6 +42,8 @@ const MONTH_SHORT = {
 
 const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
+const POSITIVE_LABEL_OFFSET_Y = -10;
+const NEGATIVE_LABEL_OFFSET_Y = 18;
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
@@ -301,11 +303,11 @@ export default function Dashboard() {
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
                       <div
-                        className={`h-full rounded-full ${item.percent >= 0 ? 'bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]' : 'bg-[linear-gradient(90deg,#6f1d1b,#ef4444,#f87171)]'}`}
-                        style={{ width: `${Math.min(Math.max(Math.abs(item.percent), MIN_PROGRESS_WIDTH_PERCENT), 100)}%` }}
+                        className={`h-full rounded-full ${getProgressBarClass(item.percent)}`}
+                        style={{ width: `${clampProgressWidth(item.percent)}%` }}
                       />
                     </div>
-                    <span className={`w-16 text-right ${item.percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#f87171]'}`}>{formatPercent(item.percent)}</span>
+                    <span className={`w-16 text-right ${getPercentTextClass(item.percent)}`}>{formatPercent(item.percent)}</span>
                   </div>
                 </div>
               ))}
@@ -531,7 +533,7 @@ function NoteCard({ icon, title, description }) {
 
 function renderBarLabel({ x, y, width, height, value }) {
   if (typeof value !== 'number') return null;
-  const labelY = value >= 0 ? y - 10 : y + height + 18;
+  const labelY = value >= 0 ? y + POSITIVE_LABEL_OFFSET_Y : y + height + NEGATIVE_LABEL_OFFSET_Y;
   return (
     <text x={x + width / 2} y={labelY} fill="#f7f2e8" fontSize="11" textAnchor="middle">
       {formatPercent(value)}
@@ -553,4 +555,18 @@ function formatPercent(value) {
 function capitalizeLabel(label) {
   if (!label) return '';
   return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+function clampProgressWidth(percent) {
+  return Math.min(Math.max(Math.abs(percent), MIN_PROGRESS_WIDTH_PERCENT), 100);
+}
+
+function getProgressBarClass(percent) {
+  return percent >= 0
+    ? 'bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]'
+    : 'bg-[linear-gradient(90deg,#6f1d1b,#ef4444,#f87171)]';
+}
+
+function getPercentTextClass(percent) {
+  return percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#f87171]';
 }
