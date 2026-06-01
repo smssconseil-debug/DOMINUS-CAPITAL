@@ -301,11 +301,11 @@ export default function Dashboard() {
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
                       <div
-                        className="h-full rounded-full bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]"
+                        className={`h-full rounded-full ${item.percent >= 0 ? 'bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]' : 'bg-[linear-gradient(90deg,#6f1d1b,#ef4444,#f87171)]'}`}
                         style={{ width: `${Math.min(Math.max(Math.abs(item.percent), MIN_PROGRESS_WIDTH_PERCENT), 100)}%` }}
                       />
                     </div>
-                    <span className="w-14 text-right text-[#c9c3b7]">{formatPercent(item.percent)}</span>
+                    <span className={`w-16 text-right ${item.percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#f87171]'}`}>{formatPercent(item.percent)}</span>
                   </div>
                 </div>
               ))}
@@ -545,7 +545,7 @@ function formatCurrency(value) {
 
 function formatPercent(value) {
   return `${new Intl.NumberFormat('pt-BR', {
-    minimumFractionDigits: 0,
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value || 0)}%`;
 }
