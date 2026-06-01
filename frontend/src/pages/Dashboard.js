@@ -1,11 +1,49 @@
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  LabelList,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import {
+  ArrowRight,
+  BadgeCheck,
+  CheckCircle,
+  Clock3,
+  Lock,
+  ShieldCheck,
+  Star,
+} from 'lucide-react';
 import tradesData from '../data/trades.json';
 import { computeMetrics } from '../lib/computeMetrics';
-import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, 
-  Area, AreaChart, BarChart, Bar, Cell, PieChart, Pie
-} from 'recharts';
-import { CheckCircle, TrendingUp, Bot, X, Percent, Filter, TableProperties } from 'lucide-react';
+
+const INITIAL_CAPITAL = 1000;
+const MONTH_SHORT = {
+  janeiro: 'Jan',
+  fevereiro: 'Fev',
+  março: 'Mar',
+  abril: 'Abr',
+  maio: 'Mai',
+  junho: 'Jun',
+  julho: 'Jul',
+  agosto: 'Ago',
+  setembro: 'Set',
+  outubro: 'Out',
+  novembro: 'Nov',
+  dezembro: 'Dez',
+};
+
+const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
+const MIN_PROGRESS_WIDTH_PERCENT = 6;
+const POSITIVE_LABEL_OFFSET_Y = -10;
+const NEGATIVE_LABEL_OFFSET_Y = 18;
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
@@ -14,70 +52,97 @@ export default function Dashboard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  const [showMobileDaily, setShowMobileDaily] = useState(false);
-  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const metrics = useMemo(() => computeMetrics(tradesData, {}), []);
 
-  const [selectedAno, setSelectedAno] = useState([]);
-  const [selectedMes, setSelectedMes] = useState([]);
-  const [selectedDia, setSelectedDia] = useState([]);
-  const [selectedPeriodo, setSelectedPeriodo] = useState([]);
+  const summary = useMemo(() => {
+    const monthly = metrics.monthly ?? [];
+    const positiveMonths = monthly.filter((item) => item.liquido > 0).length;
+    const totalMonths = monthly.length;
+    const bestMonth = monthly.reduce((best, item) => (!best || item.percent > best.percent ? item : best), null);
+    const worstMonth = monthly.reduce((worst, item) => (!worst || item.percent < worst.percent ? item : worst), null);
+    const finalCapital = INITIAL_CAPITAL + (metrics.kpis?.lucro_liquido ?? 0);
+    const totalGrowth = INITIAL_CAPITAL > 0 ? ((metrics.kpis?.lucro_liquido ?? 0) / INITIAL_CAPITAL) * 100 : 0;
+    const capitalProtected = finalCapital >= INITIAL_CAPITAL ? 100 : Math.max(0, (finalCapital / INITIAL_CAPITAL) * 100);
 
-  const toggle = (setter) => (value) =>
-    setter(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]);
+    return {
+      finalCapital,
+      totalGrowth,
+      positiveMonths,
+      totalMonths,
+      bestMonth,
+      worstMonth,
+      capitalProtected,
+      consistency: totalMonths > 0 ? (positiveMonths / totalMonths) * 100 : 0,
+    };
+  }, [metrics]);
 
-  const metrics = useMemo(() => computeMetrics(tradesData, {
-    ano: selectedAno,
-    mes: selectedMes,
-    dia: selectedDia,
-    periodo: selectedPeriodo,
-  }), [selectedAno, selectedMes, selectedDia, selectedPeriodo]);
+  const monthlyChartData = useMemo(
+    () =>
+      (metrics.monthly ?? []).map((item) => {
+        const [monthName, year] = item.mes.split('/');
+        return {
+          ...item,
+          shortLabel: `${MONTH_SHORT[monthName] || monthName.slice(0, 3)}/${year}`,
+          fill: item.percent >= 0 ? '#2fb45a' : '#ef4444',
+        };
+      }),
+    [metrics.monthly],
+  );
 
-  const filterLabel = useMemo(() => {
-    const hasFilter = selectedAno.length > 0 || selectedMes.length > 0 || selectedDia.length > 0 || selectedPeriodo.length > 0;
-    if (!hasFilter) return 'Histórico Completo';
-    const parts = [];
-    if (selectedAno.length > 0) parts.push([...selectedAno].sort((a, b) => a - b).join(', '));
-    if (selectedMes.length > 0) {
-      const mesesOrdem = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-      const sorted = [...selectedMes].sort((a, b) => mesesOrdem.indexOf(a.toLowerCase()) - mesesOrdem.indexOf(b.toLowerCase()));
-      parts.push(sorted.map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(', '));
-    }
-    if (selectedDia.length > 0) parts.push('Dias: ' + [...selectedDia].sort((a, b) => a - b).join(', '));
-    if (selectedPeriodo.length > 0) parts.push(selectedPeriodo.join(', '));
-    return parts.join(' · ');
-  }, [selectedAno, selectedMes, selectedDia, selectedPeriodo]);
+  const monthlyDomain = useMemo(() => {
+    const values = monthlyChartData.map((item) => item.percent);
+    const min = values.length ? Math.min(...values, 0) : -10;
+    const max = values.length ? Math.max(...values, 0) : 10;
+    return [Math.floor(min - 15), Math.ceil(max + 35)];
+  }, [monthlyChartData]);
+
+  const pieData = useMemo(
+    () =>
+      (metrics.mep ?? []).map((item, index) => ({
+        ...item,
+        label: `MEP ${item.mep}`,
+        value: Math.max(item.liquido, 0),
+        color: MEP_COLORS[index % MEP_COLORS.length],
+      })),
+    [metrics.mep],
+  );
 
   const submitSaibaMais = async (e) => {
-    if (e) e.preventDefault();
+    e.preventDefault();
+
     if (!process.env.REACT_APP_FORMSPREE_URL) {
       setSubmitError('Formulário não configurado. Entre em contato diretamente.');
       return;
     }
+
     setIsSubmitting(true);
     setSubmitError('');
+
     try {
-      const res = await fetch(process.env.REACT_APP_FORMSPREE_URL, {
+      const response = await fetch(process.env.REACT_APP_FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          subject: `Novo lead Robô Gênesis: ${interestForm.name}`,
+          subject: `Novo lead Dominus Capital: ${interestForm.name}`,
           nome: interestForm.name,
           email: interestForm.email,
           whatsapp: interestForm.phone,
         }),
       });
-      if (res.ok) {
-        setInterestSent(true);
-        setTimeout(() => {
-          setShowSaibaMais(false);
-          setInterestSent(false);
-          setInterestForm({ email: '', phone: '', name: '' });
-        }, 3000);
-      } else {
+
+      if (!response.ok) {
         setSubmitError('Não foi possível enviar. Por favor, tente novamente.');
+        return;
       }
-    } catch (err) {
-      console.error('Erro ao enviar formulário:', err);
+
+      setInterestSent(true);
+      setTimeout(() => {
+        setShowSaibaMais(false);
+        setInterestSent(false);
+        setInterestForm({ email: '', phone: '', name: '' });
+      }, 3000);
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
       setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
     } finally {
       setIsSubmitting(false);
@@ -87,351 +152,350 @@ export default function Dashboard() {
   const handlePhoneChange = (e) => {
     let value = e.target.value.replace(/\D/g, '');
     if (value.length > 11) value = value.slice(0, 11);
+
     let formatted = value;
     if (value.length > 2) {
-      formatted = `(${value.slice(0, 2)}) ${value.length > 7 ? value.slice(2, 7) + '-' + value.slice(7) : value.slice(2)}`;
+      formatted = `(${value.slice(0, 2)}) ${value.length > 7 ? `${value.slice(2, 7)}-${value.slice(7)}` : value.slice(2)}`;
     }
-    setInterestForm({ ...interestForm, phone: formatted });
+
+    setInterestForm((prev) => ({ ...prev, phone: formatted }));
   };
 
-  const formatCurrency = (val) =>
-    new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
-
-  const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-  const dias = Array.from({ length: 31 }, (_, i) => i + 1);
-  const periodos = ['Manhã', 'Tarde'];
-
-  const pieData = [
-    { name: 'Gains', value: metrics.kpis.gains, color: '#10b981' },
-    { name: 'Loss', value: metrics.kpis.loss, color: '#ef4444' },
-  ];
-
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-[#050505] text-gray-100 font-sans bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
-      
-      {/* Top Bar / Header */}
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end bg-[#0a0a0a] border-b border-[#d4af37]/30 p-4 md:p-5 lg:px-6 shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative z-20 shrink-0">
-        <div className="absolute top-0 left-0 right-0 h-1 md:h-1.5 bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37]"></div>
-        
-        <div className="text-center lg:text-left mt-2 lg:mt-0 w-full lg:w-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#fff] to-[#d4af37] tracking-tighter uppercase drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] leading-tight">
-             DOMINUS CAPITAL
-          </h1>
-          <p className="text-[#d4af37] tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-xs font-bold mt-0.5 uppercase">
-            RESULTADOS REAIS, DISCIPLINA, TECNOLOGIA , PERFORMANCE
-          </p>
-        </div>
-        
-        <button 
-          onClick={() => setShowSaibaMais(true)} 
-          className="mt-4 lg:mt-0 relative group overflow-hidden rounded-lg p-[2px] shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-shadow w-full sm:w-auto shrink-0"
+    <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.10),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.08),_transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] [background-size:72px_72px]" />
+
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
+        <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] lg:p-8">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+            <div className="flex flex-col justify-between gap-6">
+              <div className="space-y-5">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Resultados detalhados</p>
+                <div className="space-y-3">
+                  <h1 className="max-w-xl text-4xl font-medium uppercase leading-[1.05] text-[#f8f4ec] sm:text-5xl lg:text-[4.25rem]">
+                    Transparência
+                    <br />
+                    em cada dado.
+                    <br />
+                    <span className="text-[#d4af37]">Consistência</span>
+                    <br />
+                    <span className="text-[#d4af37]">em cada decisão.</span>
+                  </h1>
+                  <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
+                    Apresentamos uma leitura institucional dos resultados, mantendo o visual premium da referência e usando os seus dados reais para cada gráfico, tabela e indicador.
+                  </p>
+                </div>
+              </div>
+
+              <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#d4af37]/30 bg-[#11161f]/75 px-5 py-4">
+                <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
+                <div>
+                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Dados reais, extraídos da operação.</p>
+                  <p className="mt-1 text-sm text-[#c9c3b7]">Atualizados automaticamente, auditáveis e apresentados com foco em clareza para investidores.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[28px] border border-[#d4af37]/18 bg-[#090c12] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] lg:p-6">
+              <p className="mb-4 text-sm uppercase tracking-[0.18em] text-[#d4af37]">Desempenho acumulado</p>
+              <div className="grid gap-px overflow-hidden rounded-[22px] border border-[#d4af37]/14 bg-[#20170a]/40 md:grid-cols-2">
+                <SummaryMetric
+                  title="Crescimento total"
+                  value={formatPercent(summary.totalGrowth)}
+                  detail="Sobre o capital inicial"
+                  positive
+                />
+                <SummaryMetric
+                  title="Capital final"
+                  value={formatCurrency(summary.finalCapital)}
+                  detail="Resultado líquido"
+                  positive
+                />
+                <SummaryMetric
+                  title="Melhor mês"
+                  value={summary.bestMonth ? formatPercent(summary.bestMonth.percent) : '0,00%'}
+                  detail={summary.bestMonth ? capitalizeLabel(summary.bestMonth.mes) : 'Sem histórico'}
+                  positive
+                />
+                <SummaryMetric
+                  title="Pior mês"
+                  value={summary.worstMonth ? formatPercent(summary.worstMonth.percent) : '0,00%'}
+                  detail={summary.worstMonth ? capitalizeLabel(summary.worstMonth.mes) : 'Sem histórico'}
+                  negative
+                />
+                <SummaryMetric
+                  title="Meses positivos"
+                  value={`${summary.positiveMonths} de ${summary.totalMonths}`}
+                  detail={`${formatPercent(summary.consistency)} de consistência`}
+                  positive
+                />
+                <SummaryMetric
+                  title="Capital protegido"
+                  value={formatPercent(summary.capitalProtected)}
+                  detail={summary.capitalProtected === 100 ? 'Sem perda do capital inicial' : 'Abaixo do capital inicial'}
+                  positive={summary.capitalProtected === 100}
+                  negative={summary.capitalProtected < 100}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="resultados"
+          className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
         >
-          <span className="absolute inset-0 bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] animate-[spin_3s_linear_infinite] group-hover:animate-none"></span>
-          <div className="relative bg-[#050505] px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center justify-center gap-3 transition-all group-hover:bg-gradient-to-r group-hover:from-[#d4af37] group-hover:to-[#b5952f]">
-             <Bot className="w-5 h-5 sm:w-7 sm:h-7 text-[#d4af37] group-hover:text-black group-hover:animate-bounce" />
-             <span className="text-xs sm:text-base lg:text-lg font-black text-[#d4af37] group-hover:text-black uppercase tracking-wider">
-               SAIBA MAIS SOBRE O ROBÔ
-             </span>
+          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho mensal (%)</p>
+          <div className="h-[320px] w-full sm:h-[380px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={monthlyChartData} margin={{ top: 24, right: 8, left: -18, bottom: 8 }}>
+                <CartesianGrid stroke="#1f232c" vertical={false} />
+                <XAxis dataKey="shortLabel" tick={{ fill: '#c9c3b7', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <YAxis
+                  domain={monthlyDomain}
+                  tickFormatter={(value) => `${value}%`}
+                  tick={{ fill: '#8d8b84', fontSize: 12 }}
+                  axisLine={false}
+                  tickLine={false}
+                  width={52}
+                />
+                <RechartsTooltip
+                  cursor={{ fill: 'rgba(212,175,55,0.05)' }}
+                  contentStyle={{
+                    backgroundColor: '#0f131a',
+                    border: '1px solid rgba(212,175,55,0.25)',
+                    borderRadius: '14px',
+                    color: '#f7f2e8',
+                  }}
+                  formatter={(value, _name, item) => [formatPercent(value), `Lucro: ${formatCurrency(item.payload.liquido)}`]}
+                  labelFormatter={(label) => `Mês: ${label}`}
+                />
+                <Bar dataKey="percent" radius={[6, 6, 0, 0]} maxBarSize={34}>
+                  {monthlyChartData.map((item) => (
+                    <Cell key={item.mes} fill={item.fill} />
+                  ))}
+                  <LabelList content={renderBarLabel} />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
-        </button>
-      </div>
+        </section>
 
-      {/* Main Layout Area */}
-      <div className="flex flex-1 overflow-hidden relative w-full">
-        
-        {(showMobileDaily || showMobileFilters) && (
-          <div 
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 xl:hidden" 
-            onClick={() => { setShowMobileDaily(false); setShowMobileFilters(false); }} 
-          />
-        )}
-
-        {/* LEFT COLUMN: Daily Table */}
-        <div className={`
-          fixed xl:static inset-y-0 left-0 z-50 xl:z-auto
-          w-[280px] 2xl:w-[320px] shrink-0 bg-[#0a0a0a] border-r border-[#d4af37]/20 flex flex-col shadow-2xl
-          transition-transform duration-300 ease-in-out
-          ${showMobileDaily ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'}
-        `}>
-          <div className="bg-[#111] p-3 2xl:p-4 border-b border-[#d4af37]/20 flex justify-between items-center shrink-0">
-            <div className="flex flex-col min-w-0">
-              <h3 className="text-[#d4af37] text-xs 2xl:text-sm font-bold uppercase tracking-widest leading-tight">Desempenho Diário</h3>
-              <span className="text-[9px] 2xl:text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5 break-words">{filterLabel}</span>
-            </div>
-            <button onClick={() => setShowMobileDaily(false)} className="xl:hidden text-gray-400 hover:text-white p-1">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-          <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-[#d4af37]/30 flex-1">
-            <table className="w-full text-[10px] 2xl:text-xs text-right border-collapse">
-              <thead className="bg-[#161616] text-gray-400 sticky top-0 shadow-md z-10">
-                <tr>
-                  <th className="p-2.5 2xl:p-3 text-center border-b border-[#d4af37]/20">Dia</th>
-                  <th className="p-2.5 2xl:p-3 border-b border-[#d4af37]/20">Líquido</th>
-                  <th className="p-2.5 2xl:p-3 border-b border-[#d4af37]/20 hidden sm:table-cell">Acumulado</th>
-                  <th className="p-2.5 2xl:p-3 border-b border-[#d4af37]/20 text-center">Assert.</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {metrics.daily.map((d, i) => (
-                  <tr key={i} className="hover:bg-white/5 transition-colors">
-                    <td className="p-2.5 2xl:p-3 text-center font-bold text-gray-500 border-r border-white/5">{d.dia}</td>
-                    <td className={`p-2.5 2xl:p-3 font-black border-r border-white/5 ${d.liquido >= 0 ? 'text-emerald-500 bg-emerald-500/5' : 'text-rose-500 bg-rose-500/5'}`}>
-                      {formatCurrency(d.liquido)}
-                    </td>
-                    <td className="p-2.5 2xl:p-3 font-semibold text-gray-400 border-r border-white/5 hidden sm:table-cell">
-                      {formatCurrency(d.acumulado)}
-                    </td>
-                    <td className="p-2.5 2xl:p-3 text-center text-gray-400 font-bold">{d.assertividade}%</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* CENTER COLUMN */}
-        <div className="flex-1 flex flex-col overflow-y-auto overflow-x-hidden scrollbar-hide p-3 sm:p-4 lg:p-6 gap-4 sm:gap-5 w-full relative min-w-0">
-          
-          <div className="flex xl:hidden gap-3 w-full shrink-0">
-            <button 
-              onClick={() => setShowMobileDaily(true)} 
-              className="flex-1 bg-[#111] border border-[#d4af37]/30 text-[#d4af37] p-2.5 rounded-lg flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-md active:scale-95 transition-all"
-            >
-              <TableProperties className="w-4 h-4"/> Ver Diário
-            </button>
-            <button 
-              onClick={() => setShowMobileFilters(true)} 
-              className="flex-1 bg-[#111] border border-[#d4af37]/30 text-[#d4af37] p-2.5 rounded-lg flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest shadow-md active:scale-95 transition-all"
-            >
-              <Filter className="w-4 h-4"/> Filtros
-            </button>
-          </div>
-
-          {/* KPIs */}
-          <div className="flex flex-col gap-3 sm:gap-4 w-full shrink-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              <div className="sm:col-span-2 bg-[#111] border border-[#d4af37]/50 rounded-xl p-4 md:p-5 flex flex-col justify-center relative overflow-hidden shadow-[0_0_15px_rgba(212,175,55,0.1)] group">
-                <div className="absolute right-0 top-0 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-[#d4af37]/20 transition-all"></div>
-                <span className="text-[#d4af37] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1 relative z-10">Lucro Total Líquido</span>
-                <span className={`text-3xl xl:text-4xl font-black relative z-10 truncate ${metrics.kpis.lucro_liquido >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                  {formatCurrency(metrics.kpis.lucro_liquido || 0)}
-                </span>
-              </div>
-              
-              <div className="sm:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 flex flex-col justify-center">
-                <span className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">Lucro Bruto</span>
-                <span className="text-xl xl:text-2xl font-bold text-white truncate">{formatCurrency(metrics.kpis.lucro_bruto || 0)}</span>
-                <span className="text-[10px] text-rose-400 font-semibold mt-1 truncate">Losers: {formatCurrency(metrics.kpis.total_perdido || 0)}</span>
-              </div>
-
-              <div className="sm:col-span-1 flex flex-col gap-2 h-full">
-                <div className="flex-1 bg-rose-500/10 border border-rose-500/20 rounded-xl flex flex-col justify-center px-4 py-2">
-                  <span className="text-[9px] md:text-[10px] text-rose-500/70 font-bold uppercase tracking-wider">DrawDown Max</span>
-                  <span className="text-sm md:text-base font-bold text-rose-500 truncate">{formatCurrency(metrics.kpis.drawdown || 0)}</span>
-                </div>
-                <div className="flex-1 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex flex-col justify-center px-4 py-2">
-                  <span className="text-[9px] md:text-[10px] text-emerald-500/70 font-bold uppercase tracking-wider">Run-Up Max</span>
-                  <span className="text-sm md:text-base font-bold text-emerald-500 truncate">{formatCurrency(metrics.kpis.runup || 0)}</span>
-                </div>
-              </div>
+        <div id="tecnologia" className="grid scroll-mt-28 gap-6 lg:grid-cols-[1.02fr_0.98fr]">
+          <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
+            <div className="mb-5 flex items-center gap-3">
+              <Clock3 className="h-5 w-5 text-[#d4af37]" />
+              <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho por horário</p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-              <SmallKpi title="Operações" value={metrics.kpis.operacoes || 0} />
-              <SmallKpi title="Gains" value={metrics.kpis.gains || 0} color="text-emerald-500" />
-              <SmallKpi title="Loss" value={metrics.kpis.loss || 0} color="text-rose-500" />
-              <SmallKpi title="Assertividade" value={`${metrics.kpis.assertividade || 0}%`} color="text-[#d4af37]" />
-              <SmallKpi title="Dias Oper." value={metrics.kpis.dias_operados || 0} className="col-span-2 sm:col-span-1 lg:col-span-1" />
-            </div>
-          </div>
+            <div className="space-y-3">
+              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-b border-[#d4af37]/10 pb-3 text-xs uppercase tracking-[0.14em] text-[#8d8b84]">
+                <span>Horário</span>
+                <span>Lucro (R$)</span>
+                <span>% do lucro total</span>
+              </div>
 
-          {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 w-full">
-            <div className="lg:col-span-2 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl flex flex-col min-h-[300px] sm:min-h-[350px] min-w-0">
-              <h3 className="text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4"/> Evolução do Capital Real
-              </h3>
-              <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
-                {metrics.chart.length > 0 ? (
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={metrics.chart} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
-                      <defs>
-                        <linearGradient id="colorAcum2" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#d4af37" stopOpacity={0.5}/>
-                          <stop offset="95%" stopColor="#d4af37" stopOpacity={0}/>
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
-                      <XAxis dataKey="dia" stroke="#555" tick={{fill: '#888', fontSize: 10}} tickMargin={10} minTickGap={20} />
-                      <YAxis stroke="#555" tick={{fill: '#888', fontSize: 10}} tickFormatter={(val) => `R$${(val/1000).toFixed(0)}k`} width={55} />
-                      <RechartsTooltip 
-                        contentStyle={{ backgroundColor: '#111', border: '1px solid #d4af37', borderRadius: '4px', fontSize: '12px' }}
-                        itemStyle={{ color: '#fff' }}
-                        formatter={(value) => [formatCurrency(value), "Acumulado"]}
+              {(metrics.hourly ?? []).map((item) => (
+                <div key={item.horario} className="grid grid-cols-[1.1fr_0.9fr_1.1fr] items-center gap-4 text-sm text-[#f1ece1]">
+                  <span>{item.horario}</span>
+                  <span className="font-medium text-[#2fb45a]">{formatCurrency(item.liquido)}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
+                      <div
+                        className={`h-full rounded-full ${getProgressBarClass(item.percent)}`}
+                        style={{ width: `${clampProgressWidth(item.percent)}%` }}
                       />
-                      <Area type="monotone" dataKey="acumulado" stroke="#d4af37" strokeWidth={2.5} fillOpacity={1} fill="url(#colorAcum2)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <div className="h-full flex items-center justify-center text-gray-600 text-xs">Sem dados</div>
-                )}
+                    </div>
+                    <span className={`w-16 text-right ${getPercentTextClass(item.percent)}`}>{formatPercent(item.percent)}</span>
+                  </div>
+                </div>
+              ))}
+
+              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-t border-[#d4af37]/10 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
+                <span className="text-[#d4af37]">Total</span>
+                <span className="text-[#2fb45a]">{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
+                <span className="text-right text-[#2fb45a]">100%</span>
               </div>
             </div>
+          </section>
 
-            <div className="lg:col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-4 sm:p-5 shadow-2xl flex flex-col items-center justify-center relative min-h-[280px]">
-               <h3 className="text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-widest absolute top-4 left-4 sm:top-5 sm:left-5 flex items-center gap-2">
-                 <Percent className="w-4 h-4"/> Win Rate
-               </h3>
-               <div className="w-full h-[180px] sm:h-[220px] mt-6 min-w-0">
-                 <ResponsiveContainer width="100%" height="100%">
-                   <PieChart>
-                     <Pie data={pieData} cx="50%" cy="50%" innerRadius="65%" outerRadius="85%" paddingAngle={5} dataKey="value" stroke="none">
-                       {pieData.map((entry, index) => (<Cell key={`cell-${index}`} fill={entry.color} />))}
-                     </Pie>
-                     <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '4px', fontSize: '12px' }} itemStyle={{ color: '#fff' }} />
-                   </PieChart>
-                 </ResponsiveContainer>
-               </div>
-               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-6">
-                  <span className="text-3xl md:text-4xl font-black text-white">{metrics.kpis.assertividade || 0}%</span>
-               </div>
-               <div className="flex gap-4 mt-2 bg-[#111] py-1.5 px-3 sm:py-2 sm:px-4 rounded-full border border-white/5 shadow-inner">
-                 <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-gray-400 font-bold">
-                   <div className="w-2.5 h-2.5 rounded bg-emerald-500 shadow-[0_0_8px_#10b981]"></div> GAINS
-                 </div>
-                 <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-gray-400 font-bold">
-                   <div className="w-2.5 h-2.5 rounded bg-rose-500 shadow-[0_0_8px_#ef4444]"></div> LOSS
-                 </div>
-               </div>
-            </div>
-          </div>
+          <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Distribuição de lucro por MEP</p>
+            <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+              <div className="h-[260px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={pieData}
+                      dataKey="value"
+                      nameKey="label"
+                      innerRadius={68}
+                      outerRadius={98}
+                      paddingAngle={2}
+                      stroke="rgba(5,5,5,0.9)"
+                      strokeWidth={3}
+                    >
+                      {pieData.map((item) => (
+                        <Cell key={item.label} fill={item.color} />
+                      ))}
+                    </Pie>
+                    <RechartsTooltip
+                      contentStyle={{
+                        backgroundColor: '#0f131a',
+                        border: '1px solid rgba(212,175,55,0.25)',
+                        borderRadius: '14px',
+                        color: '#f7f2e8',
+                      }}
+                      formatter={(value) => formatCurrency(value)}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
 
-          {/* Bottom Tables */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full pb-8">
-            <SimpleTable title="Resumo Mensal" data={metrics.monthly} cols={['mes', 'liquido', 'percent', 'acumulado']} />
-            <SimpleTable title="Resumo por Horário" data={metrics.hourly} cols={['horario', 'liquido', 'percent']} />
-            <SimpleTable title="MEP Líquido" data={metrics.mep} cols={['mep', 'liquido', 'percent']} />
-          </div>
-
-        </div>
-
-        {/* RIGHT COLUMN: Filters */}
-        <div className={`
-          fixed xl:static inset-y-0 right-0 z-50 xl:z-auto
-          w-[250px] 2xl:w-[280px] shrink-0 bg-[#0a0a0a] border-l border-[#d4af37]/20 p-4 2xl:p-5 flex flex-col gap-5 shadow-2xl
-          overflow-y-auto scrollbar-hide transition-transform duration-300 ease-in-out
-          ${showMobileFilters ? 'translate-x-0' : 'translate-x-full xl:translate-x-0'}
-        `}>
-          <div className="flex items-center justify-between pb-3 border-b border-white/10 shrink-0">
-            <h3 className="text-[#d4af37] font-bold uppercase tracking-widest text-xs 2xl:text-sm flex items-center gap-2">
-               <Filter className="w-4 h-4"/> Filtros
-            </h3>
-            <div className="flex gap-2 items-center">
-              {(selectedAno.length > 0 || selectedMes.length > 0 || selectedDia.length > 0 || selectedPeriodo.length > 0) && (
-                <button onClick={() => { setSelectedAno([]); setSelectedMes([]); setSelectedDia([]); setSelectedPeriodo([]); }} className="text-[9px] uppercase font-bold text-rose-500 hover:text-rose-400 bg-rose-500/10 px-2 py-1 rounded transition-colors">Limpar</button>
-              )}
-              <button onClick={() => setShowMobileFilters(false)} className="xl:hidden text-gray-400 hover:text-white p-1 bg-white/5 rounded">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {metrics.available_years && metrics.available_years.length > 0 && (
-            <div>
-              <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Ano</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {metrics.available_years.map(a => (
-                  <button key={a} onClick={() => toggle(setSelectedAno)(a)}
-                    className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedAno.includes(a) ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
-                    {a}
-                  </button>
+              <div className="space-y-4">
+                {pieData.map((item) => (
+                  <div key={item.label} className="flex items-start justify-between gap-4 border-b border-[#d4af37]/10 pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="mt-1 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
+                      <div>
+                        <p className="text-lg text-[#f5efe2]">{item.label}</p>
+                        <p className="text-sm text-[#8d8b84]">{formatCurrency(item.liquido)}</p>
+                      </div>
+                    </div>
+                    <span className="text-2xl font-medium text-[#f5efe2]">{formatPercent(item.percent)}</span>
+                  </div>
                 ))}
               </div>
             </div>
-          )}
 
-          <div className="pt-3 border-t border-white/5">
-            <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Meses</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {meses.map(m => (
-                <button key={m} onClick={() => toggle(setSelectedMes)(m)}
-                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedMes.includes(m) ? 'bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
-                  {m.substring(0,3)}
-                </button>
-              ))}
+            <div className="mt-6 flex items-start gap-4 rounded-2xl border border-[#d4af37]/20 bg-[#11161f]/75 px-5 py-4">
+              <Star className="mt-1 h-6 w-6 shrink-0 text-[#d4af37]" />
+              <div>
+                <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Estratégia diversificada</p>
+                <p className="mt-1 text-sm leading-6 text-[#c9c3b7]">
+                  Alocação visualmente organizada entre os diferentes MEPs para manter a leitura estratégica clara e premium.
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div className="pt-3 border-t border-white/5">
-            <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Período</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {periodos.map(p => (
-                <button key={p} onClick={() => toggle(setSelectedPeriodo)(p)}
-                  className={`text-[10px] 2xl:text-xs py-1.5 2xl:py-2 px-1 rounded border transition-all uppercase font-bold tracking-wider ${selectedPeriodo.includes(p) ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white'}`}>
-                  {p}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="pt-3 border-t border-white/5 pb-8">
-            <h4 className="text-[9px] 2xl:text-[10px] text-gray-500 uppercase font-bold mb-2.5 tracking-widest">Dias do Mês</h4>
-            <div className="grid grid-cols-5 gap-1.5">
-              {dias.map(d => (
-                <button key={d} onClick={() => toggle(setSelectedDia)(d)}
-                  className={`text-[10px] 2xl:text-xs aspect-square flex items-center justify-center rounded border transition-all font-bold ${selectedDia.includes(d) ? 'bg-[#d4af37] text-black border-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.4)]' : 'bg-[#111] border-white/5 text-gray-400 hover:border-white/20 hover:text-white hover:bg-[#1a1a1a]'}`}>
-                  {d}
-                </button>
-              ))}
-            </div>
-          </div>
+          </section>
         </div>
 
+        <section id="filosofia" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
+          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Notas importantes</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <NoteCard
+              icon={<ShieldCheck className="h-7 w-7 text-[#d4af37]" />}
+              title="Rentabilidade passada não é garantia de futuro."
+              description="Resultados históricos não garantem resultados futuros. Operações no mercado financeiro envolvem riscos."
+            />
+            <NoteCard
+              icon={<Lock className="h-7 w-7 text-[#d4af37]" />}
+              title="Acesso restrito"
+              description="Informações detalhadas e análises aprofundadas podem ser liberadas após análise de perfil e interesse."
+            />
+            <NoteCard
+              icon={<BadgeCheck className="h-7 w-7 text-[#d4af37]" />}
+              title="Gestão profissional"
+              description="Estrutura desenhada para disciplina operacional, controle de risco e visão de longo prazo."
+            />
+          </div>
+        </section>
+
+        <section
+          id="gestao-risco"
+          className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6"
+        >
+          <div
+            id="acesso"
+            className="grid scroll-mt-28 gap-6 rounded-[24px] border border-[#d4af37]/18 bg-[radial-gradient(circle_at_right,_rgba(212,175,55,0.16),_transparent_34%),#0a0d13] p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6"
+          >
+            <div className="flex items-start gap-4">
+              <div className="rounded-full border border-[#d4af37]/25 bg-[#0d1118] p-3">
+                <Lock className="h-7 w-7 text-[#d4af37]" />
+              </div>
+              <div>
+                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Acesso exclusivo à estrutura completa</p>
+                <p className="mt-2 max-w-3xl text-base leading-7 text-[#c9c3b7]">
+                  Receba análises detalhadas, relatórios exclusivos e uma apresentação alinhada ao visual premium desta página.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-stretch gap-3">
+              <button
+                type="button"
+                onClick={() => setShowSaibaMais(true)}
+                className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110"
+              >
+                Solicitar acesso
+                <ArrowRight className="h-5 w-5" />
+              </button>
+              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Análise de perfil para liberação de acesso.</p>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* Modal Saiba Mais */}
       {showSaibaMais && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] flex items-center justify-center p-4">
-          <div className="bg-[#050505] border border-[#d4af37] rounded-xl w-full max-w-md p-6 md:p-8 relative shadow-[0_0_100px_rgba(212,175,55,0.2)] max-h-[95vh] overflow-y-auto scrollbar-hide">
-            <button onClick={() => setShowSaibaMais(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white bg-white/5 p-2 rounded-full transition-colors">
-              <X className="w-4 h-4 md:w-5 md:h-5" />
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md">
+          <div className="relative w-full max-w-md rounded-[28px] border border-[#d4af37]/40 bg-[#080b11] p-6 shadow-[0_0_100px_rgba(212,175,55,0.16)]">
+            <button
+              type="button"
+              onClick={() => setShowSaibaMais(false)}
+              className="absolute right-4 top-4 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-[#c9c3b7] transition hover:text-white"
+            >
+              Fechar
             </button>
-            
+
             {interestSent ? (
-              <div className="text-center py-8">
-                <CheckCircle className="w-16 h-16 md:w-20 md:h-20 text-[#d4af37] mx-auto mb-6 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
-                <h3 className="text-xl md:text-2xl font-black text-white mb-2 tracking-tight uppercase">RECEBEMOS SEU CONTATO!</h3>
-                <p className="text-gray-400 text-sm md:text-base">Um especialista da <strong className="text-[#d4af37]">Dominus Capital</strong> entrará em contato em breve.</p>
+              <div className="py-8 text-center">
+                <CheckCircle className="mx-auto mb-5 h-16 w-16 text-[#d4af37]" />
+                <h3 className="text-2xl font-semibold uppercase tracking-[0.12em] text-[#f7f2e8]">Recebemos seu contato</h3>
+                <p className="mt-3 text-sm leading-6 text-[#c9c3b7]">Um especialista da Dominus Capital entrará em contato em breve.</p>
               </div>
             ) : (
               <>
-                <div className="text-center mb-6 mt-2">
-                  <div className="inline-block p-3 md:p-4 rounded-full bg-[#d4af37]/10 mb-4 border border-[#d4af37]/30 shadow-inner">
-                    <Bot className="w-8 h-8 md:w-10 md:h-10 text-[#d4af37]" />
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-black text-[#d4af37] mb-1.5 uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">ROBÔ GÊNESIS</h3>
-                  <p className="text-gray-400 text-xs md:text-sm font-medium tracking-wide">Deixe seus dados abaixo para agendarmos uma apresentação exclusiva.</p>
+                <div className="mb-6 space-y-3 text-center">
+                  <p className="text-sm uppercase tracking-[0.18em] text-[#d4af37]">Solicitar acesso</p>
+                  <h3 className="text-3xl font-semibold uppercase tracking-[0.1em] text-[#f7f2e8]">Estrutura Dominus</h3>
+                  <p className="text-sm leading-6 text-[#c9c3b7]">Deixe seus dados abaixo para agendarmos uma apresentação exclusiva.</p>
                 </div>
-                
+
                 <form onSubmit={submitSaibaMais} className="space-y-4">
-                  <div>
-                    <input required type="text" placeholder="SEU NOME COMPLETO" value={interestForm.name} onChange={e => setInterestForm({...interestForm, name: e.target.value})}
-                      className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
-                  </div>
-                  <div>
-                    <input required type="email" placeholder="SEU MELHOR EMAIL" value={interestForm.email} onChange={e => setInterestForm({...interestForm, email: e.target.value})}
-                      className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
-                  </div>
-                  <div>
-                    <input required type="tel" placeholder="WHATSAPP Ex: (11) 99999-9999" value={interestForm.phone} onChange={handlePhoneChange}
-                      className="w-full bg-[#111] border border-white/10 rounded-lg p-3.5 md:p-4 text-white placeholder:text-gray-600 focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none uppercase text-xs font-bold tracking-widest transition-all shadow-inner" />
-                  </div>
-                  {submitError && (
-                    <p className="text-red-400 text-xs text-center font-bold">{submitError}</p>
-                  )}
-                  <button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-[#d4af37] via-[#f9e596] to-[#d4af37] text-black font-black text-sm md:text-base uppercase tracking-[0.2em] p-3.5 md:p-4 rounded-lg mt-4 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100">
-                    {isSubmitting ? 'ENVIANDO...' : 'QUERO CONHECER AGORA'}
+                  <input
+                    required
+                    type="text"
+                    placeholder="Seu nome completo"
+                    value={interestForm.name}
+                    onChange={(e) => setInterestForm((prev) => ({ ...prev, name: e.target.value }))}
+                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
+                  />
+                  <input
+                    required
+                    type="email"
+                    placeholder="Seu melhor e-mail"
+                    value={interestForm.email}
+                    onChange={(e) => setInterestForm((prev) => ({ ...prev, email: e.target.value }))}
+                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
+                  />
+                  <input
+                    required
+                    type="tel"
+                    placeholder="WhatsApp"
+                    value={interestForm.phone}
+                    onChange={handlePhoneChange}
+                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
+                  />
+
+                  {submitError && <p className="text-center text-sm text-red-400">{submitError}</p>}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-4 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Quero conhecer agora'}
                   </button>
                 </form>
               </>
@@ -443,57 +507,66 @@ export default function Dashboard() {
   );
 }
 
-function SmallKpi({ title, value, color = "text-white", className = "" }) {
+function SummaryMetric({ title, value, detail, positive = false, negative = false }) {
   return (
-    <div className={`col-span-1 bg-[#0a0a0a] border border-white/10 rounded-xl p-3 md:p-4 flex flex-col justify-center text-center shadow-md hover:border-white/20 transition-colors ${className}`}>
-      <span className="text-gray-500 text-[8px] md:text-[9px] font-bold uppercase tracking-widest mb-1">{title}</span>
-      <span className={`text-lg sm:text-xl md:text-2xl font-black truncate ${color}`}>{value}</span>
+    <div className="bg-[#0b1017] p-5">
+      <p className="text-xs uppercase tracking-[0.14em] text-[#8d8b84]">{title}</p>
+      <p className={`mt-3 text-[2rem] font-medium leading-none ${positive ? 'text-[#2fb45a]' : negative ? 'text-[#ef4444]' : 'text-[#f7f2e8]'}`}>
+        {value}
+      </p>
+      <p className="mt-3 text-sm text-[#c9c3b7]">{detail}</p>
     </div>
   );
 }
 
-function SimpleTable({ title, data, cols }) {
-  const colLabels = { mes: 'Mês/Ano', liquido: 'Lucro (R$)', percent: '% Capital', acumulado: 'Acumulado (R$)' };
-  if (!data) return null;
+function NoteCard({ icon, title, description }) {
   return (
-    <div className="bg-[#0a0a0a] rounded-xl border border-white/10 overflow-hidden flex flex-col h-[280px] shadow-xl min-w-0">
-      <div className="p-3 md:p-4 border-b border-[#d4af37]/20 bg-[#111] shrink-0">
-        <h3 className="font-bold text-[10px] md:text-xs text-[#d4af37] uppercase tracking-widest">{title}</h3>
-      </div>
-      <div className="overflow-x-auto overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-[#d4af37]/20 w-full">
-        <table className="w-full min-w-[220px] text-xs text-right border-collapse">
-          <thead className="bg-[#161616] text-gray-500 sticky top-0 shadow-sm z-10">
-            <tr>
-              {cols.map((c, i) => (
-                <th key={c} className={`p-2.5 md:p-3 font-bold uppercase tracking-wider border-b border-white/10 whitespace-nowrap ${i===0 ? 'text-left' : ''}`}>{colLabels[c] || c}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-white/5">
-            {data.map((row, i) => (
-              <tr key={i} className="hover:bg-[#111] transition-colors">
-                {cols.map((c, j) => {
-                  let val = row[c];
-                  if (c === 'liquido' || c === 'acumulado') {
-                    val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
-                  } else if (c === 'percent') {
-                    val = `${val}%`;
-                  }
-                  const isCurrency = c === 'liquido' || c === 'acumulado';
-                  const isPositive = isCurrency && row[c] >= 0;
-                  const isNegative = isCurrency && row[c] < 0;
-                  return (
-                    <td key={j} className={`p-2.5 md:p-3 border-r border-white/5 last:border-r-0 whitespace-nowrap ${j===0 ? 'text-left text-gray-400 font-bold capitalize' : ''} ${isPositive ? 'text-emerald-400 font-bold' : isNegative ? 'text-rose-400 font-bold' : 'text-gray-300'}`}>
-                      {val}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-            {data.length === 0 && <tr><td colSpan={cols.length} className="p-4 text-center text-gray-500">Sem dados</td></tr>}
-          </tbody>
-        </table>
+    <div className="flex gap-4 rounded-[24px] border border-[#d4af37]/14 bg-[#0b1017] p-5">
+      <div className="shrink-0">{icon}</div>
+      <div>
+        <p className="text-lg uppercase leading-7 text-[#f7f2e8]">{title}</p>
+        <p className="mt-2 text-sm leading-6 text-[#c9c3b7]">{description}</p>
       </div>
     </div>
   );
+}
+
+function renderBarLabel({ x, y, width, height, value }) {
+  if (typeof value !== 'number') return null;
+  const labelY = value >= 0 ? y + POSITIVE_LABEL_OFFSET_Y : y + height + NEGATIVE_LABEL_OFFSET_Y;
+  return (
+    <text x={x + width / 2} y={labelY} fill="#f7f2e8" fontSize="11" textAnchor="middle">
+      {formatPercent(value)}
+    </text>
+  );
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value || 0);
+}
+
+function formatPercent(value) {
+  return `${new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value || 0)}%`;
+}
+
+function capitalizeLabel(label) {
+  if (!label) return '';
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+function clampProgressWidth(percent) {
+  return Math.min(Math.max(Math.abs(percent), MIN_PROGRESS_WIDTH_PERCENT), 100);
+}
+
+function getProgressBarClass(percent) {
+  return percent >= 0
+    ? 'bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]'
+    : 'bg-[linear-gradient(90deg,#6f1d1b,#ef4444,#f87171)]';
+}
+
+function getPercentTextClass(percent) {
+  return percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#f87171]';
 }
