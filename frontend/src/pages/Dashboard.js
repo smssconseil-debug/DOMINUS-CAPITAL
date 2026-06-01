@@ -41,6 +41,7 @@ const MONTH_SHORT = {
 };
 
 const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
+const MIN_PROGRESS_WIDTH_PERCENT = 6;
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
@@ -79,7 +80,7 @@ export default function Dashboard() {
         const [monthName, year] = item.mes.split('/');
         return {
           ...item,
-          shortLabel: `${MONTH_SHORT[monthName] || monthName.slice(0, 3)}\/${year}`,
+          shortLabel: `${MONTH_SHORT[monthName] || monthName.slice(0, 3)}/${year}`,
           fill: item.percent >= 0 ? '#2fb45a' : '#ef4444',
         };
       }),
@@ -301,7 +302,7 @@ export default function Dashboard() {
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
                       <div
                         className="h-full rounded-full bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]"
-                        style={{ width: `${Math.min(Math.max(Math.abs(item.percent), 6), 100)}%` }}
+                        style={{ width: `${Math.min(Math.max(Math.abs(item.percent), MIN_PROGRESS_WIDTH_PERCENT), 100)}%` }}
                       />
                     </div>
                     <span className="w-14 text-right text-[#c9c3b7]">{formatPercent(item.percent)}</span>

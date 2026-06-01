@@ -65,7 +65,7 @@ function DominusLogo({ className = '' }) {
   return (
     <svg viewBox="0 0 64 64" aria-hidden="true" className={className}>
       <defs>
-        <linearGradient id="dominous-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="dominus-gold" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#f5d37a" />
           <stop offset="55%" stopColor="#d4af37" />
           <stop offset="100%" stopColor="#9c6f19" />
@@ -74,15 +74,15 @@ function DominusLogo({ className = '' }) {
       <path
         d="M32 4 50 10v18c0 13.16-7.97 24.91-20 29.52C17.97 52.91 10 41.16 10 28V10z"
         fill="none"
-        stroke="url(#dominous-gold)"
+        stroke="url(#dominus-gold)"
         strokeWidth="3"
         strokeLinejoin="round"
       />
-      <path d="M32 15v22" fill="none" stroke="url(#dominous-gold)" strokeWidth="3" strokeLinecap="round" />
-      <path d="M22 20v18" fill="none" stroke="url(#dominous-gold)" strokeWidth="3" strokeLinecap="round" />
-      <path d="M42 20v18" fill="none" stroke="url(#dominous-gold)" strokeWidth="3" strokeLinecap="round" />
-      <path d="M21 22l22 15" fill="none" stroke="url(#dominous-gold)" strokeWidth="3" strokeLinecap="round" />
-      <path d="M43 22 21 37" fill="none" stroke="url(#dominous-gold)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M32 15v22" fill="none" stroke="url(#dominus-gold)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M22 20v18" fill="none" stroke="url(#dominus-gold)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M42 20v18" fill="none" stroke="url(#dominus-gold)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M21 22l22 15" fill="none" stroke="url(#dominus-gold)" strokeWidth="3" strokeLinecap="round" />
+      <path d="M43 22 21 37" fill="none" stroke="url(#dominus-gold)" strokeWidth="3" strokeLinecap="round" />
     </svg>
   );
 }
