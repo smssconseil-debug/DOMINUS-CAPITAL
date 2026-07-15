@@ -172,6 +172,33 @@ export default function Dashboard() {
       <div className="pointer-events-none absolute inset-0" style={{ backgroundImage: DASHBOARD_BG_VIGNETTE }} />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
+
+        {/* Apresentação */}
+        <section className="rounded-[28px] border border-[#3a5878]/22 bg-[#071525]/95 p-6 shadow-[0_14px_40px_rgba(2,6,20,0.50)] lg:p-10">
+          <div className="mx-auto max-w-3xl space-y-5 text-center">
+            <p className="text-xs uppercase tracking-[0.28em] text-[#7890a8]" style={{ fontFamily: "'Cinzel', serif" }}>Gestão quantitativa de recursos</p>
+            <h2 className="text-3xl font-medium uppercase leading-tight text-[#e0e4f0] sm:text-4xl" style={{ fontFamily: "'Cinzel', serif" }}>
+              Algoritmo proprietário.<br />
+              <span className="text-[#9ab0cc]">Disciplina de execução.</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-8 text-[#8890a4]">
+              A Dominus Capital opera exclusivamente por meio do robô Gênesis — um algoritmo desenvolvido e calibrado com capital real, sem intervenção emocional. Nossa abordagem combina controle rigoroso de risco, diversificação por horário de mercado e consistência de resultados ao longo do tempo. Os dados que você vê abaixo são extraídos diretamente do histórico de operações: sem filtros, sem simulações.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6 pt-2">
+              {[
+                { label: 'Operação algorítmica', detail: '100% automatizada' },
+                { label: 'Capital real', detail: 'Histórico verificável' },
+                { label: 'Acesso restrito', detail: 'Por análise de perfil' },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center gap-1">
+                  <span className="text-xs uppercase tracking-[0.16em] text-[#9ab0cc]" style={{ fontFamily: "'Cinzel', serif" }}>{item.label}</span>
+                  <span className="text-xs text-[#607080]">{item.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#3a5878]/22 bg-[#071525]/95 p-6 shadow-[0_14px_40px_rgba(2,6,20,0.50)] lg:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
             <div className="flex flex-col justify-between gap-6">
@@ -212,10 +239,11 @@ export default function Dashboard() {
                   positive
                 />
                 <SummaryMetric
-                  title="Capital final"
-                  value={formatCurrency(summary.finalCapital)}
-                  detail="Resultado líquido"
-                  positive
+                  title="Drawdown máx. mensal"
+                  value={summary.worstMonth ? formatPercent(summary.worstMonth.percent) : '0,00%'}
+                  detail="Maior recuo em um único mês"
+                  negative={summary.worstMonth && summary.worstMonth.percent < 0}
+                  positive={summary.worstMonth && summary.worstMonth.percent >= 0}
                 />
                 <SummaryMetric
                   title="Melhor mês"
@@ -273,7 +301,7 @@ export default function Dashboard() {
                     borderRadius: '14px',
                     color: '#dce0ec',
                   }}
-                  formatter={(value, _name, item) => [formatPercent(value), `Lucro: ${formatCurrency(item.payload.liquido)}`]}
+                  formatter={(value) => [formatPercent(value), 'Retorno mensal']}
                   labelFormatter={(label) => `Mês: ${label}`}
                 />
                 <Bar dataKey="percent" radius={[4, 4, 0, 0]} maxBarSize={30}>
@@ -294,17 +322,15 @@ export default function Dashboard() {
               <p className="text-sm uppercase tracking-[0.2em] text-[#7890a8]" style={{ fontFamily: "'Cinzel', serif" }}>Desempenho por horário</p>
             </div>
 
-            <div className="space-y-3">
-              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-b border-[#3a5878]/22 pb-3 text-xs uppercase tracking-[0.14em] text-[#607080]">
+              <div className="space-y-3">
+              <div className="grid grid-cols-[1fr_1.5fr] gap-4 border-b border-[#3a5878]/22 pb-3 text-xs uppercase tracking-[0.14em] text-[#607080]">
                 <span>Horário</span>
-                <span>Lucro (R$)</span>
-                <span>% do lucro total</span>
+                <span>% do total</span>
               </div>
 
               {(metrics.hourly ?? []).map((item) => (
-                <div key={item.horario} className="grid grid-cols-[1.1fr_0.9fr_1.1fr] items-center gap-4 text-sm text-[#d8dce8]">
+                <div key={item.horario} className="grid grid-cols-[1fr_1.5fr] items-center gap-4 text-sm text-[#d8dce8]">
                   <span>{item.horario}</span>
-                  <span className="font-medium text-[#5aaa7c]">{formatCurrency(item.liquido)}</span>
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#132030]">
                       <div
@@ -317,9 +343,8 @@ export default function Dashboard() {
                 </div>
               ))}
 
-              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-t border-[#3a5878]/22 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
+              <div className="grid grid-cols-[1fr_1.5fr] gap-4 border-t border-[#3a5878]/22 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
                 <span className="text-[#9098b0]">Total</span>
-                <span className="text-[#5aaa7c]">{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
                 <span className="text-right text-[#5aaa7c]">100%</span>
               </div>
             </div>
@@ -352,7 +377,7 @@ export default function Dashboard() {
                         borderRadius: '14px',
                         color: '#dce0ec',
                       }}
-                      formatter={(value) => formatCurrency(value)}
+                     formatter={(value, name) => [formatPercent((value / (metrics.kpis?.lucro_liquido || 1)) * 100), name]}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -365,7 +390,6 @@ export default function Dashboard() {
                       <span className="mt-1 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
                       <div>
                         <p className="text-lg text-[#dce0ec]">{item.label}</p>
-                        <p className="text-sm text-[#607080]">{formatCurrency(item.liquido)}</p>
                       </div>
                     </div>
                     <span className="text-2xl font-medium text-[#dce0ec]">{formatPercent(item.percent)}</span>
