@@ -40,7 +40,7 @@ const MONTH_SHORT = {
   dezembro: 'Dez',
 };
 
-const MEP_COLORS = ['#5d7f76', '#6f8ea5', '#b48662', '#7c6e96', '#6f8752'];
+const MEP_COLORS = ['#79a89c', '#8eaec6', '#d6a67f', '#a492c0', '#9db77d'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
@@ -273,7 +273,7 @@ export default function Dashboard() {
                   formatter={(value, _name, item) => [formatPercent(value), `Lucro: ${formatCurrency(item.payload.liquido)}`]}
                   labelFormatter={(label) => `Mês: ${label}`}
                 />
-                <Bar dataKey="percent" radius={[4, 4, 2, 2]} maxBarSize={30}>
+                <Bar dataKey="percent" radius={[4, 4, 0, 0]} maxBarSize={30}>
                   {monthlyChartData.map((item) => (
                     <Cell key={item.mes} fill={item.fill} />
                   ))}
