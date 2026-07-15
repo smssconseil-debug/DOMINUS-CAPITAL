@@ -14,14 +14,14 @@ const navItems = [
 
 function App() {
   return (
-    <div className="dark min-h-screen bg-[#050505] text-[#f7f2e8] font-sans selection:bg-[#d4af37]/30">
-      <nav className="sticky top-0 z-50 border-b border-[#d4af37]/15 bg-[#050505]/95 backdrop-blur-xl">
+    <div className="dark min-h-screen bg-[#040e1c] text-[#dce0ec] font-sans selection:bg-[#4a6898]/30">
+      <nav className="sticky top-0 z-50 border-b border-[#3a5878]/20 bg-[#040e1c]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
           <a href="/#topo" className="flex items-center gap-3">
             <img src="/logo.png" alt="Dominus Capital" className="h-12 w-12 shrink-0 object-contain" />
             <div className="leading-none">
-              <div className="text-2xl font-semibold uppercase tracking-[0.18em] text-[#d4af37]">Dominus</div>
-              <div className="mt-1 text-sm uppercase tracking-[0.6em] text-[#f5efe2]">Capital</div>
+              <div className="text-2xl font-semibold uppercase tracking-[0.18em] text-[#dce0ec]" style={{ fontFamily: "'Cinzel', serif" }}>Dominus</div>
+              <div className="mt-1 text-sm uppercase tracking-[0.6em] text-[#9098b0]" style={{ fontFamily: "'Cinzel', serif" }}>Capital</div>
             </div>
           </a>
 
@@ -32,9 +32,10 @@ function App() {
                 href={`/#${item.id}`}
                 className={`border-b px-1 pb-3 text-sm uppercase tracking-[0.08em] transition-colors ${
                   item.active
-                    ? 'border-[#d4af37] text-[#d4af37]'
-                    : 'border-transparent text-[#f5efe2] hover:text-[#d4af37]'
+                    ? 'border-[#9ab0cc] text-[#9ab0cc]'
+                    : 'border-transparent text-[#9098b0] hover:text-[#dce0ec]'
                 }`}
+                style={{ fontFamily: "'Cinzel', serif" }}
               >
                 {item.label}
               </a>
@@ -43,7 +44,8 @@ function App() {
 
           <a
             href="/#acesso"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#d4af37]/40 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10 sm:text-sm"
+            className="inline-flex items-center gap-2 rounded-xl border border-[#4a6898]/50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#9ab0cc] transition hover:border-[#9ab0cc] hover:bg-[#4a6898]/15 sm:text-sm"
+            style={{ fontFamily: "'Cinzel', serif" }}
           >
             <Lock className="h-4 w-4" />
             Solicitar acesso
