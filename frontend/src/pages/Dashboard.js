@@ -183,7 +183,7 @@ export default function Dashboard() {
                     <span className="text-[#d4af37]">em cada decisão.</span>
                   </h1>
                   <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
-                    Apresentamos uma leitura institucional dos resultados, mantendo o visual premium da referência e usando os seus dados reais para cada gráfico, tabela e indicador.
+                    Cada número aqui é extraído diretamente do histórico real de operações — sem arredondamentos, sem filtros. O que você vê é o que aconteceu.
                   </p>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function Dashboard() {
                 <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
                 <div>
                   <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Dados reais, extraídos da operação.</p>
-                  <p className="mt-1 text-sm text-[#c9c3b7]">Atualizados automaticamente, auditáveis e apresentados com foco em clareza para investidores.</p>
+                  <p className="mt-1 text-sm text-[#c9c3b7]">Nenhum dado simulado. Todas as operações estão no histórico e podem ser verificadas pelo investidor.</p>
                 </div>
               </div>
             </div>
@@ -374,7 +374,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Estratégia diversificada</p>
                 <p className="mt-1 text-sm leading-6 text-[#c9c3b7]">
-                  Alocação visualmente organizada entre os diferentes MEPs para manter a leitura estratégica clara e premium.
+                  O robô Gênesis opera em múltiplos MEPs para reduzir exposição concentrada em um único horário ou padrão de mercado.
                 </p>
               </div>
             </div>
@@ -392,12 +392,12 @@ export default function Dashboard() {
             <NoteCard
               icon={<Lock className="h-7 w-7 text-[#d4af37]" />}
               title="Acesso restrito"
-              description="Informações detalhadas e análises aprofundadas podem ser liberadas após análise de perfil e interesse."
+              description="Os relatórios completos e as métricas detalhadas são compartilhados apenas com investidores que passam pela análise de perfil."
             />
             <NoteCard
               icon={<BadgeCheck className="h-7 w-7 text-[#d4af37]" />}
               title="Gestão profissional"
-              description="Estrutura desenhada para disciplina operacional, controle de risco e visão de longo prazo."
+              description="Cada parâmetro do robô foi definido e testado com capital real. Não operamos com configuração padrão de mercado."
             />
           </div>
         </section>
@@ -417,7 +417,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Acesso exclusivo à estrutura completa</p>
                 <p className="mt-2 max-w-3xl text-base leading-7 text-[#c9c3b7]">
-                  Receba análises detalhadas, relatórios exclusivos e uma apresentação alinhada ao visual premium desta página.
+                  Se os resultados fazem sentido pra você, o próximo passo é uma conversa direta. Vou apresentar a estrutura completa, tirar todas as dúvidas e ver se faz sentido para o seu perfil.
                 </p>
               </div>
             </div>
@@ -431,7 +431,7 @@ export default function Dashboard() {
                 Solicitar acesso
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Análise de perfil para liberação de acesso.</p>
+              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Sem compromisso. Só uma conversa.</p>
             </div>
           </div>
         </section>

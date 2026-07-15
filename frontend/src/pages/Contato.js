@@ -15,8 +15,7 @@ export default function Contato() {
           Fale com nosso time
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-gray-300 sm:text-base">
-          Escolha o canal preferido para tirar dúvidas, conhecer o robô Gênesis e entender qual plano combina com
-          seu perfil.
+          Antes de qualquer decisão, prefiro conversar. Se você tem dúvidas sobre o robô Gênesis, os planos ou como funciona a operação, é só chamar.
         </p>
       </section>
 
