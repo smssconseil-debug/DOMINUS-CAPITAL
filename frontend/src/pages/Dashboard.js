@@ -40,10 +40,12 @@ const MONTH_SHORT = {
   dezembro: 'Dez',
 };
 
-const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
+const MEP_COLORS = ['#5d7f76', '#6f8ea5', '#b48662', '#7c6e96', '#6f8752'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
+const BAR_POSITIVE_COLOR = '#4f7d61';
+const BAR_NEGATIVE_COLOR = '#b6625e';
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
@@ -83,7 +85,7 @@ export default function Dashboard() {
         return {
           ...item,
           shortLabel: `${MONTH_SHORT[monthName] || monthName.slice(0, 3)}/${year}`,
-          fill: item.percent >= 0 ? '#2fb45a' : '#ef4444',
+          fill: item.percent >= 0 ? BAR_POSITIVE_COLOR : BAR_NEGATIVE_COLOR,
         };
       }),
     [metrics.monthly],
@@ -162,25 +164,25 @@ export default function Dashboard() {
   };
 
   return (
-    <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.10),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.08),_transparent_30%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] [background-size:72px_72px]" />
+    <div id="topo" className="relative overflow-hidden bg-[#101418] text-[#efe9df]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(127,147,166,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(150,125,97,0.14),_transparent_32%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_45%,rgba(7,9,12,0.38)_100%)]" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
-        <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] lg:p-8">
+        <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-6 shadow-[0_14px_40px_rgba(5,7,10,0.35)] lg:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
             <div className="flex flex-col justify-between gap-6">
               <div className="space-y-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Resultados detalhados</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-[#b99d7b]">Resultados detalhados</p>
                 <div className="space-y-3">
                   <h1 className="max-w-xl text-4xl font-medium uppercase leading-[1.05] text-[#f8f4ec] sm:text-5xl lg:text-[4.25rem]">
                     Transparência
                     <br />
                     em cada dado.
                     <br />
-                    <span className="text-[#d4af37]">Consistência</span>
+                    <span className="text-[#c5a987]">Consistência</span>
                     <br />
-                    <span className="text-[#d4af37]">em cada decisão.</span>
+                    <span className="text-[#c5a987]">em cada decisão.</span>
                   </h1>
                   <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
                     Cada número aqui é extraído diretamente do histórico real de operações — sem arredondamentos, sem filtros. O que você vê é o que aconteceu.
@@ -188,18 +190,18 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#d4af37]/30 bg-[#11161f]/75 px-5 py-4">
-                <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
+              <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#7d8f9f]/30 bg-[#1a222b]/75 px-5 py-4">
+                <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#95abbf]" />
                 <div>
-                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Dados reais, extraídos da operação.</p>
+                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d1b497]">Dados reais, extraídos da operação.</p>
                   <p className="mt-1 text-sm text-[#c9c3b7]">Nenhum dado simulado. Todas as operações estão no histórico e podem ser verificadas pelo investidor.</p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-[#d4af37]/18 bg-[#090c12] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] lg:p-6">
-              <p className="mb-4 text-sm uppercase tracking-[0.18em] text-[#d4af37]">Desempenho acumulado</p>
-              <div className="grid gap-px overflow-hidden rounded-[22px] border border-[#d4af37]/14 bg-[#20170a]/40 md:grid-cols-2">
+            <div className="rounded-[28px] border border-[#7b8a95]/20 bg-[#171e27] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] lg:p-6">
+              <p className="mb-4 text-sm uppercase tracking-[0.18em] text-[#bfa07e]">Desempenho acumulado</p>
+              <div className="grid gap-px overflow-hidden rounded-[22px] border border-[#7b8a95]/16 bg-[#222a35]/45 md:grid-cols-2">
                 <SummaryMetric
                   title="Crescimento total"
                   value={formatPercent(summary.totalGrowth)}
@@ -244,13 +246,13 @@ export default function Dashboard() {
 
         <section
           id="resultados"
-          className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
+          className="scroll-mt-28 rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-5 shadow-[0_14px_40px_rgba(5,7,10,0.3)] lg:p-6"
         >
-          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho mensal (%)</p>
+          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#bfa07e]">Desempenho mensal (%)</p>
           <div className="h-[320px] w-full sm:h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyChartData} margin={{ top: 24, right: 8, left: -18, bottom: 8 }}>
-                <CartesianGrid stroke="#1f232c" vertical={false} />
+                <CartesianGrid stroke="#2a333f" vertical={false} />
                 <XAxis dataKey="shortLabel" tick={{ fill: '#c9c3b7', fontSize: 12 }} axisLine={false} tickLine={false} />
                 <YAxis
                   domain={monthlyDomain}
@@ -261,17 +263,17 @@ export default function Dashboard() {
                   width={52}
                 />
                 <RechartsTooltip
-                  cursor={{ fill: 'rgba(212,175,55,0.05)' }}
+                  cursor={{ fill: 'rgba(139,160,180,0.10)' }}
                   contentStyle={{
-                    backgroundColor: '#0f131a',
-                    border: '1px solid rgba(212,175,55,0.25)',
+                    backgroundColor: '#171e27',
+                    border: '1px solid rgba(126,146,164,0.4)',
                     borderRadius: '14px',
-                    color: '#f7f2e8',
+                    color: '#efe9df',
                   }}
                   formatter={(value, _name, item) => [formatPercent(value), `Lucro: ${formatCurrency(item.payload.liquido)}`]}
                   labelFormatter={(label) => `Mês: ${label}`}
                 />
-                <Bar dataKey="percent" radius={[6, 6, 0, 0]} maxBarSize={34}>
+                <Bar dataKey="percent" radius={[4, 4, 2, 2]} maxBarSize={30}>
                   {monthlyChartData.map((item) => (
                     <Cell key={item.mes} fill={item.fill} />
                   ))}
@@ -283,14 +285,14 @@ export default function Dashboard() {
         </section>
 
         <div id="tecnologia" className="grid scroll-mt-28 gap-6 lg:grid-cols-[1.02fr_0.98fr]">
-          <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
+          <section className="rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-5 shadow-[0_14px_40px_rgba(5,7,10,0.3)] lg:p-6">
             <div className="mb-5 flex items-center gap-3">
-              <Clock3 className="h-5 w-5 text-[#d4af37]" />
-              <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho por horário</p>
+              <Clock3 className="h-5 w-5 text-[#95abbf]" />
+              <p className="text-sm uppercase tracking-[0.2em] text-[#bfa07e]">Desempenho por horário</p>
             </div>
 
             <div className="space-y-3">
-              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-b border-[#d4af37]/10 pb-3 text-xs uppercase tracking-[0.14em] text-[#8d8b84]">
+              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-b border-[#7b8a95]/20 pb-3 text-xs uppercase tracking-[0.14em] text-[#9098a0]">
                 <span>Horário</span>
                 <span>Lucro (R$)</span>
                 <span>% do lucro total</span>
@@ -299,9 +301,9 @@ export default function Dashboard() {
               {(metrics.hourly ?? []).map((item) => (
                 <div key={item.horario} className="grid grid-cols-[1.1fr_0.9fr_1.1fr] items-center gap-4 text-sm text-[#f1ece1]">
                   <span>{item.horario}</span>
-                  <span className="font-medium text-[#2fb45a]">{formatCurrency(item.liquido)}</span>
+                  <span className="font-medium text-[#7ab58f]">{formatCurrency(item.liquido)}</span>
                   <div className="flex items-center gap-3">
-                    <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
+                    <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#2a3138]">
                       <div
                         className={`h-full rounded-full ${getProgressBarClass(item.percent)}`}
                         style={{ width: `${clampProgressWidth(item.percent)}%` }}
@@ -312,16 +314,16 @@ export default function Dashboard() {
                 </div>
               ))}
 
-              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-t border-[#d4af37]/10 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
-                <span className="text-[#d4af37]">Total</span>
-                <span className="text-[#2fb45a]">{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
-                <span className="text-right text-[#2fb45a]">100%</span>
+              <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-t border-[#7b8a95]/20 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
+                <span className="text-[#d1b497]">Total</span>
+                <span className="text-[#7ab58f]">{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
+                <span className="text-right text-[#7ab58f]">100%</span>
               </div>
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
-            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Distribuição de lucro por MEP</p>
+          <section className="rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-5 shadow-[0_14px_40px_rgba(5,7,10,0.3)] lg:p-6">
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#bfa07e]">Distribuição de lucro por MEP</p>
             <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
               <div className="h-[260px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -342,10 +344,10 @@ export default function Dashboard() {
                     </Pie>
                     <RechartsTooltip
                       contentStyle={{
-                        backgroundColor: '#0f131a',
-                        border: '1px solid rgba(212,175,55,0.25)',
+                        backgroundColor: '#171e27',
+                        border: '1px solid rgba(126,146,164,0.4)',
                         borderRadius: '14px',
-                        color: '#f7f2e8',
+                        color: '#efe9df',
                       }}
                       formatter={(value) => formatCurrency(value)}
                     />
@@ -369,10 +371,10 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-start gap-4 rounded-2xl border border-[#d4af37]/20 bg-[#11161f]/75 px-5 py-4">
-              <Star className="mt-1 h-6 w-6 shrink-0 text-[#d4af37]" />
+            <div className="mt-6 flex items-start gap-4 rounded-2xl border border-[#7d8f9f]/30 bg-[#1a222b]/75 px-5 py-4">
+              <Star className="mt-1 h-6 w-6 shrink-0 text-[#95abbf]" />
               <div>
-                <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Estratégia diversificada</p>
+                <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d1b497]">Estratégia diversificada</p>
                 <p className="mt-1 text-sm leading-6 text-[#c9c3b7]">
                   O robô Gênesis opera em múltiplos MEPs para reduzir exposição concentrada em um único horário ou padrão de mercado.
                 </p>
@@ -381,8 +383,8 @@ export default function Dashboard() {
           </section>
         </div>
 
-        <section id="filosofia" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
-          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Notas importantes</p>
+        <section id="filosofia" className="scroll-mt-28 rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-5 shadow-[0_14px_40px_rgba(5,7,10,0.3)] lg:p-6">
+          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#bfa07e]">Notas importantes</p>
           <div className="grid gap-4 md:grid-cols-3">
             <NoteCard
               icon={<ShieldCheck className="h-7 w-7 text-[#d4af37]" />}
@@ -404,18 +406,18 @@ export default function Dashboard() {
 
         <section
           id="gestao-risco"
-          className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6"
+          className="scroll-mt-28 rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-5 shadow-[0_14px_40px_rgba(5,7,10,0.3)] lg:p-6"
         >
           <div
             id="acesso"
-            className="grid scroll-mt-28 gap-6 rounded-[24px] border border-[#d4af37]/18 bg-[radial-gradient(circle_at_right,_rgba(212,175,55,0.16),_transparent_34%),#0a0d13] p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6"
+            className="grid scroll-mt-28 gap-6 rounded-[24px] border border-[#7d8f9f]/26 bg-[radial-gradient(circle_at_right,_rgba(144,163,181,0.16),_transparent_34%),#151c24] p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6"
           >
             <div className="flex items-start gap-4">
-              <div className="rounded-full border border-[#d4af37]/25 bg-[#0d1118] p-3">
-                <Lock className="h-7 w-7 text-[#d4af37]" />
+              <div className="rounded-full border border-[#7d8f9f]/28 bg-[#1a222b] p-3">
+                <Lock className="h-7 w-7 text-[#95abbf]" />
               </div>
               <div>
-                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Acesso exclusivo à estrutura completa</p>
+                <p className="text-2xl uppercase tracking-[0.12em] text-[#d1b497]">Acesso exclusivo à estrutura completa</p>
                 <p className="mt-2 max-w-3xl text-base leading-7 text-[#c9c3b7]">
                   Se os resultados fazem sentido pra você, o próximo passo é uma conversa direta. Vou apresentar a estrutura completa, tirar todas as dúvidas e ver se faz sentido para o seu perfil.
                 </p>
@@ -426,7 +428,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setShowSaibaMais(true)}
-                className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110"
+                className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(90deg,#7b95ab,#a7b1bf,#c4b49b)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1d1e20] transition hover:brightness-105"
               >
                 Solicitar acesso
                 <ArrowRight className="h-5 w-5" />
@@ -509,9 +511,9 @@ export default function Dashboard() {
 
 function SummaryMetric({ title, value, detail, positive = false, negative = false }) {
   return (
-    <div className="bg-[#0b1017] p-5">
-      <p className="text-xs uppercase tracking-[0.14em] text-[#8d8b84]">{title}</p>
-      <p className={`mt-3 text-[2rem] font-medium leading-none ${positive ? 'text-[#2fb45a]' : negative ? 'text-[#ef4444]' : 'text-[#f7f2e8]'}`}>
+    <div className="bg-[#1a222d] p-5">
+      <p className="text-xs uppercase tracking-[0.14em] text-[#9098a0]">{title}</p>
+      <p className={`mt-3 text-[2rem] font-medium leading-none ${positive ? 'text-[#7ab58f]' : negative ? 'text-[#d78682]' : 'text-[#efe9df]'}`}>
         {value}
       </p>
       <p className="mt-3 text-sm text-[#c9c3b7]">{detail}</p>
@@ -521,10 +523,10 @@ function SummaryMetric({ title, value, detail, positive = false, negative = fals
 
 function NoteCard({ icon, title, description }) {
   return (
-    <div className="flex gap-4 rounded-[24px] border border-[#d4af37]/14 bg-[#0b1017] p-5">
+    <div className="flex gap-4 rounded-[24px] border border-[#7d8f9f]/25 bg-[#1a222d] p-5">
       <div className="shrink-0">{icon}</div>
       <div>
-        <p className="text-lg uppercase leading-7 text-[#f7f2e8]">{title}</p>
+        <p className="text-lg uppercase leading-7 text-[#efe9df]">{title}</p>
         <p className="mt-2 text-sm leading-6 text-[#c9c3b7]">{description}</p>
       </div>
     </div>
@@ -535,7 +537,7 @@ function renderBarLabel({ x, y, width, height, value }) {
   if (typeof value !== 'number') return null;
   const labelY = value >= 0 ? y + POSITIVE_LABEL_OFFSET_Y : y + height + NEGATIVE_LABEL_OFFSET_Y;
   return (
-    <text x={x + width / 2} y={labelY} fill="#f7f2e8" fontSize="11" textAnchor="middle">
+    <text x={x + width / 2} y={labelY} fill="#d9d4cb" fontSize="11" textAnchor="middle">
       {formatPercent(value)}
     </text>
   );
@@ -562,11 +564,9 @@ function clampProgressWidth(percent) {
 }
 
 function getProgressBarClass(percent) {
-  return percent >= 0
-    ? 'bg-[linear-gradient(90deg,#8c631d,#d4af37,#f0cd73)]'
-    : 'bg-[linear-gradient(90deg,#6f1d1b,#ef4444,#f87171)]';
+  return percent >= 0 ? 'bg-[#5c866b]' : 'bg-[#a76461]';
 }
 
 function getPercentTextClass(percent) {
-  return percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#f87171]';
+  return percent >= 0 ? 'text-[#c9c3b7]' : 'text-[#d99591]';
 }
