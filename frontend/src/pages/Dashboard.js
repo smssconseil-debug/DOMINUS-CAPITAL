@@ -46,6 +46,9 @@ const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
 const BAR_POSITIVE_COLOR = '#4f7d61';
 const BAR_NEGATIVE_COLOR = '#b6625e';
+const DASHBOARD_BG_ACCENT =
+  'radial-gradient(circle at top left, rgba(127,147,166,0.18), transparent 35%), radial-gradient(circle at bottom right, rgba(150,125,97,0.14), transparent 32%)';
+const DASHBOARD_BG_VIGNETTE = 'radial-gradient(circle at center, transparent 45%, rgba(7,9,12,0.38) 100%)';
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
@@ -165,8 +168,8 @@ export default function Dashboard() {
 
   return (
     <div id="topo" className="relative overflow-hidden bg-[#101418] text-[#efe9df]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(127,147,166,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(150,125,97,0.14),_transparent_32%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_45%,rgba(7,9,12,0.38)_100%)]" />
+      <div className="pointer-events-none absolute inset-0" style={{ backgroundImage: DASHBOARD_BG_ACCENT }} />
+      <div className="pointer-events-none absolute inset-0" style={{ backgroundImage: DASHBOARD_BG_VIGNETTE }} />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
         <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#7b8a95]/20 bg-[#131920]/95 p-6 shadow-[0_14px_40px_rgba(5,7,10,0.35)] lg:p-8">
