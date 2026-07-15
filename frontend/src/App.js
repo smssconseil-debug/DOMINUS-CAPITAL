@@ -14,7 +14,7 @@ const navItems = [
 
 function App() {
   return (
-    <div className="dark min-h-screen bg-[#040e1c] text-[#dce0ec] font-sans selection:bg-[#4a6898]/30">
+    <div className="dark min-h-screen velvet-bg text-[#dce0ec] font-sans selection:bg-[#4a6898]/30">
       <nav className="sticky top-0 z-50 border-b border-[#3a5878]/20 bg-[#040e1c]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
           <a href="/#topo" className="flex items-center gap-3">
