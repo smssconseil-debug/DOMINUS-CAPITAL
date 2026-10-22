@@ -1,6 +1,13 @@
-# DOMINUS CAPITAL — Dashboard
+# DOMINUS CAPITAL — Robôs e Resultados
 
-Site estático React hospedado no **Vercel**, com atualização automática de dados via **Google Sheets → GitHub Actions**.
+Site estático React hospedado no **Vercel**, com catálogo de robôs por assinatura, serviços opcionais e atualização automática de dados via **Google Sheets → GitHub Actions**.
+
+## Catálogo e interesse comercial
+
+- O catálogo apresenta o robô Gênesis. Novos produtos podem ser incluídos na lista `robots` em `frontend/src/pages/Dashboard.js`.
+- Cada robô é apresentado como uma assinatura individual; suporte prioritário e consultoria são serviços opcionais separados.
+- Os botões de interesse enviam nome, email, WhatsApp e produto/serviço selecionado para o Formspree. Configure `REACT_APP_FORMSPREE_URL` nas variáveis de ambiente do frontend e no Vercel para habilitar o formulário.
+- Preços, periodicidade e checkout ainda precisam ser definidos; o site não processa pagamentos.
 
 ---
 

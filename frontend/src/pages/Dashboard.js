@@ -15,9 +15,12 @@ import {
 import {
   ArrowRight,
   BadgeCheck,
+  Bot,
   CheckCircle,
   Clock3,
+  Headphones,
   Lock,
+  MessagesSquare,
   ShieldCheck,
   Star,
 } from 'lucide-react';
@@ -44,10 +47,17 @@ const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
+const robots = [
+  {
+    name: 'Gênesis',
+    description:
+      'Conheça o robô Gênesis e solicite informações sobre a estratégia, os requisitos de uso e a assinatura individual.',
+  },
+];
 
 export default function Dashboard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
-  const [interestForm, setInterestForm] = useState({ email: '', phone: '', name: '' });
+  const [interestForm, setInterestForm] = useState({ email: '', phone: '', name: '', interest: '' });
   const [interestSent, setInterestSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -62,7 +72,7 @@ export default function Dashboard() {
     const worstMonth = monthly.reduce((worst, item) => (!worst || item.percent < worst.percent ? item : worst), null);
     const finalCapital = INITIAL_CAPITAL + (metrics.kpis?.lucro_liquido ?? 0);
     const totalGrowth = INITIAL_CAPITAL > 0 ? ((metrics.kpis?.lucro_liquido ?? 0) / INITIAL_CAPITAL) * 100 : 0;
-    const capitalProtected = finalCapital >= INITIAL_CAPITAL ? 100 : Math.max(0, (finalCapital / INITIAL_CAPITAL) * 100);
+    const capitalVsInitial = INITIAL_CAPITAL > 0 ? (finalCapital / INITIAL_CAPITAL) * 100 : 0;
 
     return {
       finalCapital,
@@ -71,7 +81,7 @@ export default function Dashboard() {
       totalMonths,
       bestMonth,
       worstMonth,
-      capitalProtected,
+      capitalVsInitial,
       consistency: totalMonths > 0 ? (positiveMonths / totalMonths) * 100 : 0,
     };
   }, [metrics]);
@@ -111,7 +121,7 @@ export default function Dashboard() {
     e.preventDefault();
 
     if (!process.env.REACT_APP_FORMSPREE_URL) {
-      setSubmitError('Formulário não configurado. Entre em contato diretamente.');
+      setSubmitError('Este formulário ainda não está configurado. Tente novamente mais tarde.');
       return;
     }
 
@@ -123,10 +133,11 @@ export default function Dashboard() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          subject: `Novo lead Dominus Capital: ${interestForm.name}`,
+          subject: `Novo lead Dominus Capital: ${interestForm.name} — ${interestForm.interest}`,
           nome: interestForm.name,
           email: interestForm.email,
           whatsapp: interestForm.phone,
+          interesse: interestForm.interest,
         }),
       });
 
@@ -139,7 +150,7 @@ export default function Dashboard() {
       setTimeout(() => {
         setShowSaibaMais(false);
         setInterestSent(false);
-        setInterestForm({ email: '', phone: '', name: '' });
+        setInterestForm({ email: '', phone: '', name: '', interest: '' });
       }, 3000);
     } catch (error) {
       console.error('Erro ao enviar formulário:', error);
@@ -161,38 +172,59 @@ export default function Dashboard() {
     setInterestForm((prev) => ({ ...prev, phone: formatted }));
   };
 
+  const openInterestForm = (interest) => {
+    setInterestForm({ email: '', phone: '', name: '', interest });
+    setSubmitError('');
+    setShowSaibaMais(true);
+  };
+
   return (
     <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.10),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.08),_transparent_30%)]" />
       <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] [background-size:72px_72px]" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
-        <section id="estrutura" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] lg:p-8">
+        <section id="inicio" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] lg:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
             <div className="flex flex-col justify-between gap-6">
               <div className="space-y-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Resultados detalhados</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Tecnologia para operar com disciplina</p>
                 <div className="space-y-3">
                   <h1 className="max-w-xl text-4xl font-medium uppercase leading-[1.05] text-[#f8f4ec] sm:text-5xl lg:text-[4.25rem]">
-                    Transparência
+                    Estratégias
                     <br />
-                    em cada dado.
+                    automatizadas.
                     <br />
-                    <span className="text-[#d4af37]">Consistência</span>
+                    <span className="text-[#d4af37]">Escolha seu</span>
                     <br />
-                    <span className="text-[#d4af37]">em cada decisão.</span>
+                    <span className="text-[#d4af37]">próximo robô.</span>
                   </h1>
                   <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
-                    Apresentamos uma leitura institucional dos resultados, mantendo o visual premium da referência e usando os seus dados reais para cada gráfico, tabela e indicador.
+                    Conheça os robôs da Dominus Capital. Cada produto tem sua própria assinatura, com serviços opcionais disponíveis separadamente.
                   </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="#produtos"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-[#16130b] transition hover:brightness-110"
+                  >
+                    Explorar robôs
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="#resultados"
+                    className="inline-flex items-center rounded-xl border border-white/15 px-5 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-[#f5efe2] transition hover:border-[#d4af37]/60 hover:text-[#d4af37]"
+                  >
+                    Ver resultados
+                  </a>
                 </div>
               </div>
 
               <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#d4af37]/30 bg-[#11161f]/75 px-5 py-4">
                 <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
                 <div>
-                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Dados reais, extraídos da operação.</p>
-                  <p className="mt-1 text-sm text-[#c9c3b7]">Atualizados automaticamente, auditáveis e apresentados com foco em clareza para investidores.</p>
+                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Informação clara antes de decidir.</p>
+                  <p className="mt-1 text-sm text-[#c9c3b7]">Consulte o histórico disponível, conheça os riscos e avalie cada produto com cuidado.</p>
                 </div>
               </div>
             </div>
@@ -231,14 +263,92 @@ export default function Dashboard() {
                   positive
                 />
                 <SummaryMetric
-                  title="Capital protegido"
-                  value={formatPercent(summary.capitalProtected)}
-                  detail={summary.capitalProtected === 100 ? 'Sem perda do capital inicial' : 'Abaixo do capital inicial'}
-                  positive={summary.capitalProtected === 100}
-                  negative={summary.capitalProtected < 100}
+                  title="Capital vs. inicial"
+                  value={formatPercent(summary.capitalVsInitial)}
+                  detail={summary.capitalVsInitial >= 100 ? 'Igual ou acima do capital inicial' : 'Abaixo do capital inicial'}
+                  positive={summary.capitalVsInitial >= 100}
+                  negative={summary.capitalVsInitial < 100}
                 />
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="produtos" className="scroll-mt-28 space-y-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Catálogo Dominus</p>
+              <h2 className="mt-2 text-3xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-4xl">Robôs de trading</h2>
+              <p className="mt-2 max-w-2xl text-base leading-7 text-[#c9c3b7]">
+                Assine cada robô individualmente. Consulte disponibilidade, funcionamento e condições antes de contratar.
+              </p>
+            </div>
+            <span className="w-fit rounded-full border border-[#d4af37]/25 bg-[#11161f] px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-[#d4af37]">
+              Assinaturas por produto
+            </span>
+          </div>
+
+          <div className="grid gap-4">
+            {robots.map((robot) => (
+              <article
+                key={robot.name}
+                className="grid gap-6 rounded-[28px] border border-[#d4af37]/25 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.12),_transparent_34%),#080b11] p-6 shadow-[0_0_60px_rgba(0,0,0,0.3)] lg:grid-cols-[1fr_auto] lg:items-center lg:p-8"
+              >
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="rounded-2xl border border-[#d4af37]/25 bg-[#11161f] p-3">
+                      <Bot className="h-7 w-7 text-[#d4af37]" />
+                    </div>
+                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-emerald-300">
+                      Produto Dominus
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-3xl font-semibold uppercase tracking-[0.12em] text-[#f8f4ec]">{robot.name}</h3>
+                  <p className="mt-3 max-w-2xl text-base leading-7 text-[#c9c3b7]">{robot.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.1em] text-[#c9c3b7]">
+                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Assinatura individual</span>
+                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Condições sob consulta</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3 lg:min-w-52">
+                  <button
+                    type="button"
+                    onClick={() => openInterestForm(`Assinatura do robô ${robot.name}`)}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#16130b] transition hover:brightness-110"
+                  >
+                    Tenho interesse
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                  <p className="max-w-xs text-center text-xs leading-5 text-[#8d8b84]">
+                    Valores e periodicidade serão informados antes da contratação.
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="servicos" className="scroll-mt-28 space-y-5">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Contratação opcional</p>
+            <h2 className="mt-2 text-2xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-3xl">Serviços à parte</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-[#c9c3b7]">
+              Os serviços são independentes das assinaturas dos robôs. Converse com a equipe para conhecer formatos e disponibilidade.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <ServiceCard
+              icon={<Headphones className="h-6 w-6 text-[#d4af37]" />}
+              title="Suporte prioritário"
+              description="Atendimento adicional para clientes que precisam de um canal de suporte prioritário."
+              onClick={() => openInterestForm('Serviço adicional: suporte prioritário')}
+            />
+            <ServiceCard
+              icon={<MessagesSquare className="h-6 w-6 text-[#d4af37]" />}
+              title="Consultoria"
+              description="Converse com a equipe sobre uma consultoria independente da assinatura dos robôs."
+              onClick={() => openInterestForm('Serviço adicional: consultoria')}
+            />
           </div>
         </section>
 
@@ -246,7 +356,10 @@ export default function Dashboard() {
           id="resultados"
           className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
         >
-          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho mensal (%)</p>
+          <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Histórico operacional</p>
+          <p className="mb-5 mt-2 max-w-3xl text-sm leading-6 text-[#c9c3b7]">
+            Dados históricos da operação disponibilizada. Resultados passados não garantem resultados futuros, e operar no mercado financeiro envolve riscos.
+          </p>
           <div className="h-[320px] w-full sm:h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyChartData} margin={{ top: 24, right: 8, left: -18, bottom: 8 }}>
@@ -415,9 +528,9 @@ export default function Dashboard() {
                 <Lock className="h-7 w-7 text-[#d4af37]" />
               </div>
               <div>
-                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Acesso exclusivo à estrutura completa</p>
+                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Fale com a Dominus</p>
                 <p className="mt-2 max-w-3xl text-base leading-7 text-[#c9c3b7]">
-                  Receba análises detalhadas, relatórios exclusivos e uma apresentação alinhada ao visual premium desta página.
+                  Tire dúvidas sobre os robôs, assinaturas individuais e serviços opcionais disponíveis.
                 </p>
               </div>
             </div>
@@ -425,13 +538,13 @@ export default function Dashboard() {
             <div className="flex flex-col items-stretch gap-3">
               <button
                 type="button"
-                onClick={() => setShowSaibaMais(true)}
+                onClick={() => openInterestForm('Informações sobre produtos e serviços Dominus')}
                 className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110"
               >
-                Solicitar acesso
+                Falar com a equipe
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Análise de perfil para liberação de acesso.</p>
+              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Sem compromisso de contratação.</p>
             </div>
           </div>
         </section>
@@ -457,9 +570,12 @@ export default function Dashboard() {
             ) : (
               <>
                 <div className="mb-6 space-y-3 text-center">
-                  <p className="text-sm uppercase tracking-[0.18em] text-[#d4af37]">Solicitar acesso</p>
-                  <h3 className="text-3xl font-semibold uppercase tracking-[0.1em] text-[#f7f2e8]">Estrutura Dominus</h3>
-                  <p className="text-sm leading-6 text-[#c9c3b7]">Deixe seus dados abaixo para agendarmos uma apresentação exclusiva.</p>
+                  <p className="text-sm uppercase tracking-[0.18em] text-[#d4af37]">Fale com a equipe</p>
+                  <h3 className="text-3xl font-semibold uppercase tracking-[0.1em] text-[#f7f2e8]">Vamos conversar</h3>
+                  <p className="text-sm leading-6 text-[#c9c3b7]">
+                    {interestForm.interest ? `Interesse: ${interestForm.interest}. ` : ''}
+                    Deixe seus dados e entraremos em contato para apresentar as informações.
+                  </p>
                 </div>
 
                 <form onSubmit={submitSaibaMais} className="space-y-4">
@@ -487,6 +603,7 @@ export default function Dashboard() {
                     onChange={handlePhoneChange}
                     className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
                   />
+                  <input type="hidden" name="interesse" value={interestForm.interest} />
 
                   {submitError && <p className="text-center text-sm text-red-400">{submitError}</p>}
 
@@ -528,6 +645,29 @@ function NoteCard({ icon, title, description }) {
         <p className="mt-2 text-sm leading-6 text-[#c9c3b7]">{description}</p>
       </div>
     </div>
+  );
+}
+
+function ServiceCard({ icon, title, description, onClick }) {
+  return (
+    <article className="flex flex-col justify-between gap-5 rounded-[24px] border border-[#d4af37]/15 bg-[#080b11] p-5 sm:flex-row sm:items-center sm:p-6">
+      <div className="flex gap-4">
+        <div className="h-fit rounded-xl border border-[#d4af37]/20 bg-[#11161f] p-3">{icon}</div>
+        <div>
+          <h3 className="text-lg font-semibold uppercase tracking-[0.08em] text-[#f7f2e8]">{title}</h3>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-[#c9c3b7]">{description}</p>
+          <p className="mt-3 text-xs uppercase tracking-[0.1em] text-[#8d8b84]">Contratado separadamente</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={onClick}
+        className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
+      >
+        Consultar
+        <ArrowRight className="h-4 w-4" />
+      </button>
+    </article>
   );
 }
 

@@ -1,16 +1,15 @@
 import { useId } from 'react';
-import { Lock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 
 const navItems = [
-  { id: 'estrutura', label: 'Estrutura' },
-  { id: 'filosofia', label: 'Filosofia' },
-  { id: 'tecnologia', label: 'Tecnologia' },
-  { id: 'gestao-risco', label: 'Gestão de Risco' },
-  { id: 'resultados', label: 'Resultados', active: true },
+  { id: 'produtos', label: 'Robôs' },
+  { id: 'servicos', label: 'Serviços' },
+  { id: 'resultados', label: 'Resultados' },
+  { id: 'filosofia', label: 'Riscos' },
 ];
 
 function App() {
@@ -31,11 +30,7 @@ function App() {
               <a
                 key={item.id}
                 href={`/#${item.id}`}
-                className={`border-b px-1 pb-3 text-sm uppercase tracking-[0.08em] transition-colors ${
-                  item.active
-                    ? 'border-[#d4af37] text-[#d4af37]'
-                    : 'border-transparent text-[#f5efe2] hover:text-[#d4af37]'
-                }`}
+                className="border-b border-transparent px-1 pb-3 text-sm uppercase tracking-[0.08em] text-[#f5efe2] transition-colors hover:border-[#d4af37] hover:text-[#d4af37]"
               >
                 {item.label}
               </a>
@@ -43,12 +38,23 @@ function App() {
           </div>
 
           <a
-            href="/#acesso"
+            href="/#produtos"
             className="inline-flex items-center gap-2 rounded-xl border border-[#d4af37]/40 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10 sm:text-sm"
           >
-            <Lock className="h-4 w-4" />
-            Solicitar acesso
+            Conhecer robôs
+            <ArrowRight className="h-4 w-4" />
           </a>
+        </div>
+        <div className="flex items-center gap-6 overflow-x-auto px-4 pb-3 lg:hidden">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`/#${item.id}`}
+              className="shrink-0 text-xs uppercase tracking-[0.08em] text-[#f5efe2] transition-colors hover:text-[#d4af37]"
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       </nav>
 
