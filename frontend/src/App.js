@@ -19,8 +19,8 @@ function App() {
           <Link to="/" className="flex items-center gap-3">
             <DominusLogo className="h-10 w-10 shrink-0" />
             <div className="leading-none">
-              <div className="text-xl font-semibold uppercase tracking-[0.16em] text-[#d4af37]">Dominus</div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.58em] text-[#f5efe2]">Capital</div>
+              <div className="font-serif text-xl font-medium uppercase tracking-[0.14em] text-[#e0bd62]">Dominus</div>
+              <div className="mt-1 text-[9px] uppercase tracking-[0.62em] text-[#d6d0c4]">Capital</div>
             </div>
           </Link>
 
@@ -142,24 +142,42 @@ function DominusLogo({ className = '' }) {
   return (
     <svg viewBox="0 0 64 64" aria-hidden="true" className={className}>
       <defs>
-        <linearGradient id={gradientRef} x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={gradientRef} x1="10%" y1="0%" x2="90%" y2="100%">
           <stop offset="0%" stopColor="#f5d37a" />
-          <stop offset="55%" stopColor="#d4af37" />
-          <stop offset="100%" stopColor="#9c6f19" />
+          <stop offset="48%" stopColor="#d9b552" />
+          <stop offset="100%" stopColor="#a77a2c" />
         </linearGradient>
       </defs>
       <path
-        d="M32 4 50 10v18c0 13.16-7.97 24.91-20 29.52C17.97 52.91 10 41.16 10 28V10z"
+        d="M32 4.5 49.5 10v18.1c0 12.7-6.9 22.7-17.5 29.4-10.6-6.7-17.5-16.7-17.5-29.4V10z"
         fill="none"
         stroke={`url(#${gradientRef})`}
-        strokeWidth="3"
+        strokeWidth="2.4"
         strokeLinejoin="round"
       />
-      <path d="M32 15v22" fill="none" stroke={`url(#${gradientRef})`} strokeWidth="3" strokeLinecap="round" />
-      <path d="M22 20v18" fill="none" stroke={`url(#${gradientRef})`} strokeWidth="3" strokeLinecap="round" />
-      <path d="M42 20v18" fill="none" stroke={`url(#${gradientRef})`} strokeWidth="3" strokeLinecap="round" />
-      <path d="M21 22l22 15" fill="none" stroke={`url(#${gradientRef})`} strokeWidth="3" strokeLinecap="round" />
-      <path d="M43 22 21 37" fill="none" stroke={`url(#${gradientRef})`} strokeWidth="3" strokeLinecap="round" />
+      <path
+        d="M25 18.5h7.2c8.4 0 13.3 5.1 13.3 13.5s-4.9 13.5-13.3 13.5H25z"
+        fill="none"
+        stroke={`url(#${gradientRef})`}
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 18.5v27"
+        fill="none"
+        stroke={`url(#${gradientRef})`}
+        strokeWidth="2.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M21 45.5h11"
+        fill="none"
+        stroke={`url(#${gradientRef})`}
+        strokeWidth="2.8"
+        strokeLinecap="round"
+      />
+      <circle cx="46.5" cy="18" r="1.5" fill={`url(#${gradientRef})`} />
     </svg>
   );
 }
