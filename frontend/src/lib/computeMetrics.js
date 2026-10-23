@@ -2,7 +2,7 @@
  * Computes all dashboard metrics from the raw trades array.
  * Mirrors the logic that was previously in the Python backend (server.py).
  *
- * @param {Array}  allTrades     - Full array of trade objects from trades.json
+ * @param {Array}  allTrades     - Full array of trade objects from a product's trades JSON
  * @param {Object} filters       - { ano, mes, dia, periodo }
  * @returns {Object}             - Same shape as the /dashboard/metrics API response
  */
@@ -20,7 +20,7 @@ export function computeMetrics(allTrades, filters = {}) {
     julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12,
   };
 
-  // Parse ISO dates once — use UTC getters to match the UTC timestamps stored in trades.json
+  // Parse ISO dates once — use UTC getters to match the timestamps stored in the product trade files
   const trades = allTrades.map(t => ({ ...t, aberturaDate: new Date(t.abertura) }));
 
   const available_years = [...new Set(trades.map(t => t.aberturaDate.getUTCFullYear()))].sort((a, b) => b - a);

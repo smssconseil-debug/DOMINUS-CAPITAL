@@ -1,0 +1,110 @@
+[
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-01T12:18:00.000Z",
+    "res_operacao": 55,
+    "custo": 2,
+    "liquido": 53,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-02T12:42:00.000Z",
+    "res_operacao": -82,
+    "custo": 2,
+    "liquido": -84,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-02T13:15:00.000Z",
+    "res_operacao": 47,
+    "custo": 2,
+    "liquido": 45,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-05T12:31:00.000Z",
+    "res_operacao": -64,
+    "custo": 2,
+    "liquido": -66,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-06T12:27:00.000Z",
+    "res_operacao": 93,
+    "custo": 2,
+    "liquido": 91,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-07T12:53:00.000Z",
+    "res_operacao": -105,
+    "custo": 2,
+    "liquido": -107,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-08T12:16:00.000Z",
+    "res_operacao": 68,
+    "custo": 2,
+    "liquido": 66,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-09T13:04:00.000Z",
+    "res_operacao": -59,
+    "custo": 2,
+    "liquido": -61,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-13T12:37:00.000Z",
+    "res_operacao": 76,
+    "custo": 2,
+    "liquido": 74,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-14T12:29:00.000Z",
+    "res_operacao": -91,
+    "custo": 2,
+    "liquido": -93,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-15T12:41:00.000Z",
+    "res_operacao": 62,
+    "custo": 2,
+    "liquido": 60,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WINFUT",
+    "abertura": "2026-10-16T12:23:00.000Z",
+    "res_operacao": -73,
+    "custo": 2,
+    "liquido": -75,
+    "is_gain": false,
+    "is_loss": true
+  }
+]

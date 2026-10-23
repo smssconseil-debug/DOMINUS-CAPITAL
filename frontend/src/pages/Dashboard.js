@@ -28,7 +28,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MarketOverview from '../components/MarketOverview';
-import tradesData from '../data/trades.json';
+import genesisDemoTrades from '../data/trades/genesis.json';
+import atlasDemoTrades from '../data/trades/atlas-performance.json';
 import { computeMetrics } from '../lib/computeMetrics';
 
 const INITIAL_CAPITAL = 1000;
@@ -51,6 +52,10 @@ const OUTCOME_COLORS = ['#2fb45a', '#ef4444', '#8d8b84'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
+const demoTradesByProduct = {
+  genesis: genesisDemoTrades,
+  'robo-teste': atlasDemoTrades,
+};
 const products = [
   {
     id: 'genesis',
@@ -95,8 +100,12 @@ const pageDetails = {
 
 export default function Dashboard({ page = 'home', productId = '' }) {
   const [robotSearch, setRobotSearch] = useState('');
+  const [resultsProductId, setResultsProductId] = useState('genesis');
   const selectedProduct = products.find((product) => product.id === productId);
-  const metrics = useMemo(() => computeMetrics(tradesData, {}), []);
+  const resultsProduct = products.find((product) => product.id === resultsProductId) || products[0];
+  const selectedTrades = demoTradesByProduct[page === 'results' ? resultsProduct.id : products[0].id];
+  const activeTrades = useMemo(() => selectedTrades.map(normalizeTrade), [selectedTrades]);
+  const metrics = useMemo(() => computeMetrics(activeTrades, {}), [activeTrades]);
 
   const summary = useMemo(() => {
     const monthly = metrics.monthly ?? [];
@@ -134,7 +143,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
   );
 
   const performance = useMemo(() => {
-    const orderedTrades = tradesData
+    const orderedTrades = activeTrades
       .map((trade) => ({
         ...trade,
         net: Number.isFinite(Number(trade.liquido))
@@ -176,7 +185,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
       maxDrawdown,
       maxDrawdownPercent,
     };
-  }, []);
+  }, [activeTrades]);
 
   const equityCurveData = useMemo(() => {
     let peak = INITIAL_CAPITAL;
@@ -332,6 +341,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             <div>
               <p className="text-xs uppercase tracking-[0.16em] text-[#a9a9a9]">Painel demonstrativo</p>
               <h2 className="mt-1 text-xl font-medium text-white">Resumo do histórico operacional</h2>
+              <p className="mt-1 text-xs text-amber-200">Valores fictícios do Gênesis, usados apenas para depuração visual.</p>
             </div>
             <span className="text-xs text-[#777]">Dados históricos · não são cotações em tempo real</span>
           </div>
@@ -461,11 +471,38 @@ export default function Dashboard({ page = 'home', productId = '' }) {
 
         {page === 'results' && (
           <>
+        <section aria-label="Selecionar robô para consultar resultados" className="space-y-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.16em] text-[#d4af37]">Resultados por produto</p>
+            <h1 className="mt-1 text-2xl font-semibold text-white">Selecione um robô</h1>
+          </div>
+          <div className="flex flex-wrap gap-3" role="group" aria-label="Robô selecionado">
+            {products.map((product) => (
+              <button
+                key={product.id}
+                type="button"
+                aria-pressed={resultsProductId === product.id}
+                onClick={() => setResultsProductId(product.id)}
+                className={`rounded-xl border px-5 py-3 text-sm font-semibold transition ${
+                  resultsProductId === product.id
+                    ? 'border-[#d4af37] bg-[#d4af37] text-[#111]'
+                    : 'border-white/15 bg-[#0b0b0b] text-[#c9c3b7] hover:border-[#d4af37]/60 hover:text-white'
+                }`}
+              >
+                {product.name}
+              </button>
+            ))}
+          </div>
+          <p role="status" className="rounded-xl border border-amber-400/20 bg-amber-400/[0.06] px-4 py-3 text-sm leading-6 text-amber-100">
+            Dados fictícios para depuração visual de {resultsProduct.name}. Não representam operações reais nem desempenho do robô.
+          </p>
+        </section>
+
         <section aria-label="Indicadores de desempenho do robô" className="space-y-4">
           <div>
             <p className="text-xs uppercase tracking-[0.16em] text-[#d4af37]">Desempenho e risco</p>
-            <h2 className="mt-1 text-xl font-medium text-white">Indicadores do período completo</h2>
-            <p className="mt-1 text-xs text-[#888]">Calculados a partir das operações disponíveis no arquivo de histórico.</p>
+            <h2 className="mt-1 text-xl font-medium text-white">Indicadores de {resultsProduct.name}</h2>
+            <p className="mt-1 text-xs text-[#888]">Calculados exclusivamente com o arquivo JSON deste produto.</p>
           </div>
           <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] sm:grid-cols-2 lg:grid-cols-4">
             <SummaryMetric title="Resultado líquido" value={formatCurrency(performance.totalNet)} detail="Após custos registrados" positive={performance.totalNet >= 0} negative={performance.totalNet < 0} />
@@ -844,6 +881,20 @@ function renderBarLabel({ x, y, width, height, value }) {
 
 function formatCurrency(value) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value || 0);
+}
+
+function normalizeTrade(trade) {
+  const net =
+    trade.liquido !== undefined && trade.liquido !== null && Number.isFinite(Number(trade.liquido))
+      ? Number(trade.liquido)
+      : Number(trade.res_operacao || 0) - Number(trade.custo || 0);
+
+  return {
+    ...trade,
+    liquido: net,
+    is_gain: net > 0,
+    is_loss: net < 0,
+  };
 }
 
 function formatCompactCurrency(value) {

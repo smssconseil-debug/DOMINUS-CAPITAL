@@ -8,6 +8,16 @@ Protótipo demonstrativo em React hospedado no **Vercel**, com conceitos de auto
 - A página não oferece cadastro, contratação, serviços ou processamento de pagamentos.
 - Os gráficos exibem dados históricos e têm finalidade demonstrativa; resultados passados não garantem resultados futuros.
 - A página inicial consulta dólar PTAX, Selic e IPCA nas APIs públicas do Banco Central do Brasil. Os indicadores têm diferentes frequências de divulgação e não são cotações de bolsa em tempo real.
+- A aba Resultados usa dados fictícios separados por produto para depuração visual; eles não representam operações reais.
+
+## Dados demonstrativos por robô
+
+A aba **Resultados** seleciona um robô por vez e lê seu próprio arquivo:
+
+- Gênesis: `frontend/src/data/trades/genesis.json`
+- ATLAS PERFORMANCE: `frontend/src/data/trades/atlas-performance.json`
+
+Os dois arquivos contêm operações fictícias para testar a interface. Substitua o conteúdo do arquivo do robô correspondente quando tiver os dados reais; não misture as operações entre arquivos. Cada registro precisa ter `abertura` e `liquido` (ou `res_operacao` e `custo`). Os campos `ativo`, `is_gain` e `is_loss` também fazem parte do formato usado nos exemplos.
 
 ## Panorama econômico
 
@@ -32,6 +42,8 @@ Google Sheets  →  GitHub Actions (cron diário)  →  commit trades.json  → 
 3. Se `frontend/src/data/trades.json` mudou, o bot commita e faz push.
 4. O Vercel detecta o push e faz rebuild + deploy automático.
 
+Este workflow ainda é legado: não atualiza os arquivos demonstrativos separados por robô. As operações reais de cada produto deverão ser conectadas a fontes próprias antes de ativar a automação de publicação.
+
 ---
 
 ## Configuração inicial
@@ -52,7 +64,7 @@ A planilha deve ter uma **linha de cabeçalho** com estas colunas (os nomes deve
 
 > Os campos `liquido`, `is_gain` e `is_loss` são calculados automaticamente.
 
-O arquivo `frontend/src/data/trades.json` alimenta os gráficos e indicadores da aba **Resultados**. Para essa análise, cada operação precisa ter `abertura` e `liquido` (ou `res_operacao` e `custo`, usados para calcular o líquido). Para futuras análises por setup de candles, inclua também campos como `setup`, `timeframe` e `direcao` no JSON; esses recortes só serão exibidos quando houver dados reais nesses campos.
+Para futuras análises por setup de candles, inclua também campos como `setup`, `timeframe` e `direcao` no arquivo do produto; esses recortes só devem ser exibidos quando houver dados reais nesses campos. O workflow Google Sheets descrito abaixo ainda atualiza o arquivo legado `frontend/src/data/trades.json`; a integração de planilhas separadas para cada robô deverá ser configurada quando as fontes reais estiverem definidas.
 
 ### 2. Publicar a planilha como CSV
 

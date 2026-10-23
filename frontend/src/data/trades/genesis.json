@@ -1,0 +1,110 @@
+[
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-01T12:05:00.000Z",
+    "res_operacao": 80,
+    "custo": 2,
+    "liquido": 78,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-01T13:22:00.000Z",
+    "res_operacao": -45,
+    "custo": 2,
+    "liquido": -47,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-02T12:14:00.000Z",
+    "res_operacao": 62,
+    "custo": 2,
+    "liquido": 60,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-05T12:08:00.000Z",
+    "res_operacao": 91,
+    "custo": 2,
+    "liquido": 89,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-05T13:41:00.000Z",
+    "res_operacao": -54,
+    "custo": 2,
+    "liquido": -56,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-06T12:32:00.000Z",
+    "res_operacao": 72,
+    "custo": 2,
+    "liquido": 70,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-07T12:18:00.000Z",
+    "res_operacao": -68,
+    "custo": 2,
+    "liquido": -70,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-08T12:25:00.000Z",
+    "res_operacao": 105,
+    "custo": 2,
+    "liquido": 103,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-09T12:11:00.000Z",
+    "res_operacao": 48,
+    "custo": 2,
+    "liquido": 46,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-09T13:09:00.000Z",
+    "res_operacao": -73,
+    "custo": 2,
+    "liquido": -75,
+    "is_gain": false,
+    "is_loss": true
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-13T12:20:00.000Z",
+    "res_operacao": 88,
+    "custo": 2,
+    "liquido": 86,
+    "is_gain": true,
+    "is_loss": false
+  },
+  {
+    "ativo": "WDOFUT",
+    "abertura": "2026-10-14T12:44:00.000Z",
+    "res_operacao": -42,
+    "custo": 2,
+    "liquido": -44,
+    "is_gain": false,
+    "is_loss": true
+  }
+]
