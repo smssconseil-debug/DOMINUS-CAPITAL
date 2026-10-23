@@ -38,7 +38,7 @@ function App() {
               <div className="absolute left-0 top-full hidden w-60 pt-3 group-hover:block group-focus-within:block">
                 <div className="rounded-xl border border-white/10 bg-[#111] p-2 shadow-2xl shadow-black/50">
                   <ProductMenuLink to="/produtos/genesis" title="Gênesis" description="Conceito de robô Dominus" />
-                  <ProductMenuLink to="/produtos/robo-teste" title="Robô de teste" description="Produto genérico para demonstração" />
+                  <ProductMenuLink to="/produtos/robo-teste" title="ATLAS PERFORMANCE" description="Produto de demonstração" />
                   <div className="my-1 border-t border-white/[0.08]" />
                   <ProductMenuLink to="/produtos" title="Ver todos os produtos" description="Acessar o catálogo completo" />
                 </div>
@@ -78,7 +78,7 @@ function App() {
             Gênesis
           </NavLink>
           <NavLink to="/produtos/robo-teste" className="shrink-0 text-xs text-[#a8a8a8] transition-colors hover:text-white">
-            Robô de teste
+            ATLAS PERFORMANCE
           </NavLink>
           {navItems.map((item) => (
             <NavLink

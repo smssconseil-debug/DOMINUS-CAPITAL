@@ -59,7 +59,7 @@ const products = [
   },
   {
     id: 'robo-teste',
-    name: 'Robô de teste',
+    name: 'ATLAS PERFORMANCE',
     description:
       'Produto genérico de demonstração para testar como novos robôs poderão aparecer no catálogo.',
     label: 'Produto de demonstração',
