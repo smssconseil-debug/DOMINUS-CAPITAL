@@ -1,4 +1,4 @@
-import { useEffect, useId } from 'react';
+import { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link, Navigate, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
@@ -17,10 +17,13 @@ function App() {
       <nav className="sticky top-0 z-50 border-b border-[#d4af37]/15 bg-[#050505]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 lg:px-8">
           <Link to="/" className="flex items-center gap-3">
-            <DominusLogo className="h-10 w-10 shrink-0" />
             <div className="leading-none">
-              <div className="font-serif text-xl font-medium uppercase tracking-[0.14em] text-[#e0bd62]">Dominus</div>
-              <div className="mt-1 text-[9px] uppercase tracking-[0.62em] text-[#d6d0c4]">Capital</div>
+              <div className="font-serif text-[1.65rem] font-normal uppercase tracking-[0.12em] text-[#e2c575]">Dominus</div>
+              <div className="mt-1.5 flex items-center gap-2.5">
+                <span className="h-px w-5 bg-[#b99443]/80" />
+                <span className="text-[9px] font-medium uppercase tracking-[0.48em] text-[#d6d0c4]">Capital</span>
+                <span className="h-px w-5 bg-[#b99443]/80" />
+              </div>
             </div>
           </Link>
 
@@ -134,52 +137,6 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
-}
-
-function DominusLogo({ className = '' }) {
-  const gradientRef = `dominus-gold-${useId().replace(/[^a-zA-Z0-9-_]/g, '')}`;
-
-  return (
-    <svg viewBox="0 0 64 64" aria-hidden="true" className={className}>
-      <defs>
-        <linearGradient id={gradientRef} x1="10%" y1="0%" x2="90%" y2="100%">
-          <stop offset="0%" stopColor="#f5d37a" />
-          <stop offset="48%" stopColor="#d9b552" />
-          <stop offset="100%" stopColor="#a77a2c" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M32 4.5 49.5 10v18.1c0 12.7-6.9 22.7-17.5 29.4-10.6-6.7-17.5-16.7-17.5-29.4V10z"
-        fill="none"
-        stroke={`url(#${gradientRef})`}
-        strokeWidth="2.4"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M25 18.5h7.2c8.4 0 13.3 5.1 13.3 13.5s-4.9 13.5-13.3 13.5H25z"
-        fill="none"
-        stroke={`url(#${gradientRef})`}
-        strokeWidth="2.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M21 18.5v27"
-        fill="none"
-        stroke={`url(#${gradientRef})`}
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M21 45.5h11"
-        fill="none"
-        stroke={`url(#${gradientRef})`}
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-      <circle cx="46.5" cy="18" r="1.5" fill={`url(#${gradientRef})`} />
-    </svg>
-  );
 }
 
 export default App;
