@@ -52,6 +52,8 @@ A planilha deve ter uma **linha de cabeçalho** com estas colunas (os nomes deve
 
 > Os campos `liquido`, `is_gain` e `is_loss` são calculados automaticamente.
 
+O arquivo `frontend/src/data/trades.json` alimenta os gráficos e indicadores da aba **Resultados**. Para essa análise, cada operação precisa ter `abertura` e `liquido` (ou `res_operacao` e `custo`, usados para calcular o líquido). Para futuras análises por setup de candles, inclua também campos como `setup`, `timeframe` e `direcao` no JSON; esses recortes só serão exibidos quando houver dados reais nesses campos.
+
 ### 2. Publicar a planilha como CSV
 
 1. No Google Sheets: **Arquivo → Compartilhar → Publicar na web**

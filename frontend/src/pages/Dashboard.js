@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import {
+  Area,
+  AreaChart,
   Bar,
   BarChart,
   CartesianGrid,
@@ -45,7 +47,7 @@ const MONTH_SHORT = {
   dezembro: 'Dez',
 };
 
-const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
+const OUTCOME_COLORS = ['#2fb45a', '#ef4444', '#8d8b84'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
@@ -131,6 +133,63 @@ export default function Dashboard({ page = 'home', productId = '' }) {
     [metrics.monthly],
   );
 
+  const performance = useMemo(() => {
+    const orderedTrades = tradesData
+      .map((trade) => ({
+        ...trade,
+        net: Number.isFinite(Number(trade.liquido))
+          ? Number(trade.liquido)
+          : Number(trade.res_operacao || 0) - Number(trade.custo || 0),
+      }))
+      .sort((first, second) => new Date(first.abertura) - new Date(second.abertura));
+    const totalNet = orderedTrades.reduce((total, trade) => total + trade.net, 0);
+    const winners = orderedTrades.filter((trade) => trade.net > 0);
+    const losers = orderedTrades.filter((trade) => trade.net < 0);
+    const breakeven = orderedTrades.length - winners.length - losers.length;
+    const grossWins = winners.reduce((total, trade) => total + trade.net, 0);
+    const grossLosses = Math.abs(losers.reduce((total, trade) => total + trade.net, 0));
+    let capital = INITIAL_CAPITAL;
+    let peak = INITIAL_CAPITAL;
+    let maxDrawdown = 0;
+    let maxDrawdownPercent = 0;
+
+    for (const trade of orderedTrades) {
+      capital += trade.net;
+      peak = Math.max(peak, capital);
+      const drawdown = capital - peak;
+      const drawdownPercent = peak > 0 ? (drawdown / peak) * 100 : 0;
+      maxDrawdown = Math.min(maxDrawdown, drawdown);
+      maxDrawdownPercent = Math.min(maxDrawdownPercent, drawdownPercent);
+    }
+
+    return {
+      totalTrades: orderedTrades.length,
+      winners: winners.length,
+      losers: losers.length,
+      breakeven,
+      totalNet,
+      winRate: orderedTrades.length ? (winners.length / orderedTrades.length) * 100 : 0,
+      profitFactor: grossLosses > 0 ? grossWins / grossLosses : null,
+      averageWin: winners.length ? grossWins / winners.length : 0,
+      averageLoss: losers.length ? -grossLosses / losers.length : 0,
+      expectancy: orderedTrades.length ? totalNet / orderedTrades.length : 0,
+      maxDrawdown,
+      maxDrawdownPercent,
+    };
+  }, []);
+
+  const equityCurveData = useMemo(() => {
+    let peak = INITIAL_CAPITAL;
+
+    return (metrics.chart ?? []).map((item) => {
+      peak = Math.max(peak, item.acumulado);
+      return {
+        ...item,
+        drawdownPercent: peak > 0 ? ((item.acumulado - peak) / peak) * 100 : 0,
+      };
+    });
+  }, [metrics.chart]);
+
   const monthlyDomain = useMemo(() => {
     const values = monthlyChartData.map((item) => item.percent);
     const min = values.length ? Math.min(...values, 0) : -10;
@@ -138,15 +197,13 @@ export default function Dashboard({ page = 'home', productId = '' }) {
     return [Math.floor(min - 15), Math.ceil(max + 35)];
   }, [monthlyChartData]);
 
-  const pieData = useMemo(
-    () =>
-      (metrics.mep ?? []).map((item, index) => ({
-        ...item,
-        label: `MEP ${item.mep}`,
-        value: Math.max(item.liquido, 0),
-        color: MEP_COLORS[index % MEP_COLORS.length],
-      })),
-    [metrics.mep],
+  const outcomeData = useMemo(
+    () => [
+      { label: 'Positivas', value: performance.winners, color: OUTCOME_COLORS[0] },
+      { label: 'Negativas', value: performance.losers, color: OUTCOME_COLORS[1] },
+      { label: 'Zeradas', value: performance.breakeven, color: OUTCOME_COLORS[2] },
+    ].filter((item) => item.value > 0),
+    [performance],
   );
   const visibleProducts = products.filter((product) =>
     `${product.name} ${product.description}`.toLocaleLowerCase('pt-BR').includes(robotSearch.trim().toLocaleLowerCase('pt-BR')),
@@ -404,6 +461,84 @@ export default function Dashboard({ page = 'home', productId = '' }) {
 
         {page === 'results' && (
           <>
+        <section aria-label="Indicadores de desempenho do robô" className="space-y-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.16em] text-[#d4af37]">Desempenho e risco</p>
+            <h2 className="mt-1 text-xl font-medium text-white">Indicadores do período completo</h2>
+            <p className="mt-1 text-xs text-[#888]">Calculados a partir das operações disponíveis no arquivo de histórico.</p>
+          </div>
+          <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] sm:grid-cols-2 lg:grid-cols-4">
+            <SummaryMetric title="Resultado líquido" value={formatCurrency(performance.totalNet)} detail="Após custos registrados" positive={performance.totalNet >= 0} negative={performance.totalNet < 0} />
+            <SummaryMetric title="Operações" value={String(performance.totalTrades)} detail={`${performance.winners} positivas · ${performance.losers} negativas · ${performance.breakeven} zeradas`} />
+            <SummaryMetric title="Taxa de acerto" value={formatPercent(performance.winRate)} detail="Operações positivas / total" />
+            <SummaryMetric title="Fator de lucro" value={performance.profitFactor === null ? '—' : performance.profitFactor.toFixed(2).replace('.', ',')} detail="Ganhos brutos / perdas brutas" />
+            <SummaryMetric title="Ganho médio" value={formatCurrency(performance.averageWin)} detail="Por operação positiva" positive />
+            <SummaryMetric title="Perda média" value={formatCurrency(performance.averageLoss)} detail="Por operação negativa" negative />
+            <SummaryMetric title="Expectativa por trade" value={formatCurrency(performance.expectancy)} detail="Resultado líquido médio" positive={performance.expectancy >= 0} negative={performance.expectancy < 0} />
+            <SummaryMetric title="Drawdown máximo" value={formatCurrency(performance.maxDrawdown)} detail={`${formatPercent(performance.maxDrawdownPercent)} desde o pico`} negative />
+          </div>
+        </section>
+
+        <section aria-label="Curva de capital e drawdown" className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 lg:p-6">
+            <p className="text-sm uppercase tracking-[0.16em] text-[#d4af37]">Evolução do capital</p>
+            <p className="mb-4 mt-1 text-xs text-[#888]">Fechamento diário · capital inicial de referência: {formatCurrency(INITIAL_CAPITAL)}</p>
+            {equityCurveData.length ? (
+              <div className="h-[280px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={equityCurveData} margin={{ top: 12, right: 8, left: 4, bottom: 4 }}>
+                    <defs>
+                      <linearGradient id="equity-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#d4af37" stopOpacity={0.3} />
+                        <stop offset="100%" stopColor="#d4af37" stopOpacity={0.02} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid stroke="#1f232c" vertical={false} />
+                    <XAxis dataKey="dia" tick={{ fill: '#8d8b84', fontSize: 11 }} axisLine={false} tickLine={false} minTickGap={24} />
+                    <YAxis tickFormatter={(value) => formatCompactCurrency(value)} tick={{ fill: '#8d8b84', fontSize: 11 }} axisLine={false} tickLine={false} width={64} />
+                    <RechartsTooltip
+                      contentStyle={{ backgroundColor: '#0f131a', border: '1px solid rgba(212,175,55,0.25)', borderRadius: '14px', color: '#f7f2e8' }}
+                      formatter={(value) => [formatCurrency(value), 'Capital']}
+                    />
+                    <Area type="monotone" dataKey="acumulado" stroke="#d4af37" strokeWidth={2} fill="url(#equity-fill)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <EmptyChartMessage />
+            )}
+          </article>
+
+          <article className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 lg:p-6">
+            <p className="text-sm uppercase tracking-[0.16em] text-[#d4af37]">Drawdown ao longo do tempo</p>
+            <p className="mb-4 mt-1 text-xs text-[#888]">Queda no fechamento diário em relação ao pico anterior; o indicador máximo considera cada operação.</p>
+            {equityCurveData.length ? (
+              <div className="h-[280px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={equityCurveData} margin={{ top: 12, right: 8, left: 4, bottom: 4 }}>
+                    <defs>
+                      <linearGradient id="drawdown-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#ef4444" stopOpacity={0.02} />
+                        <stop offset="100%" stopColor="#ef4444" stopOpacity={0.3} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid stroke="#1f232c" vertical={false} />
+                    <XAxis dataKey="dia" tick={{ fill: '#8d8b84', fontSize: 11 }} axisLine={false} tickLine={false} minTickGap={24} />
+                    <YAxis tickFormatter={(value) => `${value.toFixed(1)}%`} tick={{ fill: '#8d8b84', fontSize: 11 }} axisLine={false} tickLine={false} width={52} />
+                    <RechartsTooltip
+                      contentStyle={{ backgroundColor: '#0f131a', border: '1px solid rgba(212,175,55,0.25)', borderRadius: '14px', color: '#f7f2e8' }}
+                      formatter={(value) => [formatPercent(value), 'Drawdown']}
+                    />
+                    <Area type="monotone" dataKey="drawdownPercent" stroke="#ef4444" strokeWidth={2} fill="url(#drawdown-fill)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <EmptyChartMessage />
+            )}
+          </article>
+        </section>
+
         <section
           id="resultados"
           className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
@@ -464,7 +599,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
               {(metrics.hourly ?? []).map((item) => (
                 <div key={item.horario} className="grid grid-cols-[1.1fr_0.9fr_1.1fr] items-center gap-4 text-sm text-[#f1ece1]">
                   <span>{item.horario}</span>
-                  <span className="font-medium text-[#2fb45a]">{formatCurrency(item.liquido)}</span>
+                  <span className={`font-medium ${item.liquido >= 0 ? 'text-[#2fb45a]' : 'text-[#ef4444]'}`}>{formatCurrency(item.liquido)}</span>
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#1d1f24]">
                       <div
@@ -479,56 +614,60 @@ export default function Dashboard({ page = 'home', productId = '' }) {
 
               <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-t border-[#d4af37]/10 pt-4 text-sm font-semibold uppercase tracking-[0.08em]">
                 <span className="text-[#d4af37]">Total</span>
-                <span className="text-[#2fb45a]">{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
+                <span className={metrics.kpis?.lucro_liquido >= 0 ? 'text-[#2fb45a]' : 'text-[#ef4444]'}>{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
                 <span className="text-right text-[#2fb45a]">100%</span>
               </div>
             </div>
           </section>
 
           <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
-            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Distribuição de lucro por MEP</p>
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Distribuição das operações</p>
             <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
               <div className="h-[260px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={pieData}
-                      dataKey="value"
-                      nameKey="label"
-                      innerRadius={68}
-                      outerRadius={98}
-                      paddingAngle={2}
-                      stroke="rgba(5,5,5,0.9)"
-                      strokeWidth={3}
-                    >
-                      {pieData.map((item) => (
-                        <Cell key={item.label} fill={item.color} />
-                      ))}
-                    </Pie>
-                    <RechartsTooltip
-                      contentStyle={{
-                        backgroundColor: '#0f131a',
-                        border: '1px solid rgba(212,175,55,0.25)',
-                        borderRadius: '14px',
-                        color: '#f7f2e8',
-                      }}
-                      formatter={(value) => formatCurrency(value)}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                {outcomeData.length ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={outcomeData}
+                        dataKey="value"
+                        nameKey="label"
+                        innerRadius={68}
+                        outerRadius={98}
+                        paddingAngle={2}
+                        stroke="rgba(5,5,5,0.9)"
+                        strokeWidth={3}
+                      >
+                        {outcomeData.map((item) => (
+                          <Cell key={item.label} fill={item.color} />
+                        ))}
+                      </Pie>
+                      <RechartsTooltip
+                        contentStyle={{
+                          backgroundColor: '#0f131a',
+                          border: '1px solid rgba(212,175,55,0.25)',
+                          borderRadius: '14px',
+                          color: '#f7f2e8',
+                        }}
+                        formatter={(value, name) => [`${value} operações`, name]}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <EmptyChartMessage />
+                )}
               </div>
 
               <div className="space-y-4">
-                {pieData.map((item) => (
+                {outcomeData.map((item) => (
                   <div key={item.label} className="flex items-start justify-between gap-4 border-b border-[#d4af37]/10 pb-3">
                     <div className="flex items-center gap-3">
                       <span className="mt-1 h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
                       <div>
                         <p className="text-lg text-[#f5efe2]">{item.label}</p>
-                        <p className="text-sm text-[#8d8b84]">{formatCurrency(item.liquido)}</p>
+                        <p className="text-sm text-[#8d8b84]">{formatPercent(performance.totalTrades ? (item.value / performance.totalTrades) * 100 : 0)} das operações</p>
                       </div>
                     </div>
-                    <span className="text-2xl font-medium text-[#f5efe2]">{formatPercent(item.percent)}</span>
+                    <span className="text-2xl font-medium text-[#f5efe2]">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -537,9 +676,9 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             <div className="mt-6 flex items-start gap-4 rounded-2xl border border-[#d4af37]/20 bg-[#11161f]/75 px-5 py-4">
               <Star className="mt-1 h-6 w-6 shrink-0 text-[#d4af37]" />
               <div>
-                <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Estratégia diversificada</p>
+                <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Dados usados nesta análise</p>
                 <p className="mt-1 text-sm leading-6 text-[#c9c3b7]">
-                  Alocação visualmente organizada entre os diferentes MEPs para manter a leitura estratégica clara e premium.
+                  Os indicadores são calculados com as operações registradas no arquivo JSON. Resultados passados não garantem resultados futuros.
                 </p>
               </div>
             </div>
@@ -707,11 +846,28 @@ function formatCurrency(value) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value || 0);
 }
 
+function formatCompactCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  }).format(value || 0);
+}
+
 function formatPercent(value) {
   return `${new Intl.NumberFormat('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value || 0)}%`;
+}
+
+function EmptyChartMessage() {
+  return (
+    <div className="flex h-full min-h-[220px] items-center justify-center rounded-xl border border-dashed border-white/10 px-5 text-center text-sm text-[#8d8b84]">
+      Ainda não há operações suficientes para exibir este gráfico.
+    </div>
+  );
 }
 
 function capitalizeLabel(label) {
