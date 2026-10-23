@@ -25,6 +25,7 @@ import {
   Star,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MarketOverview from '../components/MarketOverview';
 import tradesData from '../data/trades.json';
 import { computeMetrics } from '../lib/computeMetrics';
 
@@ -265,6 +266,8 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             </Link>
           </section>
         )}
+
+        {page === 'home' && <MarketOverview />}
 
         {page === 'home' && (
         <section aria-label="Indicadores históricos demonstrativos" className="scroll-mt-24">

@@ -7,6 +7,17 @@ Protótipo demonstrativo em React hospedado no **Vercel**, com conceitos de auto
 - O conceito Gênesis e os cartões de conteúdo são exemplos visuais em desenvolvimento.
 - A página não oferece cadastro, contratação, serviços ou processamento de pagamentos.
 - Os gráficos exibem dados históricos e têm finalidade demonstrativa; resultados passados não garantem resultados futuros.
+- A página inicial consulta dólar PTAX, Selic e IPCA nas APIs públicas do Banco Central do Brasil. Os indicadores têm diferentes frequências de divulgação e não são cotações de bolsa em tempo real.
+
+## Panorama econômico
+
+O painel da página inicial usa uma função da Vercel (`/api/panorama`) para consultar as APIs do Banco Central:
+
+- Dólar PTAX (cotação de venda): API PTAX do BCB.
+- Selic anualizada (série diária): SGS série 432.
+- IPCA (variação mensal): SGS série 433.
+
+Os dados são atualizados automaticamente a cada 30 minutos no navegador e armazenados em cache na função por até 5 minutos. Cada cartão mostra a data de referência retornada pela fonte. Uma falha de consulta é exibida sem substituir os dados por valores simulados.
 
 ---
 
@@ -93,3 +104,5 @@ cd frontend
 yarn install
 yarn start
 ```
+
+O panorama ao vivo usa uma função da Vercel em `/api/panorama`; para validar essa parte, use uma prévia implantada na Vercel.
