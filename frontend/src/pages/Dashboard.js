@@ -825,13 +825,24 @@ function MarketBackdrop() {
         fill="url(#market-area)"
       />
       <path
+        className="market-backdrop__line"
         d="M0 360L90 340L160 365L235 300L310 322L390 260L470 285L545 220L625 248L710 190L785 222L865 155L945 184L1020 130L1095 164L1175 105L1255 145L1330 78L1440 110"
         fill="none"
         stroke="url(#market-line)"
         strokeWidth="2.5"
       />
+      <path
+        className="market-backdrop__glint"
+        d="M0 360L90 340L160 365L235 300L310 322L390 260L470 285L545 220L625 248L710 190L785 222L865 155L945 184L1020 130L1095 164L1175 105L1255 145L1330 78L1440 110"
+        fill="none"
+        pathLength="1000"
+        stroke="#ffe9a6"
+        strokeDasharray="14 986"
+        strokeLinecap="round"
+        strokeWidth="3"
+      />
       <circle cx="1330" cy="78" r="5" fill="#f0cd73" />
-      <circle cx="1330" cy="78" r="13" fill="#d4af37" fillOpacity="0.15" />
+      <circle className="market-backdrop__glow" cx="1330" cy="78" r="13" fill="#d4af37" fillOpacity="0.15" />
     </svg>
   );
 }
