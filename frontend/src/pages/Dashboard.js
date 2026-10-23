@@ -222,39 +222,39 @@ export default function Dashboard({ page = 'home', productId = '' }) {
     <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(212,175,55,0.07),_transparent_36%)]" />
 
-      <div className="relative mx-auto flex max-w-[1440px] flex-col gap-10 px-4 pb-16 lg:px-8">
+      <div className="relative mx-auto flex max-w-[1440px] flex-col gap-7 px-4 pb-12 sm:gap-10 sm:pb-16 lg:px-8">
         {page === 'home' && (
           <>
-        <section id="inicio" className="relative flex min-h-[690px] scroll-mt-24 flex-col items-center justify-start overflow-hidden pt-20 text-center sm:min-h-[760px] sm:pt-28">
+        <section id="inicio" className="relative flex min-h-[580px] scroll-mt-24 flex-col items-center justify-start overflow-hidden pt-14 text-center sm:min-h-[760px] sm:pt-28">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(ellipse_at_50%_42%,_rgba(212,175,55,0.14),_transparent_48%),linear-gradient(180deg,_rgba(5,5,5,0)_58%,_#050505_100%)]" />
-          <div className="pointer-events-none absolute inset-x-0 top-[310px] h-[420px] opacity-50 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_75%,transparent)]">
+          <div className="pointer-events-none absolute inset-x-0 top-[250px] h-[360px] opacity-50 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_75%,transparent)] sm:top-[310px] sm:h-[420px]">
             <MarketBackdrop />
           </div>
 
           <div className="relative z-10 flex max-w-4xl flex-col items-center">
-            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs text-[#c9c3b7]">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] text-[#c9c3b7] sm:mb-6 sm:px-3.5 sm:text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
               Protótipo em desenvolvimento
             </span>
-            <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-6xl lg:text-[5.5rem]">
+            <h1 className="text-[2.5rem] font-semibold leading-[1.04] tracking-[-0.055em] text-white sm:text-6xl sm:leading-[1.02] lg:text-[5.5rem]">
               Onde estratégia
               <br />
-              encontra <span className="bg-gradient-to-r from-[#f3d47c] via-[#d4af37] to-[#a97b26] bg-clip-text text-transparent">tecnologia.</span>
+              encontra <br className="sm:hidden" /><span className="bg-gradient-to-r from-[#f3d47c] via-[#d4af37] to-[#a97b26] bg-clip-text text-transparent">tecnologia.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#b5b5b5] sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-2xl text-sm leading-6 text-[#b5b5b5] sm:mt-6 sm:text-lg sm:leading-8">
               Explore conceitos de automação e análise de mercado em uma experiência visual criada pela Dominus Capital.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-6 flex w-full max-w-xs flex-col justify-center gap-3 sm:mt-8 sm:w-auto sm:max-w-none sm:flex-row">
               <Link
                 to="/produtos"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#f3f3f3] px-6 py-3.5 text-sm font-semibold text-[#111] transition hover:bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#f3f3f3] px-5 py-3.5 text-sm font-semibold text-[#111] transition hover:bg-white sm:px-6"
               >
                 Explore os robôs
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/resultados"
-                className="inline-flex items-center rounded-lg border border-white/15 bg-black/25 px-6 py-3.5 text-sm font-medium text-white transition hover:border-white/35 hover:bg-white/[0.06]"
+                className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-black/25 px-5 py-3.5 text-sm font-medium text-white transition hover:border-white/35 hover:bg-white/[0.06] sm:px-6"
               >
                 Ver painel demonstrativo
               </Link>
@@ -262,7 +262,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             <p className="mt-4 text-xs text-[#777]">Demonstração visual. Sem cadastro, contratação ou cobrança.</p>
           </div>
 
-          <Link to="/produtos" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs text-[#888] transition hover:text-white">
+          <Link to="/produtos" className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 text-xs text-[#888] transition hover:text-white sm:bottom-8">
             Role para explorar
             <span className="mx-auto mt-3 block h-8 w-px bg-gradient-to-b from-[#d4af37]/70 to-transparent" />
           </Link>
@@ -271,15 +271,15 @@ export default function Dashboard({ page = 'home', productId = '' }) {
         )}
 
         {page !== 'home' && page !== 'product' && (
-          <section className="border-b border-white/10 pb-7 pt-12 sm:pt-16">
+          <section className="border-b border-white/10 pb-6 pt-8 sm:pb-7 sm:pt-16">
             <p className="text-xs uppercase tracking-[0.18em] text-[#d4af37]">{pageDetails[page].eyebrow}</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">{pageDetails[page].title}</h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[#a8a8a8]">{pageDetails[page].description}</p>
+            <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">{pageDetails[page].title}</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#a8a8a8] sm:mt-4 sm:text-base sm:leading-7">{pageDetails[page].description}</p>
           </section>
         )}
 
         {page === 'product' && selectedProduct && (
-          <section className="mx-auto grid w-full max-w-6xl gap-8 pb-8 pt-10 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:pt-16">
+          <section className="mx-auto grid w-full max-w-6xl gap-6 pb-6 pt-7 sm:gap-8 sm:pb-8 sm:pt-10 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:pt-16">
             <div>
               <Link to="/produtos" className="mb-8 inline-flex items-center gap-2 text-sm text-[#999] transition hover:text-white">
                 <ArrowRight className="h-4 w-4 rotate-180" />
@@ -293,14 +293,14 @@ export default function Dashboard({ page = 'home', productId = '' }) {
                   {selectedProduct.label}
                 </span>
               </div>
-              <h1 className="mt-6 text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl">{selectedProduct.name}</h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#aaa]">{selectedProduct.description}</p>
+              <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-white sm:mt-6 sm:text-6xl">{selectedProduct.name}</h1>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[#aaa] sm:mt-5 sm:text-lg sm:leading-8">{selectedProduct.description}</p>
               <p className="mt-6 max-w-2xl border-l-2 border-[#d4af37]/60 pl-4 text-sm leading-7 text-[#888]">
                 {selectedProduct.detail}
               </p>
               <p className="mt-8 text-xs text-[#777]">Protótipo demonstrativo. Sem cadastro, contratação ou cobrança.</p>
             </div>
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0b] p-6 sm:p-8">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0b] p-4 sm:p-8">
               <div className="pointer-events-none absolute inset-0 opacity-70">
                 <MarketBackdrop />
               </div>
@@ -309,7 +309,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
                   <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
                   Página de produto de teste
                 </span>
-                <div className="mt-24 rounded-2xl border border-white/10 bg-black/70 p-5 backdrop-blur">
+                <div className="mt-16 rounded-2xl border border-white/10 bg-black/70 p-4 backdrop-blur sm:mt-24 sm:p-5">
                   <p className="text-xs uppercase tracking-[0.14em] text-[#888]">Status do conceito</p>
                   <p className="mt-2 text-2xl font-medium text-white">Em desenvolvimento</p>
                   <p className="mt-3 text-sm leading-6 text-[#999]">Esta página individual valida a navegação e a apresentação de futuros produtos.</p>
@@ -471,19 +471,19 @@ export default function Dashboard({ page = 'home', productId = '' }) {
 
         {page === 'results' && (
           <>
-        <section aria-label="Selecionar robô para consultar resultados" className="space-y-4">
+        <section aria-label="Selecionar robô para consultar resultados" className="space-y-3 sm:space-y-4">
           <div>
             <p className="text-xs uppercase tracking-[0.16em] text-[#d4af37]">Resultados por produto</p>
             <h1 className="mt-1 text-2xl font-semibold text-white">Selecione um robô</h1>
           </div>
-          <div className="flex flex-wrap gap-3" role="group" aria-label="Robô selecionado">
+          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Robô selecionado">
             {products.map((product) => (
               <button
                 key={product.id}
                 type="button"
                 aria-pressed={resultsProductId === product.id}
                 onClick={() => setResultsProductId(product.id)}
-                className={`rounded-xl border px-5 py-3 text-sm font-semibold transition ${
+                className={`w-full rounded-xl border px-4 py-3 text-sm font-semibold transition sm:w-auto sm:px-5 ${
                   resultsProductId === product.id
                     ? 'border-[#d4af37] bg-[#d4af37] text-[#111]'
                     : 'border-white/15 bg-[#0b0b0b] text-[#c9c3b7] hover:border-[#d4af37]/60 hover:text-white'
@@ -493,7 +493,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
               </button>
             ))}
           </div>
-          <p role="status" className="rounded-xl border border-amber-400/20 bg-amber-400/[0.06] px-4 py-3 text-sm leading-6 text-amber-100">
+          <p role="status" className="rounded-xl border border-amber-400/20 bg-amber-400/[0.06] px-3 py-3 text-xs leading-5 text-amber-100 sm:px-4 sm:text-sm sm:leading-6">
             Dados fictícios para depuração visual de {resultsProduct.name}. Não representam operações reais nem desempenho do robô.
           </p>
         </section>
@@ -517,7 +517,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
         </section>
 
         <section aria-label="Curva de capital e drawdown" className="grid gap-6 lg:grid-cols-2">
-          <article className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 lg:p-6">
+          <article className="rounded-[24px] border border-[#d4af37]/12 bg-[#06080d]/95 p-4 sm:rounded-[28px] sm:p-5 lg:p-6">
             <p className="text-sm uppercase tracking-[0.16em] text-[#d4af37]">Evolução do capital</p>
             <p className="mb-4 mt-1 text-xs text-[#888]">Fechamento diário · capital inicial de referência: {formatCurrency(INITIAL_CAPITAL)}</p>
             {equityCurveData.length ? (
@@ -546,7 +546,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             )}
           </article>
 
-          <article className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 lg:p-6">
+          <article className="rounded-[24px] border border-[#d4af37]/12 bg-[#06080d]/95 p-4 sm:rounded-[28px] sm:p-5 lg:p-6">
             <p className="text-sm uppercase tracking-[0.16em] text-[#d4af37]">Drawdown ao longo do tempo</p>
             <p className="mb-4 mt-1 text-xs text-[#888]">Queda no fechamento diário em relação ao pico anterior; o indicador máximo considera cada operação.</p>
             {equityCurveData.length ? (
@@ -578,7 +578,7 @@ export default function Dashboard({ page = 'home', productId = '' }) {
 
         <section
           id="resultados"
-          className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
+          className="scroll-mt-28 rounded-[24px] border border-[#d4af37]/12 bg-[#06080d]/95 p-4 shadow-[0_0_60px_rgba(0,0,0,0.32)] sm:rounded-[28px] sm:p-5 lg:p-6"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Histórico operacional</p>
           <p className="mb-5 mt-2 max-w-3xl text-sm leading-6 text-[#c9c3b7]">
@@ -626,7 +626,8 @@ export default function Dashboard({ page = 'home', productId = '' }) {
               <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Desempenho por horário</p>
             </div>
 
-            <div className="space-y-3">
+            <div className="overflow-x-auto">
+              <div className="min-w-[420px] space-y-3">
               <div className="grid grid-cols-[1.1fr_0.9fr_1.1fr] gap-4 border-b border-[#d4af37]/10 pb-3 text-xs uppercase tracking-[0.14em] text-[#8d8b84]">
                 <span>Horário</span>
                 <span>Lucro (R$)</span>
@@ -654,10 +655,11 @@ export default function Dashboard({ page = 'home', productId = '' }) {
                 <span className={metrics.kpis?.lucro_liquido >= 0 ? 'text-[#2fb45a]' : 'text-[#ef4444]'}>{formatCurrency(metrics.kpis?.lucro_liquido ?? 0)}</span>
                 <span className="text-right text-[#2fb45a]">100%</span>
               </div>
+              </div>
             </div>
           </section>
 
-          <section className="rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
+          <section className="rounded-[24px] border border-[#d4af37]/12 bg-[#06080d]/95 p-4 shadow-[0_0_60px_rgba(0,0,0,0.28)] sm:rounded-[28px] sm:p-5 lg:p-6">
             <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Distribuição das operações</p>
             <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
               <div className="h-[260px] w-full">
