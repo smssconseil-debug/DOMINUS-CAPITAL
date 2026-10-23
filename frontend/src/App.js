@@ -7,7 +7,7 @@ import Contato from './pages/Contato';
 
 const navItems = [
   { id: 'produtos', label: 'Robôs' },
-  { id: 'servicos', label: 'Serviços' },
+  { id: 'servicos', label: 'Conceitos' },
   { id: 'resultados', label: 'Resultados' },
   { id: 'filosofia', label: 'Riscos' },
 ];
@@ -41,7 +41,7 @@ function App() {
             href="/#produtos"
             className="inline-flex items-center gap-2 rounded-xl border border-[#d4af37]/40 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10 sm:text-sm"
           >
-            Conhecer robôs
+            Saiba mais
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>

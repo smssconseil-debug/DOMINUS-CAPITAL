@@ -1,15 +1,13 @@
-import { ArrowRight, Bot, Headphones } from 'lucide-react';
+import { ArrowRight, BarChart3, Bot } from 'lucide-react';
 
 export default function Contato() {
   return (
     <main className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-6 sm:px-6 lg:px-8">
       <section className="rounded-2xl border border-[#d4af37]/30 bg-[#0a0a0a] p-6 shadow-[0_0_25px_rgba(212,175,55,0.08)]">
-        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#d4af37]">Contato</p>
-        <h1 className="mt-2 text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
-          Fale com nosso time
-        </h1>
+        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#d4af37]">Projeto demonstrativo</p>
+        <h1 className="mt-2 text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">Sobre o protótipo</h1>
         <p className="mt-3 max-w-2xl text-sm text-gray-300 sm:text-base">
-          Conheça os produtos e serviços e envie seu interesse pelo formulário da página. Valores e condições são informados antes de qualquer contratação.
+          Esta página apresenta conceitos de automação e visualização de dados que ainda estão em desenvolvimento. Não há cadastro, contratação ou cobrança por meio deste site.
         </p>
       </section>
 
@@ -17,14 +15,14 @@ export default function Contato() {
         <ContactLink
           href="/#produtos"
           icon={<Bot className="h-6 w-6 text-[#d4af37]" />}
-          title="Robôs e assinaturas"
-          description="Explore os robôs e solicite informações sobre cada assinatura individual."
+          title="Conceitos de robôs"
+          description="Veja a demonstração do conceito Gênesis e os detalhes disponíveis nesta versão."
         />
         <ContactLink
-          href="/#servicos"
-          icon={<Headphones className="h-6 w-6 text-[#d4af37]" />}
-          title="Serviços opcionais"
-          description="Consulte suporte prioritário e consultoria, vendidos separadamente dos robôs."
+          href="/#resultados"
+          icon={<BarChart3 className="h-6 w-6 text-[#d4af37]" />}
+          title="Visualização de dados"
+          description="Explore gráficos baseados no histórico operacional apresentado para fins demonstrativos."
         />
       </section>
     </main>

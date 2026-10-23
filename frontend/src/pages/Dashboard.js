@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import {
   Bar,
   BarChart,
@@ -16,7 +16,6 @@ import {
   ArrowRight,
   BadgeCheck,
   Bot,
-  CheckCircle,
   Clock3,
   Headphones,
   Lock,
@@ -51,17 +50,11 @@ const robots = [
   {
     name: 'Gênesis',
     description:
-      'Conheça o robô Gênesis e solicite informações sobre a estratégia, os requisitos de uso e a assinatura individual.',
+      'Apresentação demonstrativa do conceito de robô de trading Gênesis. Detalhes de funcionamento ainda estão em desenvolvimento.',
   },
 ];
 
 export default function Dashboard() {
-  const [showSaibaMais, setShowSaibaMais] = useState(false);
-  const [interestForm, setInterestForm] = useState({ email: '', phone: '', name: '', interest: '' });
-  const [interestSent, setInterestSent] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-
   const metrics = useMemo(() => computeMetrics(tradesData, {}), []);
 
   const summary = useMemo(() => {
@@ -117,67 +110,6 @@ export default function Dashboard() {
     [metrics.mep],
   );
 
-  const submitSaibaMais = async (e) => {
-    e.preventDefault();
-
-    if (!process.env.REACT_APP_FORMSPREE_URL) {
-      setSubmitError('Este formulário ainda não está configurado. Tente novamente mais tarde.');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError('');
-
-    try {
-      const response = await fetch(process.env.REACT_APP_FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          subject: `Novo lead Dominus Capital: ${interestForm.name} — ${interestForm.interest}`,
-          nome: interestForm.name,
-          email: interestForm.email,
-          whatsapp: interestForm.phone,
-          interesse: interestForm.interest,
-        }),
-      });
-
-      if (!response.ok) {
-        setSubmitError('Não foi possível enviar. Por favor, tente novamente.');
-        return;
-      }
-
-      setInterestSent(true);
-      setTimeout(() => {
-        setShowSaibaMais(false);
-        setInterestSent(false);
-        setInterestForm({ email: '', phone: '', name: '', interest: '' });
-      }, 3000);
-    } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
-      setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handlePhoneChange = (e) => {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 11) value = value.slice(0, 11);
-
-    let formatted = value;
-    if (value.length > 2) {
-      formatted = `(${value.slice(0, 2)}) ${value.length > 7 ? `${value.slice(2, 7)}-${value.slice(7)}` : value.slice(2)}`;
-    }
-
-    setInterestForm((prev) => ({ ...prev, phone: formatted }));
-  };
-
-  const openInterestForm = (interest) => {
-    setInterestForm({ email: '', phone: '', name: '', interest });
-    setSubmitError('');
-    setShowSaibaMais(true);
-  };
-
   return (
     <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.10),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.08),_transparent_30%)]" />
@@ -188,19 +120,19 @@ export default function Dashboard() {
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
             <div className="flex flex-col justify-between gap-6">
               <div className="space-y-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Tecnologia para operar com disciplina</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Protótipo em desenvolvimento</p>
                 <div className="space-y-3">
                   <h1 className="max-w-xl text-4xl font-medium uppercase leading-[1.05] text-[#f8f4ec] sm:text-5xl lg:text-[4.25rem]">
-                    Estratégias
+                    Ideias para
                     <br />
-                    automatizadas.
+                    trading.
                     <br />
-                    <span className="text-[#d4af37]">Escolha seu</span>
+                    <span className="text-[#d4af37]">Conheça os</span>
                     <br />
-                    <span className="text-[#d4af37]">próximo robô.</span>
+                    <span className="text-[#d4af37]">conceitos.</span>
                   </h1>
                   <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
-                    Conheça os robôs da Dominus Capital. Cada produto tem sua própria assinatura, com serviços opcionais disponíveis separadamente.
+                    Uma demonstração em construção para apresentar ideias de automação e análise de mercado. Este site não oferece contratação ou cobrança.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -208,7 +140,7 @@ export default function Dashboard() {
                     href="#produtos"
                     className="inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-[#16130b] transition hover:brightness-110"
                   >
-                    Explorar robôs
+                    Saiba mais
                     <ArrowRight className="h-4 w-4" />
                   </a>
                   <a
@@ -223,8 +155,8 @@ export default function Dashboard() {
               <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#d4af37]/30 bg-[#11161f]/75 px-5 py-4">
                 <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
                 <div>
-                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Informação clara antes de decidir.</p>
-                  <p className="mt-1 text-sm text-[#c9c3b7]">Consulte o histórico disponível, conheça os riscos e avalie cada produto com cuidado.</p>
+                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Projeto demonstrativo.</p>
+                  <p className="mt-1 text-sm text-[#c9c3b7]">Conteúdo e funcionalidades em desenvolvimento; os dados exibidos são históricos.</p>
                 </div>
               </div>
             </div>
@@ -277,14 +209,14 @@ export default function Dashboard() {
         <section id="produtos" className="scroll-mt-28 space-y-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Catálogo Dominus</p>
-              <h2 className="mt-2 text-3xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-4xl">Robôs de trading</h2>
+              <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Demonstração</p>
+              <h2 className="mt-2 text-3xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-4xl">Conceitos de robôs</h2>
               <p className="mt-2 max-w-2xl text-base leading-7 text-[#c9c3b7]">
-                Assine cada robô individualmente. Consulte disponibilidade, funcionamento e condições antes de contratar.
+                Explore as ideias que estamos prototipando. Os exemplos abaixo são informativos e não estão disponíveis para contratação.
               </p>
             </div>
             <span className="w-fit rounded-full border border-[#d4af37]/25 bg-[#11161f] px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-[#d4af37]">
-              Assinaturas por produto
+              Protótipo
             </span>
           </div>
 
@@ -300,29 +232,23 @@ export default function Dashboard() {
                       <Bot className="h-7 w-7 text-[#d4af37]" />
                     </div>
                     <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-emerald-300">
-                      Produto Dominus
+                      Conceito demonstrativo
                     </span>
                   </div>
                   <h3 className="mt-5 text-3xl font-semibold uppercase tracking-[0.12em] text-[#f8f4ec]">{robot.name}</h3>
                   <p className="mt-3 max-w-2xl text-base leading-7 text-[#c9c3b7]">{robot.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.1em] text-[#c9c3b7]">
-                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Assinatura individual</span>
-                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Condições sob consulta</span>
+                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Em desenvolvimento</span>
+                    <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Sem contratação</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3 lg:min-w-52">
-                  <button
-                    type="button"
-                    onClick={() => openInterestForm(`Assinatura do robô ${robot.name}`)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#16130b] transition hover:brightness-110"
-                  >
-                    Tenho interesse
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                  <p className="max-w-xs text-center text-xs leading-5 text-[#8d8b84]">
-                    Valores e periodicidade serão informados antes da contratação.
-                  </p>
-                </div>
+                <a
+                  href="#resultados"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
+                >
+                  Saiba mais
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </article>
             ))}
           </div>
@@ -330,24 +256,24 @@ export default function Dashboard() {
 
         <section id="servicos" className="scroll-mt-28 space-y-5">
           <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Contratação opcional</p>
-            <h2 className="mt-2 text-2xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-3xl">Serviços à parte</h2>
+            <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Ideias em avaliação</p>
+            <h2 className="mt-2 text-2xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-3xl">Conceitos de suporte</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[#c9c3b7]">
-              Os serviços são independentes das assinaturas dos robôs. Converse com a equipe para conhecer formatos e disponibilidade.
+              Estas são possibilidades para a experiência futura do projeto. Nenhum serviço está sendo oferecido nesta demonstração.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <ServiceCard
               icon={<Headphones className="h-6 w-6 text-[#d4af37]" />}
-              title="Suporte prioritário"
-              description="Atendimento adicional para clientes que precisam de um canal de suporte prioritário."
-              onClick={() => openInterestForm('Serviço adicional: suporte prioritário')}
+              title="Central de ajuda"
+              description="Conceito de uma área com orientações e respostas sobre o uso da plataforma."
+              detail="A central de ajuda é apenas uma ideia para versões futuras do protótipo."
             />
             <ServiceCard
               icon={<MessagesSquare className="h-6 w-6 text-[#d4af37]" />}
-              title="Consultoria"
-              description="Converse com a equipe sobre uma consultoria independente da assinatura dos robôs."
-              onClick={() => openInterestForm('Serviço adicional: consultoria')}
+              title="Conteúdo educativo"
+              description="Conceito de materiais explicativos sobre automação e leitura de dados."
+              detail="O conteúdo educativo está em planejamento e não constitui recomendação de investimento."
             />
           </div>
         </section>
@@ -504,8 +430,8 @@ export default function Dashboard() {
             />
             <NoteCard
               icon={<Lock className="h-7 w-7 text-[#d4af37]" />}
-              title="Acesso restrito"
-              description="Informações detalhadas e análises aprofundadas podem ser liberadas após análise de perfil e interesse."
+              title="Projeto em desenvolvimento"
+              description="Esta página é uma demonstração. Recursos, exemplos e conteúdo podem mudar durante a construção."
             />
             <NoteCard
               icon={<BadgeCheck className="h-7 w-7 text-[#d4af37]" />}
@@ -516,11 +442,11 @@ export default function Dashboard() {
         </section>
 
         <section
-          id="gestao-risco"
+          id="sobre-prototipo"
           className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6"
         >
           <div
-            id="acesso"
+            id="saiba-mais"
             className="grid scroll-mt-28 gap-6 rounded-[24px] border border-[#d4af37]/18 bg-[radial-gradient(circle_at_right,_rgba(212,175,55,0.16),_transparent_34%),#0a0d13] p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6"
           >
             <div className="flex items-start gap-4">
@@ -528,9 +454,9 @@ export default function Dashboard() {
                 <Lock className="h-7 w-7 text-[#d4af37]" />
               </div>
               <div>
-                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Fale com a Dominus</p>
+                <p className="text-2xl uppercase tracking-[0.12em] text-[#d4af37]">Sobre este protótipo</p>
                 <p className="mt-2 max-w-3xl text-base leading-7 text-[#c9c3b7]">
-                  Tire dúvidas sobre os robôs, assinaturas individuais e serviços opcionais disponíveis.
+                  Estamos explorando formas de apresentar dados e conceitos de automação em uma interface clara. Esta versão é apenas demonstrativa e não realiza cadastros ou transações.
                 </p>
               </div>
             </div>
@@ -538,88 +464,18 @@ export default function Dashboard() {
             <div className="flex flex-col items-stretch gap-3">
               <button
                 type="button"
-                onClick={() => openInterestForm('Informações sobre produtos e serviços Dominus')}
+                onClick={() => document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110"
               >
-                Falar com a equipe
+                Saiba mais
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Sem compromisso de contratação.</p>
+              <p className="text-center text-xs uppercase tracking-[0.12em] text-[#8d8b84]">Conteúdo informativo</p>
             </div>
           </div>
         </section>
       </div>
 
-      {showSaibaMais && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md">
-          <div className="relative w-full max-w-md rounded-[28px] border border-[#d4af37]/40 bg-[#080b11] p-6 shadow-[0_0_100px_rgba(212,175,55,0.16)]">
-            <button
-              type="button"
-              onClick={() => setShowSaibaMais(false)}
-              className="absolute right-4 top-4 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-[#c9c3b7] transition hover:text-white"
-            >
-              Fechar
-            </button>
-
-            {interestSent ? (
-              <div className="py-8 text-center">
-                <CheckCircle className="mx-auto mb-5 h-16 w-16 text-[#d4af37]" />
-                <h3 className="text-2xl font-semibold uppercase tracking-[0.12em] text-[#f7f2e8]">Recebemos seu contato</h3>
-                <p className="mt-3 text-sm leading-6 text-[#c9c3b7]">Um especialista da Dominus Capital entrará em contato em breve.</p>
-              </div>
-            ) : (
-              <>
-                <div className="mb-6 space-y-3 text-center">
-                  <p className="text-sm uppercase tracking-[0.18em] text-[#d4af37]">Fale com a equipe</p>
-                  <h3 className="text-3xl font-semibold uppercase tracking-[0.1em] text-[#f7f2e8]">Vamos conversar</h3>
-                  <p className="text-sm leading-6 text-[#c9c3b7]">
-                    {interestForm.interest ? `Interesse: ${interestForm.interest}. ` : ''}
-                    Deixe seus dados e entraremos em contato para apresentar as informações.
-                  </p>
-                </div>
-
-                <form onSubmit={submitSaibaMais} className="space-y-4">
-                  <input
-                    required
-                    type="text"
-                    placeholder="Seu nome completo"
-                    value={interestForm.name}
-                    onChange={(e) => setInterestForm((prev) => ({ ...prev, name: e.target.value }))}
-                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
-                  />
-                  <input
-                    required
-                    type="email"
-                    placeholder="Seu melhor e-mail"
-                    value={interestForm.email}
-                    onChange={(e) => setInterestForm((prev) => ({ ...prev, email: e.target.value }))}
-                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
-                  />
-                  <input
-                    required
-                    type="tel"
-                    placeholder="WhatsApp"
-                    value={interestForm.phone}
-                    onChange={handlePhoneChange}
-                    className="w-full rounded-2xl border border-white/10 bg-[#11161f] px-4 py-3 text-white outline-none transition focus:border-[#d4af37]"
-                  />
-                  <input type="hidden" name="interesse" value={interestForm.interest} />
-
-                  {submitError && <p className="text-center text-sm text-red-400">{submitError}</p>}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full rounded-2xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-4 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#16130b] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {isSubmitting ? 'Enviando...' : 'Quero conhecer agora'}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -648,25 +504,23 @@ function NoteCard({ icon, title, description }) {
   );
 }
 
-function ServiceCard({ icon, title, description, onClick }) {
+function ServiceCard({ icon, title, description, detail }) {
   return (
-    <article className="flex flex-col justify-between gap-5 rounded-[24px] border border-[#d4af37]/15 bg-[#080b11] p-5 sm:flex-row sm:items-center sm:p-6">
+    <article className="rounded-[24px] border border-[#d4af37]/15 bg-[#080b11] p-5 sm:p-6">
       <div className="flex gap-4">
         <div className="h-fit rounded-xl border border-[#d4af37]/20 bg-[#11161f] p-3">{icon}</div>
         <div>
           <h3 className="text-lg font-semibold uppercase tracking-[0.08em] text-[#f7f2e8]">{title}</h3>
           <p className="mt-2 max-w-xl text-sm leading-6 text-[#c9c3b7]">{description}</p>
-          <p className="mt-3 text-xs uppercase tracking-[0.1em] text-[#8d8b84]">Contratado separadamente</p>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onClick}
-        className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
-      >
-        Consultar
-        <ArrowRight className="h-4 w-4" />
-      </button>
+      <details className="group mt-5 border-t border-white/10 pt-4">
+        <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold uppercase tracking-[0.1em] text-[#d4af37]">
+          Saiba mais
+          <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+        </summary>
+        <p className="mt-3 text-sm leading-6 text-[#c9c3b7]">{detail}</p>
+      </details>
     </article>
   );
 }
