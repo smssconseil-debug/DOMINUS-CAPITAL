@@ -1,12 +1,11 @@
 import { useEffect, useId } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Navigate, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 
 const navItems = [
-  { path: '/robos', label: 'Robôs' },
   { path: '/conceitos', label: 'Conceitos' },
   { path: '/resultados', label: 'Resultados' },
   { path: '/riscos', label: 'Riscos' },
@@ -26,6 +25,25 @@ function App() {
           </Link>
 
           <div className="hidden items-center gap-8 lg:flex">
+            <div className="group relative">
+              <NavLink
+                to="/produtos"
+                className={({ isActive }) =>
+                  `inline-flex items-center gap-1 py-2 text-sm transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#a8a8a8]'}`
+                }
+              >
+                Produtos
+                <span aria-hidden="true" className="text-xs">⌄</span>
+              </NavLink>
+              <div className="absolute left-0 top-full hidden w-60 pt-3 group-hover:block group-focus-within:block">
+                <div className="rounded-xl border border-white/10 bg-[#111] p-2 shadow-2xl shadow-black/50">
+                  <ProductMenuLink to="/produtos/genesis" title="Gênesis" description="Conceito de robô Dominus" />
+                  <ProductMenuLink to="/produtos/robo-teste" title="Robô de teste" description="Produto genérico para demonstração" />
+                  <div className="my-1 border-t border-white/[0.08]" />
+                  <ProductMenuLink to="/produtos" title="Ver todos os produtos" description="Acessar o catálogo completo" />
+                </div>
+              </div>
+            </div>
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -40,7 +58,7 @@ function App() {
           </div>
 
           <Link
-            to="/robos"
+            to="/produtos"
             className="inline-flex items-center gap-2 rounded-lg bg-[#d4af37] px-4 py-2.5 text-sm font-semibold text-[#111] transition hover:bg-[#edca70]"
           >
             Saiba mais
@@ -48,6 +66,20 @@ function App() {
           </Link>
         </div>
         <div className="flex items-center gap-6 overflow-x-auto border-t border-white/[0.06] px-4 py-2.5 lg:hidden">
+          <NavLink
+            to="/produtos"
+            className={({ isActive }) =>
+              `shrink-0 text-xs transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#a8a8a8]'}`
+            }
+          >
+            Produtos
+          </NavLink>
+          <NavLink to="/produtos/genesis" className="shrink-0 text-xs text-[#a8a8a8] transition-colors hover:text-white">
+            Gênesis
+          </NavLink>
+          <NavLink to="/produtos/robo-teste" className="shrink-0 text-xs text-[#a8a8a8] transition-colors hover:text-white">
+            Robô de teste
+          </NavLink>
           {navItems.map((item) => (
             <NavLink
               key={item.path}
@@ -65,7 +97,9 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Dashboard page="home" />} />
-        <Route path="/robos" element={<Dashboard page="robots" />} />
+        <Route path="/produtos" element={<Dashboard page="robots" />} />
+        <Route path="/produtos/:productId" element={<ProductRoute />} />
+        <Route path="/robos" element={<Navigate to="/produtos" replace />} />
         <Route path="/conceitos" element={<Dashboard page="concepts" />} />
         <Route path="/resultados" element={<Dashboard page="results" />} />
         <Route path="/riscos" element={<Dashboard page="risks" />} />
@@ -74,6 +108,21 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
+  );
+}
+
+function ProductRoute() {
+  const { productId } = useParams();
+
+  return <Dashboard page="product" productId={productId} />;
+}
+
+function ProductMenuLink({ to, title, description }) {
+  return (
+    <Link to={to} className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-white/[0.06]">
+      <span className="block text-sm font-medium text-white">{title}</span>
+      <span className="mt-1 block text-xs text-[#888]">{description}</span>
+    </Link>
   );
 }
 

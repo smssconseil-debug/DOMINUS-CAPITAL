@@ -48,19 +48,30 @@ const MEP_COLORS = ['#d7a93d', '#b78d3b', '#d8b66d', '#8c6a2d'];
 const MIN_PROGRESS_WIDTH_PERCENT = 6;
 const POSITIVE_LABEL_OFFSET_Y = -10;
 const NEGATIVE_LABEL_OFFSET_Y = 18;
-const robots = [
+const products = [
   {
+    id: 'genesis',
     name: 'Gênesis',
     description:
       'Apresentação demonstrativa do conceito de robô de trading Gênesis. Detalhes de funcionamento ainda estão em desenvolvimento.',
+    label: 'Conceito Dominus',
+    detail: 'O Gênesis é apresentado aqui como um conceito em desenvolvimento. Esta página serve para testar a apresentação individual de um produto.',
+  },
+  {
+    id: 'robo-teste',
+    name: 'Robô de teste',
+    description:
+      'Produto genérico de demonstração para testar como novos robôs poderão aparecer no catálogo.',
+    label: 'Produto de demonstração',
+    detail: 'Este card genérico é apenas um exemplo visual para validar o fluxo do catálogo. Substitua o nome e as informações quando o próximo produto estiver definido.',
   },
 ];
 
 const pageDetails = {
   robots: {
     eyebrow: 'Catálogo demonstrativo',
-    title: 'Robôs',
-    description: 'Explore os conceitos de automação em desenvolvimento pela Dominus Capital.',
+    title: 'Produtos',
+    description: 'Explore cada conceito de robô em sua própria página.',
   },
   concepts: {
     eyebrow: 'Em desenvolvimento',
@@ -79,8 +90,9 @@ const pageDetails = {
   },
 };
 
-export default function Dashboard({ page = 'home' }) {
+export default function Dashboard({ page = 'home', productId = '' }) {
   const [robotSearch, setRobotSearch] = useState('');
+  const selectedProduct = products.find((product) => product.id === productId);
   const metrics = useMemo(() => computeMetrics(tradesData, {}), []);
 
   const summary = useMemo(() => {
@@ -135,8 +147,8 @@ export default function Dashboard({ page = 'home' }) {
       })),
     [metrics.mep],
   );
-  const visibleRobots = robots.filter((robot) =>
-    `${robot.name} ${robot.description}`.toLocaleLowerCase('pt-BR').includes(robotSearch.trim().toLocaleLowerCase('pt-BR')),
+  const visibleProducts = products.filter((product) =>
+    `${product.name} ${product.description}`.toLocaleLowerCase('pt-BR').includes(robotSearch.trim().toLocaleLowerCase('pt-BR')),
   );
 
   return (
@@ -167,7 +179,7 @@ export default function Dashboard({ page = 'home' }) {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
-                to="/robos"
+                to="/produtos"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#f3f3f3] px-6 py-3.5 text-sm font-semibold text-[#111] transition hover:bg-white"
               >
                 Explore os robôs
@@ -183,7 +195,7 @@ export default function Dashboard({ page = 'home' }) {
             <p className="mt-4 text-xs text-[#777]">Demonstração visual. Sem cadastro, contratação ou cobrança.</p>
           </div>
 
-          <Link to="/robos" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs text-[#888] transition hover:text-white">
+          <Link to="/produtos" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs text-[#888] transition hover:text-white">
             Role para explorar
             <span className="mx-auto mt-3 block h-8 w-px bg-gradient-to-b from-[#d4af37]/70 to-transparent" />
           </Link>
@@ -191,11 +203,66 @@ export default function Dashboard({ page = 'home' }) {
           </>
         )}
 
-        {page !== 'home' && (
+        {page !== 'home' && page !== 'product' && (
           <section className="border-b border-white/10 pb-7 pt-12 sm:pt-16">
             <p className="text-xs uppercase tracking-[0.18em] text-[#d4af37]">{pageDetails[page].eyebrow}</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">{pageDetails[page].title}</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[#a8a8a8]">{pageDetails[page].description}</p>
+          </section>
+        )}
+
+        {page === 'product' && selectedProduct && (
+          <section className="mx-auto grid w-full max-w-6xl gap-8 pb-8 pt-10 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:pt-16">
+            <div>
+              <Link to="/produtos" className="mb-8 inline-flex items-center gap-2 text-sm text-[#999] transition hover:text-white">
+                <ArrowRight className="h-4 w-4 rotate-180" />
+                Voltar aos produtos
+              </Link>
+              <div className="flex items-center gap-3">
+                <div className="rounded-xl border border-[#d4af37]/25 bg-[#111] p-3">
+                  <Bot className="h-7 w-7 text-[#d4af37]" />
+                </div>
+                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-[#bbb]">
+                  {selectedProduct.label}
+                </span>
+              </div>
+              <h1 className="mt-6 text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl">{selectedProduct.name}</h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#aaa]">{selectedProduct.description}</p>
+              <p className="mt-6 max-w-2xl border-l-2 border-[#d4af37]/60 pl-4 text-sm leading-7 text-[#888]">
+                {selectedProduct.detail}
+              </p>
+              <p className="mt-8 text-xs text-[#777]">Protótipo demonstrativo. Sem cadastro, contratação ou cobrança.</p>
+            </div>
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0b] p-6 sm:p-8">
+              <div className="pointer-events-none absolute inset-0 opacity-70">
+                <MarketBackdrop />
+              </div>
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/20 bg-black/40 px-3 py-1.5 text-xs text-[#d9c47f]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
+                  Página de produto de teste
+                </span>
+                <div className="mt-24 rounded-2xl border border-white/10 bg-black/70 p-5 backdrop-blur">
+                  <p className="text-xs uppercase tracking-[0.14em] text-[#888]">Status do conceito</p>
+                  <p className="mt-2 text-2xl font-medium text-white">Em desenvolvimento</p>
+                  <p className="mt-3 text-sm leading-6 text-[#999]">Esta página individual valida a navegação e a apresentação de futuros produtos.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {page === 'product' && !selectedProduct && (
+          <section className="py-16 text-center">
+            <p className="text-xs uppercase tracking-[0.18em] text-[#d4af37]">Produto não encontrado</p>
+            <h1 className="mt-3 text-3xl font-semibold text-white">Esse produto não está no catálogo.</h1>
+            <Link
+              to="/produtos"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-3 text-sm text-white transition hover:border-white/35"
+            >
+              Voltar aos produtos
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </section>
         )}
 
@@ -245,9 +312,9 @@ export default function Dashboard({ page = 'home' }) {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Demonstração</p>
-              <h2 className="mt-2 text-3xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-4xl">Conceitos de robôs</h2>
+              <h2 className="mt-2 text-3xl font-semibold uppercase tracking-tight text-[#f8f4ec] sm:text-4xl">Produtos</h2>
               <p className="mt-2 max-w-2xl text-base leading-7 text-[#c9c3b7]">
-                Explore as ideias que estamos prototipando. Os exemplos abaixo são informativos e não estão disponíveis para contratação.
+              Cada produto tem sua própria página de apresentação. Escolha um item para explorar.
               </p>
             </div>
             <span className="w-fit rounded-full border border-[#d4af37]/25 bg-[#11161f] px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-[#d4af37]">
@@ -267,9 +334,9 @@ export default function Dashboard({ page = 'home' }) {
                 className="w-full bg-transparent text-sm text-white outline-none placeholder:text-[#777]"
               />
             </label>
-            {visibleRobots.map((robot) => (
+            {visibleProducts.map((product) => (
               <article
-                key={robot.name}
+                key={product.id}
                 className="grid gap-6 rounded-[28px] border border-[#d4af37]/25 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.12),_transparent_34%),#080b11] p-6 shadow-[0_0_60px_rgba(0,0,0,0.3)] lg:grid-cols-[1fr_auto] lg:items-center lg:p-8"
               >
                 <div>
@@ -278,18 +345,18 @@ export default function Dashboard({ page = 'home' }) {
                       <Bot className="h-7 w-7 text-[#d4af37]" />
                     </div>
                     <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-emerald-300">
-                      Conceito demonstrativo
+                      {product.label}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-3xl font-semibold uppercase tracking-[0.12em] text-[#f8f4ec]">{robot.name}</h3>
-                  <p className="mt-3 max-w-2xl text-base leading-7 text-[#c9c3b7]">{robot.description}</p>
+                  <h3 className="mt-5 text-3xl font-semibold uppercase tracking-[0.12em] text-[#f8f4ec]">{product.name}</h3>
+                  <p className="mt-3 max-w-2xl text-base leading-7 text-[#c9c3b7]">{product.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.1em] text-[#c9c3b7]">
                     <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Em desenvolvimento</span>
                     <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Sem contratação</span>
                   </div>
                 </div>
                 <Link
-                  to="/resultados"
+                  to={`/produtos/${product.id}`}
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
                 >
                   Saiba mais
@@ -297,7 +364,7 @@ export default function Dashboard({ page = 'home' }) {
                 </Link>
               </article>
             ))}
-            {visibleRobots.length === 0 && (
+            {visibleProducts.length === 0 && (
               <p className="rounded-2xl border border-white/10 bg-[#0b0b0b] px-5 py-8 text-center text-sm text-[#a8a8a8]">
                 Nenhum conceito encontrado. Tente outra busca.
               </p>
