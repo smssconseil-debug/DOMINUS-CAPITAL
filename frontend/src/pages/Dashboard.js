@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -20,9 +20,11 @@ import {
   Headphones,
   Lock,
   MessagesSquare,
+  Search,
   ShieldCheck,
   Star,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import tradesData from '../data/trades.json';
 import { computeMetrics } from '../lib/computeMetrics';
 
@@ -54,7 +56,31 @@ const robots = [
   },
 ];
 
-export default function Dashboard() {
+const pageDetails = {
+  robots: {
+    eyebrow: 'Catálogo demonstrativo',
+    title: 'Robôs',
+    description: 'Explore os conceitos de automação em desenvolvimento pela Dominus Capital.',
+  },
+  concepts: {
+    eyebrow: 'Em desenvolvimento',
+    title: 'Conceitos',
+    description: 'Ideias e funcionalidades que estamos avaliando para futuras experiências.',
+  },
+  results: {
+    eyebrow: 'Painel demonstrativo',
+    title: 'Resultados históricos',
+    description: 'Visualize o histórico operacional e os indicadores disponíveis nesta demonstração.',
+  },
+  risks: {
+    eyebrow: 'Informação importante',
+    title: 'Riscos e metodologia',
+    description: 'Entenda o contexto dos dados apresentados e os riscos envolvidos em operações financeiras.',
+  },
+};
+
+export default function Dashboard({ page = 'home' }) {
+  const [robotSearch, setRobotSearch] = useState('');
   const metrics = useMemo(() => computeMetrics(tradesData, {}), []);
 
   const summary = useMemo(() => {
@@ -109,103 +135,112 @@ export default function Dashboard() {
       })),
     [metrics.mep],
   );
+  const visibleRobots = robots.filter((robot) =>
+    `${robot.name} ${robot.description}`.toLocaleLowerCase('pt-BR').includes(robotSearch.trim().toLocaleLowerCase('pt-BR')),
+  );
 
   return (
     <div id="topo" className="relative overflow-hidden bg-[#050505] text-[#f7f2e8]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.10),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.08),_transparent_30%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] [background-size:72px_72px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(212,175,55,0.07),_transparent_36%)]" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 pb-14 lg:px-6">
-        <section id="inicio" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] lg:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
-            <div className="flex flex-col justify-between gap-6">
-              <div className="space-y-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Protótipo em desenvolvimento</p>
-                <div className="space-y-3">
-                  <h1 className="max-w-xl text-4xl font-medium uppercase leading-[1.05] text-[#f8f4ec] sm:text-5xl lg:text-[4.25rem]">
-                    Ideias para
-                    <br />
-                    trading.
-                    <br />
-                    <span className="text-[#d4af37]">Conheça os</span>
-                    <br />
-                    <span className="text-[#d4af37]">conceitos.</span>
-                  </h1>
-                  <p className="max-w-xl text-lg leading-8 text-[#d0cbc0]">
-                    Uma demonstração em construção para apresentar ideias de automação e análise de mercado. Este site não oferece contratação ou cobrança.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="#produtos"
-                    className="inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(90deg,#b8892d,#d4af37,#f0cb6f)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-[#16130b] transition hover:brightness-110"
-                  >
-                    Saiba mais
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#resultados"
-                    className="inline-flex items-center rounded-xl border border-white/15 px-5 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-[#f5efe2] transition hover:border-[#d4af37]/60 hover:text-[#d4af37]"
-                  >
-                    Ver resultados
-                  </a>
-                </div>
-              </div>
+      <div className="relative mx-auto flex max-w-[1440px] flex-col gap-10 px-4 pb-16 lg:px-8">
+        {page === 'home' && (
+          <>
+        <section id="inicio" className="relative flex min-h-[690px] scroll-mt-24 flex-col items-center justify-start overflow-hidden pt-20 text-center sm:min-h-[760px] sm:pt-28">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(ellipse_at_50%_42%,_rgba(212,175,55,0.14),_transparent_48%),linear-gradient(180deg,_rgba(5,5,5,0)_58%,_#050505_100%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-[310px] h-[420px] opacity-50 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_75%,transparent)]">
+            <MarketBackdrop />
+          </div>
 
-              <div className="inline-flex max-w-xl items-start gap-4 rounded-2xl border border-[#d4af37]/30 bg-[#11161f]/75 px-5 py-4">
-                <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-[#d4af37]" />
-                <div>
-                  <p className="text-base font-semibold uppercase tracking-[0.08em] text-[#d4af37]">Projeto demonstrativo.</p>
-                  <p className="mt-1 text-sm text-[#c9c3b7]">Conteúdo e funcionalidades em desenvolvimento; os dados exibidos são históricos.</p>
-                </div>
-              </div>
+          <div className="relative z-10 flex max-w-4xl flex-col items-center">
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs text-[#c9c3b7]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]" />
+              Protótipo em desenvolvimento
+            </span>
+            <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.055em] text-white sm:text-6xl lg:text-[5.5rem]">
+              Onde estratégia
+              <br />
+              encontra <span className="bg-gradient-to-r from-[#f3d47c] via-[#d4af37] to-[#a97b26] bg-clip-text text-transparent">tecnologia.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-[#b5b5b5] sm:text-lg sm:leading-8">
+              Explore conceitos de automação e análise de mercado em uma experiência visual criada pela Dominus Capital.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link
+                to="/robos"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#f3f3f3] px-6 py-3.5 text-sm font-semibold text-[#111] transition hover:bg-white"
+              >
+                Explore os robôs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/resultados"
+                className="inline-flex items-center rounded-lg border border-white/15 bg-black/25 px-6 py-3.5 text-sm font-medium text-white transition hover:border-white/35 hover:bg-white/[0.06]"
+              >
+                Ver painel demonstrativo
+              </Link>
             </div>
+            <p className="mt-4 text-xs text-[#777]">Demonstração visual. Sem cadastro, contratação ou cobrança.</p>
+          </div>
 
-            <div className="rounded-[28px] border border-[#d4af37]/18 bg-[#090c12] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] lg:p-6">
-              <p className="mb-4 text-sm uppercase tracking-[0.18em] text-[#d4af37]">Desempenho acumulado</p>
-              <div className="grid gap-px overflow-hidden rounded-[22px] border border-[#d4af37]/14 bg-[#20170a]/40 md:grid-cols-2">
-                <SummaryMetric
-                  title="Crescimento total"
-                  value={formatPercent(summary.totalGrowth)}
-                  detail="Sobre o capital inicial"
-                  positive
-                />
-                <SummaryMetric
-                  title="Capital final"
-                  value={formatCurrency(summary.finalCapital)}
-                  detail="Resultado líquido"
-                  positive
-                />
-                <SummaryMetric
-                  title="Melhor mês"
-                  value={summary.bestMonth ? formatPercent(summary.bestMonth.percent) : '0,00%'}
-                  detail={summary.bestMonth ? capitalizeLabel(summary.bestMonth.mes) : 'Sem histórico'}
-                  positive
-                />
-                <SummaryMetric
-                  title="Pior mês"
-                  value={summary.worstMonth ? formatPercent(summary.worstMonth.percent) : '0,00%'}
-                  detail={summary.worstMonth ? capitalizeLabel(summary.worstMonth.mes) : 'Sem histórico'}
-                  negative
-                />
-                <SummaryMetric
-                  title="Meses positivos"
-                  value={`${summary.positiveMonths} de ${summary.totalMonths}`}
-                  detail={`${formatPercent(summary.consistency)} de consistência`}
-                  positive
-                />
-                <SummaryMetric
-                  title="Capital vs. inicial"
-                  value={formatPercent(summary.capitalVsInitial)}
-                  detail={summary.capitalVsInitial >= 100 ? 'Igual ou acima do capital inicial' : 'Abaixo do capital inicial'}
-                  positive={summary.capitalVsInitial >= 100}
-                  negative={summary.capitalVsInitial < 100}
-                />
-              </div>
+          <Link to="/robos" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs text-[#888] transition hover:text-white">
+            Role para explorar
+            <span className="mx-auto mt-3 block h-8 w-px bg-gradient-to-b from-[#d4af37]/70 to-transparent" />
+          </Link>
+        </section>
+          </>
+        )}
+
+        {page !== 'home' && (
+          <section className="border-b border-white/10 pb-7 pt-12 sm:pt-16">
+            <p className="text-xs uppercase tracking-[0.18em] text-[#d4af37]">{pageDetails[page].eyebrow}</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">{pageDetails[page].title}</h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-[#a8a8a8]">{pageDetails[page].description}</p>
+          </section>
+        )}
+
+        {page === 'home' && (
+        <section aria-label="Indicadores históricos demonstrativos" className="scroll-mt-24">
+          <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.16em] text-[#a9a9a9]">Painel demonstrativo</p>
+              <h2 className="mt-1 text-xl font-medium text-white">Resumo do histórico operacional</h2>
             </div>
+            <span className="text-xs text-[#777]">Dados históricos · não são cotações em tempo real</span>
+          </div>
+          <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b] sm:grid-cols-2 lg:grid-cols-3">
+            <SummaryMetric title="Crescimento total" value={formatPercent(summary.totalGrowth)} detail="Sobre o capital inicial" positive />
+            <SummaryMetric title="Capital final" value={formatCurrency(summary.finalCapital)} detail="Resultado líquido histórico" positive />
+            <SummaryMetric
+              title="Meses positivos"
+              value={`${summary.positiveMonths} de ${summary.totalMonths}`}
+              detail={`${formatPercent(summary.consistency)} do período`}
+              positive
+            />
+            <SummaryMetric
+              title="Melhor mês"
+              value={summary.bestMonth ? formatPercent(summary.bestMonth.percent) : '0,00%'}
+              detail={summary.bestMonth ? capitalizeLabel(summary.bestMonth.mes) : 'Sem histórico'}
+              positive
+            />
+            <SummaryMetric
+              title="Pior mês"
+              value={summary.worstMonth ? formatPercent(summary.worstMonth.percent) : '0,00%'}
+              detail={summary.worstMonth ? capitalizeLabel(summary.worstMonth.mes) : 'Sem histórico'}
+              negative
+            />
+            <SummaryMetric
+              title="Capital vs. inicial"
+              value={formatPercent(summary.capitalVsInitial)}
+              detail={summary.capitalVsInitial >= 100 ? 'Igual ou acima do capital inicial' : 'Abaixo do capital inicial'}
+              positive={summary.capitalVsInitial >= 100}
+              negative={summary.capitalVsInitial < 100}
+            />
           </div>
         </section>
+        )}
 
+        {page === 'robots' && (
         <section id="produtos" className="scroll-mt-28 space-y-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -221,7 +256,18 @@ export default function Dashboard() {
           </div>
 
           <div className="grid gap-4">
-            {robots.map((robot) => (
+            <label className="flex max-w-xl items-center gap-3 rounded-xl border border-white/10 bg-[#111]/90 px-4 py-3.5 text-left transition focus-within:border-[#d4af37]/60">
+              <Search className="h-5 w-5 shrink-0 text-[#8c8c8c]" />
+              <input
+                type="search"
+                value={robotSearch}
+                onChange={(event) => setRobotSearch(event.target.value)}
+                placeholder="Buscar robôs e conceitos"
+                aria-label="Buscar robôs e conceitos"
+                className="w-full bg-transparent text-sm text-white outline-none placeholder:text-[#777]"
+              />
+            </label>
+            {visibleRobots.map((robot) => (
               <article
                 key={robot.name}
                 className="grid gap-6 rounded-[28px] border border-[#d4af37]/25 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.12),_transparent_34%),#080b11] p-6 shadow-[0_0_60px_rgba(0,0,0,0.3)] lg:grid-cols-[1fr_auto] lg:items-center lg:p-8"
@@ -242,18 +288,25 @@ export default function Dashboard() {
                     <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Sem contratação</span>
                   </div>
                 </div>
-                <a
-                  href="#resultados"
+                <Link
+                  to="/resultados"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
                 >
                   Saiba mais
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </article>
             ))}
+            {visibleRobots.length === 0 && (
+              <p className="rounded-2xl border border-white/10 bg-[#0b0b0b] px-5 py-8 text-center text-sm text-[#a8a8a8]">
+                Nenhum conceito encontrado. Tente outra busca.
+              </p>
+            )}
           </div>
         </section>
+        )}
 
+        {page === 'concepts' && (
         <section id="servicos" className="scroll-mt-28 space-y-5">
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-[#d4af37]">Ideias em avaliação</p>
@@ -277,7 +330,10 @@ export default function Dashboard() {
             />
           </div>
         </section>
+        )}
 
+        {page === 'results' && (
+          <>
         <section
           id="resultados"
           className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.32)] lg:p-6"
@@ -419,7 +475,11 @@ export default function Dashboard() {
             </div>
           </section>
         </div>
+          </>
+        )}
 
+        {page === 'risks' && (
+          <>
         <section id="filosofia" className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6">
           <p className="mb-5 text-sm uppercase tracking-[0.2em] text-[#d4af37]">Notas importantes</p>
           <div className="grid gap-4 md:grid-cols-3">
@@ -440,7 +500,10 @@ export default function Dashboard() {
             />
           </div>
         </section>
+          </>
+        )}
 
+        {page === 'home' && (
         <section
           id="sobre-prototipo"
           className="scroll-mt-28 rounded-[28px] border border-[#d4af37]/12 bg-[#06080d]/95 p-5 shadow-[0_0_60px_rgba(0,0,0,0.28)] lg:p-6"
@@ -474,6 +537,7 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
+        )}
       </div>
 
     </div>
@@ -482,13 +546,47 @@ export default function Dashboard() {
 
 function SummaryMetric({ title, value, detail, positive = false, negative = false }) {
   return (
-    <div className="bg-[#0b1017] p-5">
+    <div className="border-b border-r border-white/[0.06] bg-[#0b0b0b] p-5 transition-colors hover:bg-[#101010]">
       <p className="text-xs uppercase tracking-[0.14em] text-[#8d8b84]">{title}</p>
-      <p className={`mt-3 text-[2rem] font-medium leading-none ${positive ? 'text-[#2fb45a]' : negative ? 'text-[#ef4444]' : 'text-[#f7f2e8]'}`}>
+      <p className={`mt-3 text-2xl font-medium leading-none sm:text-[2rem] ${positive ? 'text-[#2fb45a]' : negative ? 'text-[#ef4444]' : 'text-[#f7f2e8]'}`}>
         {value}
       </p>
       <p className="mt-3 text-sm text-[#c9c3b7]">{detail}</p>
     </div>
+  );
+}
+
+function MarketBackdrop() {
+  return (
+    <svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" className="h-full w-full" aria-hidden="true">
+      <defs>
+        <linearGradient id="market-line" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#d4af37" stopOpacity="0" />
+          <stop offset="48%" stopColor="#e5c15b" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#d4af37" stopOpacity="0.08" />
+        </linearGradient>
+        <linearGradient id="market-area" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <g stroke="#ffffff" strokeOpacity="0.07" strokeWidth="1">
+        <path d="M0 80H1440M0 160H1440M0 240H1440M0 320H1440M0 400H1440" />
+        <path d="M120 0V520M300 0V520M480 0V520M660 0V520M840 0V520M1020 0V520M1200 0V520M1380 0V520" />
+      </g>
+      <path
+        d="M0 360L90 340L160 365L235 300L310 322L390 260L470 285L545 220L625 248L710 190L785 222L865 155L945 184L1020 130L1095 164L1175 105L1255 145L1330 78L1440 110V520H0Z"
+        fill="url(#market-area)"
+      />
+      <path
+        d="M0 360L90 340L160 365L235 300L310 322L390 260L470 285L545 220L625 248L710 190L785 222L865 155L945 184L1020 130L1095 164L1175 105L1255 145L1330 78L1440 110"
+        fill="none"
+        stroke="url(#market-line)"
+        strokeWidth="2.5"
+      />
+      <circle cx="1330" cy="78" r="5" fill="#f0cd73" />
+      <circle cx="1330" cy="78" r="13" fill="#d4af37" fillOpacity="0.15" />
+    </svg>
   );
 }
 

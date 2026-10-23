@@ -1,71 +1,90 @@
-import { useId } from 'react';
+import { useEffect, useId } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 
 const navItems = [
-  { id: 'produtos', label: 'Robôs' },
-  { id: 'servicos', label: 'Conceitos' },
-  { id: 'resultados', label: 'Resultados' },
-  { id: 'filosofia', label: 'Riscos' },
+  { path: '/robos', label: 'Robôs' },
+  { path: '/conceitos', label: 'Conceitos' },
+  { path: '/resultados', label: 'Resultados' },
+  { path: '/riscos', label: 'Riscos' },
 ];
 
 function App() {
   return (
     <div className="dark min-h-screen bg-[#050505] text-[#f7f2e8] font-sans selection:bg-[#d4af37]/30">
       <nav className="sticky top-0 z-50 border-b border-[#d4af37]/15 bg-[#050505]/95 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-6">
-          <a href="/#topo" className="flex items-center gap-3">
-            <DominusLogo className="h-12 w-12 shrink-0" />
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 lg:px-8">
+          <Link to="/" className="flex items-center gap-3">
+            <DominusLogo className="h-10 w-10 shrink-0" />
             <div className="leading-none">
-              <div className="text-2xl font-semibold uppercase tracking-[0.18em] text-[#d4af37]">Dominus</div>
-              <div className="mt-1 text-sm uppercase tracking-[0.6em] text-[#f5efe2]">Capital</div>
+              <div className="text-xl font-semibold uppercase tracking-[0.16em] text-[#d4af37]">Dominus</div>
+              <div className="mt-1 text-[10px] uppercase tracking-[0.58em] text-[#f5efe2]">Capital</div>
             </div>
-          </a>
+          </Link>
 
-          <div className="hidden items-center gap-6 lg:flex">
+          <div className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`/#${item.id}`}
-                className="border-b border-transparent px-1 pb-3 text-sm uppercase tracking-[0.08em] text-[#f5efe2] transition-colors hover:border-[#d4af37] hover:text-[#d4af37]"
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `py-2 text-sm transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#a8a8a8]'}`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
-          <a
-            href="/#produtos"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#d4af37]/40 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10 sm:text-sm"
+          <Link
+            to="/robos"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#d4af37] px-4 py-2.5 text-sm font-semibold text-[#111] transition hover:bg-[#edca70]"
           >
             Saiba mais
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
-        <div className="flex items-center gap-6 overflow-x-auto px-4 pb-3 lg:hidden">
+        <div className="flex items-center gap-6 overflow-x-auto border-t border-white/[0.06] px-4 py-2.5 lg:hidden">
           {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`/#${item.id}`}
-              className="shrink-0 text-xs uppercase tracking-[0.08em] text-[#f5efe2] transition-colors hover:text-[#d4af37]"
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `shrink-0 text-xs transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#a8a8a8]'}`
+              }
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
       </nav>
 
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard page="home" />} />
+        <Route path="/robos" element={<Dashboard page="robots" />} />
+        <Route path="/conceitos" element={<Dashboard page="concepts" />} />
+        <Route path="/resultados" element={<Dashboard page="results" />} />
+        <Route path="/riscos" element={<Dashboard page="risks" />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+
+  return null;
 }
 
 function DominusLogo({ className = '' }) {
