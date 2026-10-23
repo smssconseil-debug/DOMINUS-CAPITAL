@@ -32,6 +32,22 @@ code {
     transform-origin: center;
 }
 
+@media (max-width: 639px) and (prefers-reduced-motion: no-preference) {
+    .market-backdrop__line {
+        animation-duration: 4s;
+    }
+
+    .market-backdrop__glint {
+        animation-duration: 9s;
+        stroke-dasharray: 36 964;
+        filter: drop-shadow(0 0 8px rgba(255, 220, 120, 1));
+    }
+
+    .market-backdrop__glow {
+        animation-duration: 3s;
+    }
+}
+
 @keyframes market-line-pulse {
     0%,
     100% {
