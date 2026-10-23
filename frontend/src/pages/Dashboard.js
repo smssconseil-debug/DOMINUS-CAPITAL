@@ -407,27 +407,27 @@ export default function Dashboard({ page = 'home', productId = '' }) {
             {visibleProducts.map((product) => (
               <article
                 key={product.id}
-                className="grid gap-6 rounded-[28px] border border-[#d4af37]/25 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.12),_transparent_34%),#080b11] p-6 shadow-[0_0_60px_rgba(0,0,0,0.3)] lg:grid-cols-[1fr_auto] lg:items-center lg:p-8"
+                className="grid gap-3 border-b border-white/10 py-4 first:pt-0 last:border-0 sm:grid-cols-1 sm:gap-6 sm:rounded-[28px] sm:border sm:border-[#d4af37]/25 sm:bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.12),_transparent_34%),#080b11] sm:p-6 sm:shadow-[0_0_60px_rgba(0,0,0,0.3)] sm:last:border-[#d4af37]/25 lg:grid-cols-[1fr_auto] lg:items-center lg:p-8"
               >
                 <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <div className="rounded-2xl border border-[#d4af37]/25 bg-[#11161f] p-3">
-                      <Bot className="h-7 w-7 text-[#d4af37]" />
+                  <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                    <div className="rounded-xl border border-[#d4af37]/25 bg-[#11161f] p-2 sm:rounded-2xl sm:p-3">
+                      <Bot className="h-5 w-5 text-[#d4af37] sm:h-7 sm:w-7" />
                     </div>
-                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.12em] text-emerald-300">
+                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.08em] text-emerald-300 sm:px-3 sm:text-xs sm:tracking-[0.12em]">
                       {product.label}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-3xl font-semibold uppercase tracking-[0.12em] text-[#f8f4ec]">{product.name}</h3>
-                  <p className="mt-3 max-w-2xl text-base leading-7 text-[#c9c3b7]">{product.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.1em] text-[#c9c3b7]">
+                  <h3 className="mt-3 text-xl font-semibold uppercase tracking-[0.08em] text-[#f8f4ec] sm:mt-5 sm:text-3xl sm:tracking-[0.12em]">{product.name}</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-[#c9c3b7] sm:mt-3 sm:text-base sm:leading-7">{product.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.08em] text-[#c9c3b7] sm:mt-5 sm:text-xs sm:tracking-[0.1em]">
                     <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Em desenvolvimento</span>
                     <span className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">Sem contratação</span>
                   </div>
                 </div>
                 <Link
                   to={`/produtos/${product.id}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10"
+                  className="inline-flex w-fit items-center justify-center gap-2 rounded-xl border border-[#d4af37]/35 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#d4af37] transition hover:border-[#d4af37] hover:bg-[#d4af37]/10 sm:px-5 sm:py-3.5 sm:text-sm sm:tracking-[0.1em]"
                 >
                   Saiba mais
                   <ArrowRight className="h-4 w-4" />
