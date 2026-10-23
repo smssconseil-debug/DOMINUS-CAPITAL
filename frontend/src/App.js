@@ -69,20 +69,18 @@ function App() {
           </Link>
         </div>
         <div aria-label="Navegação principal" role="navigation" className="flex flex-wrap items-center gap-x-4 gap-y-0 border-t border-white/[0.06] px-3 py-1.5 sm:gap-x-6 sm:px-4 lg:hidden">
-          <NavLink
-            to="/produtos"
-            className={({ isActive }) =>
-              `shrink-0 py-2 text-xs transition-colors hover:text-white ${isActive ? 'text-white' : 'text-[#a8a8a8]'}`
-            }
-          >
-            Produtos
-          </NavLink>
-          <NavLink to="/produtos/genesis" className="shrink-0 py-2 text-xs text-[#a8a8a8] transition-colors hover:text-white">
-            Gênesis
-          </NavLink>
-          <NavLink to="/produtos/robo-teste" className="shrink-0 py-2 text-xs text-[#a8a8a8] transition-colors hover:text-white">
-            ATLAS PERFORMANCE
-          </NavLink>
+          <details className="group relative shrink-0">
+            <summary className="flex cursor-pointer list-none items-center gap-1 py-2 text-xs text-[#a8a8a8] transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
+              Produtos
+              <span aria-hidden="true" className="transition-transform group-open:rotate-180">⌄</span>
+            </summary>
+            <div className="absolute left-0 top-full z-50 mt-1 w-64 rounded-xl border border-white/10 bg-[#111] p-2 shadow-2xl shadow-black/50">
+              <MobileProductMenuLink to="/produtos" title="Ver todos os produtos" description="Acessar o catálogo completo" />
+              <div className="my-1 border-t border-white/[0.08]" />
+              <MobileProductMenuLink to="/produtos/genesis" title="Gênesis" description="Conceito de robô Dominus" />
+              <MobileProductMenuLink to="/produtos/robo-teste" title="ATLAS PERFORMANCE" description="Produto de demonstração" />
+            </div>
+          </details>
           {navItems.map((item) => (
             <NavLink
               key={item.path}
@@ -123,6 +121,22 @@ function ProductRoute() {
 function ProductMenuLink({ to, title, description }) {
   return (
     <Link to={to} className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-white/[0.06]">
+      <span className="block text-sm font-medium text-white">{title}</span>
+      <span className="mt-1 block text-xs text-[#888]">{description}</span>
+    </Link>
+  );
+}
+
+function MobileProductMenuLink({ to, title, description }) {
+  return (
+    <Link
+      to={to}
+      onClick={(event) => {
+        const menu = event.currentTarget.closest('details');
+        if (menu) menu.open = false;
+      }}
+      className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-white/[0.06]"
+    >
       <span className="block text-sm font-medium text-white">{title}</span>
       <span className="mt-1 block text-xs text-[#888]">{description}</span>
     </Link>
